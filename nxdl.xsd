@@ -371,60 +371,8 @@
 				</xs:documentation>
 			</xs:annotation>
 		</xs:group>
-		<xs:attribute name="type" use="required" type="nx:validNXClassName">
-			<xs:annotation>
-				<xs:documentation>
-					The ``type`` attribute *must* 
-					contain the name of a 
-					NeXus base class, application definition, or contributed definition.
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="name" use="optional" type="nx:validItemName">
-			<xs:annotation>
-				<xs:documentation>
-					A particular scientific application may expect
-					a name of a ``group`` element. It is helpful but not
-					required to specify the ``name``
-					attribute in the NXDL file.
-					It is suggested to always specify a ``name``
-					to avoid ambiguity.  It is also suggested to 
-					derive the ``name`` from the 
-					type, using an additional number suffix as necessary.
-					For example, consider a data file with only one 
-					``NXentry``.  The suggested default 
-					``name`` would
-					be ``entry``.  For a data file with two or more
-					``NXentry`` groups, the suggested names would be
-					``entry1``, ``entry2``, ...
-					Alternatively, a scientific application such as small-angle 
-					scattering might require
-					a different naming procedure; two different ``NXaperture`` groups
-					might be given the names ``beam-defining slit``
-					and ``scatter slit``.
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="minOccurs" use="optional" default="0" type="xs:nonNegativeInteger">
-			<xs:annotation>
-				<xs:documentation>
-					Minimum number of times this ``group`` is allowed to be present within its
-					parent group.  Note each ``group`` must have a ``name`` attribute
-					that is unique among all ``group`` and ``field``
-					declarations within a common parent group.
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="maxOccurs" use="optional"  default="unbounded">
-			<xs:annotation>
-				<xs:documentation>
-					Maximum number of times this ``group`` is allowed to be present within its
-					parent ``group``.  Note each ``group`` must have a ``name`` attribute
-					that is unique among all ``group`` and ``field``
-					declarations within a common parent ``group``.
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
+		<xs:attributeGroup ref="nx:groupAttributes"/>
+		<xs:attributeGroup ref="nx:groupAttributesCategorySpecific"/>
 	</xs:complexType>
 
 	<xs:group name="groupGroup">
@@ -596,225 +544,8 @@
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
-				<xs:attribute name="units" type="nx:anyUnitsAttr">
-					<xs:annotation>
-						<xs:documentation>
-							String describing the engineering units.
-							The string should be appropriate for the value
-							and should conform to the NeXus rules for units.
-							Conformance is not validated at this time.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="long_name" type="nx:NX_CHAR">
-					<xs:annotation>
-						<xs:documentation>
-							Descriptive name for this field (may include whitespace and engineering units).
-							Often, the long_name (when defined) will be used as the axis label on a plot.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="signal" type="nx:NX_POSINT">
-					<xs:annotation>
-						<xs:documentation>
-							Presence of the ``signal`` attribute means this field is an ordinate.
-							
-							Integer marking this field as plottable data (ordinates).
-							The value indicates the priority of selection or interest.
-							Some facilities only use ``signal=1``
-							while others use ``signal=2`` to indicate
-							plottable data of secondary interest.
-							Higher numbers are possible but not common
-							and interpretation is not standard.
-							
-							A field with a ``signal`` attribute should not have an ``axis`` attribute.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="axes" type="nx:NX_CHAR">
-					<xs:annotation>
-						<xs:documentation>
-							Presence of the ``axes`` attribute means this field is an ordinate.
-							
-							This attribute contains a colon (or comma in legacy files) delimited list
-							of the names of independent axes when plotting this field.
-							Each name in this list must exist as a field in the same group.
-							<!-- perhaps even discourage use of square brackets in axes attribute? -->
-							(Optionally, the list can be enclosed by square brackets but this is not common.)
-							The regular expression for this rule is::
-							
-								[A-Za-z_][\w_]*([ :][A-Za-z_][\w_]*)*
-								
-						</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="axis" type="nx:NX_POSINT">
-					<xs:annotation>
-						<xs:documentation>
-							NOTE: Use of this attribute is discouraged.  It is for legacy support.
-							You should use the axes attribute instead.
-							
-							Presence of the ``axis`` attribute means this field is an abcissa.
-							
-							The attribute value is an integer indicating this
-							field as an axis that is part of the data set.
-							The data set is a field with the attribute 
-							``signal=1`` in the same group.
-							The value can range from 1 up to the number of 
-							independent axes (abcissae) in the data set.  
-							
-							A value of ``axis=1``" indicates that this field 
-							contains the data for the first independent axis.  
-							For example, the X axis in an XY data set.
-							
-							A value of ``axis=2`` indicates that this field 
-							contains the data for the second independent axis.
-							For example, the Y axis in a 2-D data set.
-							
-							A value of ``axis=3`` indicates that this field 
-							contains the data for the third independent axis.
-							For example, the Z axis in a 3-D data set.
-							
-							A field with an ``axis`` attribute should 
-							not have a ``signal`` attribute.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="primary" type="nx:NX_POSINT">
-					<xs:annotation>
-						<xs:documentation>
-							Integer indicating the priority of selection
-							of this field for plotting (or visualization) as an axis.
-							
-							Presence of the ``primary`` attribute means this 
-							field is an abcissa.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="type" type="nx:NAPI" default="NX_CHAR">
-					<xs:annotation>
-						<xs:documentation>
-							Defines the type of the element as allowed by the NAPI (NeXus Application Programmer Interface).
-							See elsewhere for the complete list of allowed NAPI types.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="minOccurs" use="optional" default="0" type="nx:nonNegativeUnbounded">
-					<xs:annotation>
-						<xs:documentation>
-							Defines the minimum number of times this element may be used.  Its 
-							value is confined to zero or greater.  Must be less than or equal to
-							the value for the "maxOccurs" attribute.
-							A value of "unbounded" is allowed.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="maxOccurs" use="optional"  default="1" type="nx:nonNegativeUnbounded">
-					<xs:annotation>
-						<xs:documentation>
-							Defines the maximum number of times this element may be used.  Its 
-							value is confined to zero or greater.  Must be greater than or equal to
-							the value for the "minOccurs" attribute.
-							A value of "unbounded" is allowed.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="stride" use="optional"  default="1" type="nx:NX_INT">
-					<xs:annotation>
-						<xs:documentation>
-							The ``stride`` and ``offset`` attributes
-							are used together to index the array of data items in a 
-							multi-dimensional array.  They may be used as an alternative
-							method to address a data array that is not stored in the standard NeXus
-							method of "C" order.
-							
-							The ``stride`` list chooses array locations from the 
-							data array  with each value in the ``stride`` list 
-							determining how many elements to move in each dimension. 
-							Setting a value in the ``stride`` array to 1 moves 
-							to each element in that dimension of the data array, while 
-							setting a value of 2 in a location in the ``stride`` 
-							array moves to every other element in that dimension of the 
-							data array.  A value in the ``stride`` list may be
-							positive to move forward or negative to step backward.
-							A value of zero will not step (and is of no particular use).
-							
-							See http://davis.lbl.gov/Manuals/HDF5-1.4.3/Tutor/phypereg.html
-							or *4. Dataspace Selection Operations* in
-							http://www.hdfgroup.org/HDF5/doc1.6/Dataspaces.html.
-							
-
-							The ``stride`` attribute contains a 
-							comma-separated list of integers. 
-							(In addition to the required comma delimiter, 
-							whitespace is also allowed to improve readability.)
-							The number of items in the list
-							is equal to the rank of the data being stored.  The value of each
-							item is the spacing of the data items in that subscript of the array.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="offset" use="optional"  default="1" type="nx:nonNegativeUnbounded">
-					<xs:annotation>
-						<xs:documentation>
-							The ``stride`` and ``offset`` attributes
-							are used together to index the array of data items in a 
-							multi-dimensional array.  They may be used as an alternative
-							method to address a data array that is not stored in the standard NeXus
-							method of "C" order.
-							
-							The ``offset`` attribute
-							determines the starting coordinates of the data array
-							for each dimension.
-							
-							See http://davis.lbl.gov/Manuals/HDF5-1.4.3/Tutor/phypereg.html
-							or *4. Dataspace Selection Operations* in
-							http://www.hdfgroup.org/HDF5/doc1.6/Dataspaces.html.
-							
-							The ``offset`` attribute contains a 
-							comma-separated list of integers. 
-							(In addition to the required comma delimiter, 
-							whitespace is also allowed to improve readability.)
-							The number of items in the list
-							is equal to the rank of the data being stored.  The value of each
-							item is the offset in the array of the first data item of that 
-							subscript of the array.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="interpretation" use="optional">
-					<xs:annotation>
-						<xs:documentation>
-							This instructs the consumer of the data what the last dimensions 
-							of the data are. It allows plotting software to work 
-							out the natural way of displaying the data.
-							
-							For example a single-element, energy-resolving, fluorescence detector
-							with 512 bins should have ``interpretation="spectrum"``. If the 
-							detector is scanned over a 512 x 512 spatial grid, the data reported 
-							will be of dimensions: 512 x 512 x 512.
-							In this example, the initial plotting representation should default to 
-							data of the same dimensions of a 512 x 512 pixel ``image`` 
-							detector where the images where taken at 512 different pressure values.
-							
-							In simple terms, the allowed values mean:
-							
-							* ``scaler`` = 0-D data to be plotted
-							* ``spectrum`` = 1-D data to be plotted
-							* ``image`` = 2-D data to be plotted
-							* ``vertex`` = 3-D data to be plotted
-							
-						</xs:documentation>
-					</xs:annotation>
-					<xs:simpleType>
-                        <xs:restriction base="xs:string">
-                        	<xs:enumeration value="scalar"/>
-                        	<xs:enumeration value="spectrum"/>
-                        	<xs:enumeration value="image"/>
-                        	<xs:enumeration value="vertex"/>
-                        </xs:restriction>
-					</xs:simpleType>
-				</xs:attribute>
+				<xs:attributeGroup ref="nx:fieldAttributes"/>
+				<xs:attributeGroup ref="nx:fieldAttributesCategorySpecific"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -1190,4 +921,318 @@
 		</xs:attribute>
 	</xs:complexType>
 	
+	<xs:attributeGroup name="groupAttributesCategorySpecific">
+		<!-- per http://trac.nexusformat.org/definitions/ticket/266 -->
+		<xs:annotation>
+			<xs:documentation>
+				Specifies NXDL ``group`` attributes that differ between 
+				categories (base_classes, applications or contributed).
+				
+				Override this default definition in the "applications" 
+				subdirectory for minOccurs="1" as the default.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="minOccurs" use="optional" default="0" type="xs:nonNegativeInteger">
+			<xs:annotation>
+				<xs:documentation>
+					Minimum number of times this ``group`` is allowed to be present within its
+					parent group.  Note each ``group`` must have a ``name`` attribute
+					that is unique among all ``group`` and ``field``
+					declarations within a common parent group.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	
+	<xs:attributeGroup name="groupAttributes">
+		<xs:annotation>
+			<xs:documentation>
+				NXDL ``group`` elements use these attributes
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="type" use="required" type="nx:validNXClassName">
+			<xs:annotation>
+				<xs:documentation>
+					The ``type`` attribute *must* 
+					contain the name of a 
+					NeXus base class, application definition, or contributed definition.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="name" use="optional" type="nx:validItemName">
+			<xs:annotation>
+				<xs:documentation>
+					A particular scientific application may expect
+					a name of a ``group`` element. It is helpful but not
+					required to specify the ``name``
+					attribute in the NXDL file.
+					It is suggested to always specify a ``name``
+					to avoid ambiguity.  It is also suggested to 
+					derive the ``name`` from the 
+					type, using an additional number suffix as necessary.
+					For example, consider a data file with only one 
+					``NXentry``.  The suggested default 
+					``name`` would
+					be ``entry``.  For a data file with two or more
+					``NXentry`` groups, the suggested names would be
+					``entry1``, ``entry2``, ...
+					Alternatively, a scientific application such as small-angle 
+					scattering might require
+					a different naming procedure; two different ``NXaperture`` groups
+					might be given the names ``beam-defining slit``
+					and ``scatter slit``.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="maxOccurs" use="optional"  default="unbounded">
+			<xs:annotation>
+				<xs:documentation>
+					Maximum number of times this ``group`` is allowed to be present within its
+					parent ``group``.  Note each ``group`` must have a ``name`` attribute
+					that is unique among all ``group`` and ``field``
+					declarations within a common parent ``group``.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	
+	<xs:attributeGroup name="fieldAttributesCategorySpecific">
+		<!-- per http://trac.nexusformat.org/definitions/ticket/266 -->
+		<xs:annotation>
+			<xs:documentation>
+				Specifies NXDL ``field`` attributes that differ between 
+				categories (base_classes, applications or contributed).
+				
+				Override this default definition in the "applications" 
+				subdirectory for minOccurs="1" as the default.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="minOccurs" use="optional" default="0" type="xs:nonNegativeInteger">
+			<xs:annotation>
+				<xs:documentation>
+					Defines the minimum number of times this ``field`` element may be used.  Its 
+					value is confined to zero or greater.  Must be less than or equal to
+					the value for the "maxOccurs" attribute.
+					A value of "unbounded" is allowed.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	
+	<xs:attributeGroup name="fieldAttributes">
+		<xs:annotation>
+			<xs:documentation>
+				NXDL ``field`` elements use these attributes
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="units" type="nx:anyUnitsAttr">
+			<xs:annotation>
+				<xs:documentation>
+					String describing the engineering units.
+					The string should be appropriate for the value
+					and should conform to the NeXus rules for units.
+					Conformance is not validated at this time.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="long_name" type="nx:NX_CHAR">
+			<xs:annotation>
+				<xs:documentation>
+					Descriptive name for this field (may include whitespace and engineering units).
+					Often, the long_name (when defined) will be used as the axis label on a plot.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="signal" type="nx:NX_POSINT">
+			<xs:annotation>
+				<xs:documentation>
+					Presence of the ``signal`` attribute means this field is an ordinate.
+					
+					Integer marking this field as plottable data (ordinates).
+					The value indicates the priority of selection or interest.
+					Some facilities only use ``signal=1``
+					while others use ``signal=2`` to indicate
+					plottable data of secondary interest.
+					Higher numbers are possible but not common
+					and interpretation is not standard.
+					
+					A field with a ``signal`` attribute should not have an ``axis`` attribute.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="axes" type="nx:NX_CHAR">
+			<xs:annotation>
+				<xs:documentation>
+					Presence of the ``axes`` attribute means this field is an ordinate.
+					
+					This attribute contains a colon (or comma in legacy files) delimited list
+					of the names of independent axes when plotting this field.
+					Each name in this list must exist as a field in the same group.
+					<!-- perhaps even discourage use of square brackets in axes attribute? -->
+					(Optionally, the list can be enclosed by square brackets but this is not common.)
+					The regular expression for this rule is::
+					
+					[A-Za-z_][\w_]*([ :][A-Za-z_][\w_]*)*
+					
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="axis" type="nx:NX_POSINT">
+			<xs:annotation>
+				<xs:documentation>
+					NOTE: Use of this attribute is discouraged.  It is for legacy support.
+					You should use the axes attribute instead.
+					
+					Presence of the ``axis`` attribute means this field is an abcissa.
+					
+					The attribute value is an integer indicating this
+					field as an axis that is part of the data set.
+					The data set is a field with the attribute 
+					``signal=1`` in the same group.
+					The value can range from 1 up to the number of 
+					independent axes (abcissae) in the data set.  
+					
+					A value of ``axis=1``" indicates that this field 
+					contains the data for the first independent axis.  
+					For example, the X axis in an XY data set.
+					
+					A value of ``axis=2`` indicates that this field 
+					contains the data for the second independent axis.
+					For example, the Y axis in a 2-D data set.
+					
+					A value of ``axis=3`` indicates that this field 
+					contains the data for the third independent axis.
+					For example, the Z axis in a 3-D data set.
+					
+					A field with an ``axis`` attribute should 
+					not have a ``signal`` attribute.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="primary" type="nx:NX_POSINT">
+			<xs:annotation>
+				<xs:documentation>
+					Integer indicating the priority of selection
+					of this field for plotting (or visualization) as an axis.
+					
+					Presence of the ``primary`` attribute means this 
+					field is an abcissa.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="type" type="nx:NAPI" default="NX_CHAR">
+			<xs:annotation>
+				<xs:documentation>
+					Defines the type of the element as allowed by the NAPI (NeXus Application Programmer Interface).
+					See elsewhere for the complete list of allowed NAPI types.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="maxOccurs" use="optional"  default="1" type="nx:nonNegativeUnbounded">
+			<xs:annotation>
+				<xs:documentation>
+					Defines the maximum number of times this ``field`` element may be used.  Its 
+					value is confined to zero or greater.  Must be greater than or equal to
+					the value for the "minOccurs" attribute.
+					A value of "unbounded" is allowed.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="stride" use="optional"  default="1" type="nx:NX_INT">
+			<xs:annotation>
+				<xs:documentation>
+					The ``stride`` and ``offset`` attributes
+					are used together to index the array of data items in a 
+					multi-dimensional array.  They may be used as an alternative
+					method to address a data array that is not stored in the standard NeXus
+					method of "C" order.
+					
+					The ``stride`` list chooses array locations from the 
+					data array  with each value in the ``stride`` list 
+					determining how many elements to move in each dimension. 
+					Setting a value in the ``stride`` array to 1 moves 
+					to each element in that dimension of the data array, while 
+					setting a value of 2 in a location in the ``stride`` 
+					array moves to every other element in that dimension of the 
+					data array.  A value in the ``stride`` list may be
+					positive to move forward or negative to step backward.
+					A value of zero will not step (and is of no particular use).
+					
+					See http://davis.lbl.gov/Manuals/HDF5-1.4.3/Tutor/phypereg.html
+					or *4. Dataspace Selection Operations* in
+					http://www.hdfgroup.org/HDF5/doc1.6/Dataspaces.html.
+					
+					
+					The ``stride`` attribute contains a 
+					comma-separated list of integers. 
+					(In addition to the required comma delimiter, 
+					whitespace is also allowed to improve readability.)
+					The number of items in the list
+					is equal to the rank of the data being stored.  The value of each
+					item is the spacing of the data items in that subscript of the array.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="offset" use="optional"  default="1" type="nx:nonNegativeUnbounded">
+			<xs:annotation>
+				<xs:documentation>
+					The ``stride`` and ``offset`` attributes
+					are used together to index the array of data items in a 
+					multi-dimensional array.  They may be used as an alternative
+					method to address a data array that is not stored in the standard NeXus
+					method of "C" order.
+					
+					The ``offset`` attribute
+					determines the starting coordinates of the data array
+					for each dimension.
+					
+					See http://davis.lbl.gov/Manuals/HDF5-1.4.3/Tutor/phypereg.html
+					or *4. Dataspace Selection Operations* in
+					http://www.hdfgroup.org/HDF5/doc1.6/Dataspaces.html.
+					
+					The ``offset`` attribute contains a 
+					comma-separated list of integers. 
+					(In addition to the required comma delimiter, 
+					whitespace is also allowed to improve readability.)
+					The number of items in the list
+					is equal to the rank of the data being stored.  The value of each
+					item is the offset in the array of the first data item of that 
+					subscript of the array.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="interpretation" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					This instructs the consumer of the data what the last dimensions 
+					of the data are. It allows plotting software to work 
+					out the natural way of displaying the data.
+					
+					For example a single-element, energy-resolving, fluorescence detector
+					with 512 bins should have ``interpretation="spectrum"``. If the 
+					detector is scanned over a 512 x 512 spatial grid, the data reported 
+					will be of dimensions: 512 x 512 x 512.
+					In this example, the initial plotting representation should default to 
+					data of the same dimensions of a 512 x 512 pixel ``image`` 
+					detector where the images where taken at 512 different pressure values.
+					
+					In simple terms, the allowed values mean:
+					
+					* ``scaler`` = 0-D data to be plotted
+					* ``spectrum`` = 1-D data to be plotted
+					* ``image`` = 2-D data to be plotted
+					* ``vertex`` = 3-D data to be plotted
+					
+				</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="scalar"/>
+					<xs:enumeration value="spectrum"/>
+					<xs:enumeration value="image"/>
+					<xs:enumeration value="vertex"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
 </xs:schema>
