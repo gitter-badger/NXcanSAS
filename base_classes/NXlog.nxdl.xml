@@ -36,8 +36,8 @@
     extends="NXobject"
 	category="base"
     xmlns="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ ../nxdl.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ nxdl.xsd"
     svnid="$Id$">
     <doc>
         Definition of information that is recorded against time, 

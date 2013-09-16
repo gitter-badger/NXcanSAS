@@ -32,7 +32,7 @@
 <definition type="group" name="NXsolenoid_magnet" category="contributed" extends="NXobject"
     xmlns="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ ../nxdl.xsd"
+    xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ nxdl.xsd"
     version="1.0"
     svnid="$Id$">
 <doc>definition for a solenoid magnet.</doc>
