@@ -30,7 +30,7 @@
     ########### SVN repository information ###################
 -->
 <definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ nxdl.xsd"
+    xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ nxdl_application.xsd"
     xmlns="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@"
     name="NXspe"
     extends="NXobject"

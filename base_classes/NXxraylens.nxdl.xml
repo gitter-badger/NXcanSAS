@@ -31,11 +31,11 @@
 -->
 <definition xmlns="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@" category="base"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ nxdl.xsd"
-    name="NXxraylens"
-    version="1.0"
-    svnid="$Id: NXxraylens.nxdl.xml 662 2010-10-21 15:47:35Z Pete Jemian $"
-    type="group" extends="NXobject">
+  xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ nxdl_base.xsd"
+  name="NXxraylens"
+  version="1.0"
+  svnid="$Id: NXxraylens.nxdl.xml 662 2010-10-21 15:47:35Z Pete Jemian $"
+  type="group" extends="NXobject">
 
     <doc>
       This is a dictionary of field names to use for 

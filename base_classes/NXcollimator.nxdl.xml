@@ -31,7 +31,7 @@
 -->
 <definition xmlns="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@" category="base"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ nxdl.xsd"
+    xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ nxdl_base.xsd"
     name="NXcollimator" 
     version="1.0"
     svnid="$Id$"

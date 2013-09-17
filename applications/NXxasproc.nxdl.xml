@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?xml-stylesheet type="text/xsl" href="nxdlformat.xsl" ?>
 <!--
 # NeXus - Neutron and X-ray Common Data Format
@@ -33,7 +34,7 @@
   version="1.0"  category="application"
     xmlns="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ nxdl.xsd"
+    xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ nxdl_application.xsd"
     svnid="$Id$">
     <doc>This is an application definition for processed data from XAS. This 
        is energy versus I(incoming)/I(absorbed)
