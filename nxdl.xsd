@@ -14,9 +14,8 @@
 	version="$Id$"
 	elementFormDefault="qualified">
 	
-	<!-- NOTE (2012-09-19, PRJ)
-		All documentation nodes in this file are now converted 
-		from DocBook to restructured text (.rst) syntax. 
+	<!-- 
+		All documentation nodes use restructured text (.rst) syntax. 
 	 -->
 
 	<xs:annotation>
