@@ -194,138 +194,7 @@
 				</xs:annotation>
 			</xs:group>
 		</xs:sequence>
-		<xs:attribute name="name" use="required" type="nx:validItemName">
-			<xs:annotation>
-				<xs:documentation>
-					The ``name`` of this NXDL file (without the file extensions).
-					The name must be unique amongst all the NeXus base class, application,
-					and contributed definitions.  For the class to be adopted by the NIAC,
-					the first two letters must be "``NX``" (in uppercase).  Any other use
-					must *not* begin with "``NX``" in any combination
-					of upper or lower case.
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="version" use="required">
-			<xs:annotation>
-				<xs:documentation>
-					Version of *this* NXDL definition.  
-					Each NXDL specification
-					may have a different version to facilitate software maintenance.
-					This value is modified by the person who edits this file when
-					this NXDL specification has changed significantly (in a way that
-					downstream software should be aware).
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="type" use="required" type="nx:definitionTypeAttr">
-			<xs:annotation>
-				<xs:documentation>Must be ``type="group"``</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="extends" use="optional">
-			<xs:annotation>
-				<xs:documentation>
-					The ``extends`` attribute allows this definition
-					to *subclass* from another NXDL,
-					otherwise ``extends="NXobject"`` should be used.
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="restricts" use="optional">
-			<xs:annotation>
-				<xs:documentation>
-					The ``restricts`` attribute is a flag to the data validation.
-					When ``restricts="1"``, any non-standard component found
-					(and checked for validity aginst this NXDL specification)
-					in a NeXus data file will be flagged as an error.  If the
-					``restricts`` attribute is not present, any such situations
-					will produce a warning.
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="svnid" use="optional">
-			<xs:annotation>
-				<xs:documentation>
-					The identifier string from the subversion revision control system.
-					This reports the time stamp and the revision number of this file.
-					(Updated automatically, unlike the ``version`` attribute.)
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="category" use="required">
-			<xs:annotation>
-				<xs:documentation>
-					NXDL ``base`` definitions define the dictionary 
-					of terms to use for these components.  
-					All terms in a ``base`` definition are optional.
-					NXDL ``application`` definitions define what is 
-					required for a scientific interest.  
-					All terms in an ``application`` definition 
-					are required.
-					NXDL ``contributed`` definitions may be 
-					considered either base or applications.
-					Contributed definitions <emphasis>must</emphasis> indicate 
-					their intended use, either as a base class or 
-					as an application definition.
-				</xs:documentation>
-			</xs:annotation>
-			<xs:simpleType>
-				<xs:restriction base="xs:string">
-					<xs:enumeration value="base"/>
-					<xs:enumeration value="application"/>
-					<xs:enumeration value="contributed"/>
-				</xs:restriction>
-			</xs:simpleType>
-		</xs:attribute>
-		<xs:attribute name="ignoreExtraGroups" use="optional" type="nx:NX_BOOLEAN" default="false">
-			<xs:annotation>
-				<xs:documentation>
-					Only validate known groups; do not not warn about unknowns.
-					The ``ignoreExtraGroups`` attribute is a flag to the process of 
-					validating NeXus data files.  By setting ``ignoreExtraGroups="true"``, 
-					presence of any undefined groups in this class will not generate warnings 
-					during validation.  Normally, validation will check all the groups against 
-					their definition in the NeXus base classes and 
-					application definitions.  Any items found that do not match the definition 
-					in the NXDL will generate a warning message.
-					
-					The ``ignoreExtraGroups`` attribute should be used sparingly!
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="ignoreExtraFields" use="optional" type="nx:NX_BOOLEAN" default="false">
-			<xs:annotation>
-				<xs:documentation>
-					Only validate known fields; do not not warn about unknowns.
-					The ``ignoreExtraFields`` attribute is a flag to the process of 
-					validating NeXus data files.  By setting ``ignoreExtraFields="true"``, 
-					presence of any undefined fields in this class will not generate warnings 
-					during validation.  Normally, validation will check all the fields against 
-					their definition in the NeXus base classes and 
-					application definitions.  Any items found that do not match the definition 
-					in the NXDL will generate a warning message.
-					
-					The ``ignoreExtraFields`` attribute should be used sparingly!
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="ignoreExtraAttributes" use="optional" type="nx:NX_BOOLEAN" default="false">
-			<xs:annotation>
-				<xs:documentation>
-					Only validate known attributes; do not not warn about unknowns.
-					The ``ignoreExtraAttributes`` attribute is a flag to the process of 
-					validating NeXus data files.  By setting ``ignoreExtraAttributes="true"``, 
-					presence of any undefined attributes in this class will not generate warnings 
-					during validation.  Normally, validation will check all the attributes 
-					against their definition in the NeXus base classes and 
-					application definitions.  Any items found that do not match the definition 
-					in the NXDL will generate a warning message.
-					
-					The ``ignoreExtraAttributes`` attribute should be used sparingly!
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
+		<xs:attributeGroup ref="nx:definitionAttributes"/>
 	</xs:complexType>
 	
 	<xs:simpleType name="definitionTypeAttr">
@@ -553,12 +422,6 @@
 		<xs:annotation>
 			<xs:documentation>
 				Any new group or field may expect or require some common attributes.
-				
-				..
-					Could contain these elements:
-					
-					* ``doc``
-					* ``enumeration``
 				
 				(This data type is used internally in the NXDL schema 
 				to define elements and attributes to be used by users in NXDL specifications.)
@@ -919,6 +782,143 @@
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
+	
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	
+	<xs:attributeGroup name="definitionAttributes">
+		<xs:attribute name="name" use="required" type="nx:validItemName">
+			<xs:annotation>
+				<xs:documentation>
+					The ``name`` of this NXDL file (without the file extensions).
+					The name must be unique amongst all the NeXus base class, application,
+					and contributed definitions.  For the class to be adopted by the NIAC,
+					the first two letters must be "``NX``" (in uppercase).  Any other use
+					must *not* begin with "``NX``" in any combination
+					of upper or lower case.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="version" use="required">
+			<xs:annotation>
+				<xs:documentation>
+					Version of *this* NXDL definition.  
+					Each NXDL specification
+					may have a different version to facilitate software maintenance.
+					This value is modified by the person who edits this file when
+					this NXDL specification has changed significantly (in a way that
+					downstream software should be aware).
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="type" use="required" type="nx:definitionTypeAttr">
+			<xs:annotation>
+				<xs:documentation>Must be ``type="group"``</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="extends" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					The ``extends`` attribute allows this definition
+					to *subclass* from another NXDL,
+					otherwise ``extends="NXobject"`` should be used.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="restricts" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					The ``restricts`` attribute is a flag to the data validation.
+					When ``restricts="1"``, any non-standard component found
+					(and checked for validity aginst this NXDL specification)
+					in a NeXus data file will be flagged as an error.  If the
+					``restricts`` attribute is not present, any such situations
+					will produce a warning.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="svnid" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					The identifier string from the subversion revision control system.
+					This reports the time stamp and the revision number of this file.
+					(Updated automatically, unlike the ``version`` attribute.)
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="category" use="required">
+			<xs:annotation>
+				<xs:documentation>
+					NXDL ``base`` definitions define the dictionary 
+					of terms to use for these components.  
+					All terms in a ``base`` definition are optional.
+					NXDL ``application`` definitions define what is 
+					required for a scientific interest.  
+					All terms in an ``application`` definition 
+					are required.
+					NXDL ``contributed`` definitions may be 
+					considered either base or applications.
+					Contributed definitions <emphasis>must</emphasis> indicate 
+					their intended use, either as a base class or 
+					as an application definition.
+				</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="base"/>
+					<xs:enumeration value="application"/>
+					<xs:enumeration value="contributed"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="ignoreExtraGroups" use="optional" type="nx:NX_BOOLEAN" default="false">
+			<xs:annotation>
+				<xs:documentation>
+					Only validate known groups; do not not warn about unknowns.
+					The ``ignoreExtraGroups`` attribute is a flag to the process of 
+					validating NeXus data files.  By setting ``ignoreExtraGroups="true"``, 
+					presence of any undefined groups in this class will not generate warnings 
+					during validation.  Normally, validation will check all the groups against 
+					their definition in the NeXus base classes and 
+					application definitions.  Any items found that do not match the definition 
+					in the NXDL will generate a warning message.
+					
+					The ``ignoreExtraGroups`` attribute should be used sparingly!
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ignoreExtraFields" use="optional" type="nx:NX_BOOLEAN" default="false">
+			<xs:annotation>
+				<xs:documentation>
+					Only validate known fields; do not not warn about unknowns.
+					The ``ignoreExtraFields`` attribute is a flag to the process of 
+					validating NeXus data files.  By setting ``ignoreExtraFields="true"``, 
+					presence of any undefined fields in this class will not generate warnings 
+					during validation.  Normally, validation will check all the fields against 
+					their definition in the NeXus base classes and 
+					application definitions.  Any items found that do not match the definition 
+					in the NXDL will generate a warning message.
+					
+					The ``ignoreExtraFields`` attribute should be used sparingly!
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ignoreExtraAttributes" use="optional" type="nx:NX_BOOLEAN" default="false">
+			<xs:annotation>
+				<xs:documentation>
+					Only validate known attributes; do not not warn about unknowns.
+					The ``ignoreExtraAttributes`` attribute is a flag to the process of 
+					validating NeXus data files.  By setting ``ignoreExtraAttributes="true"``, 
+					presence of any undefined attributes in this class will not generate warnings 
+					during validation.  Normally, validation will check all the attributes 
+					against their definition in the NeXus base classes and 
+					application definitions.  Any items found that do not match the definition 
+					in the NXDL will generate a warning message.
+					
+					The ``ignoreExtraAttributes`` attribute should be used sparingly!
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
 	
 	<xs:attributeGroup name="groupAttributesCategorySpecific">
 		<!-- per http://trac.nexusformat.org/definitions/ticket/266 -->
