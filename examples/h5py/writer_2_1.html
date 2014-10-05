@@ -1,0 +1,600 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>h5py example writing a simple NeXus data file with links &mdash; NeXus: Manual 3.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="top" title="NeXus: Manual 3.1 documentation" href="../../index.html" />
+    <link rel="up" title="2.2.2. Python Examples using h5py" href="index.html" />
+    <link rel="next" title="2.2.3. Viewing 2-D Data from LRMECS" href="../lrmecs/index.html" />
+    <link rel="prev" title="h5py example writing the simplest NeXus data file" href="writer_1_3.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../lrmecs/index.html" title="2.2.3. Viewing 2-D Data from LRMECS"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="writer_1_3.html" title="h5py example writing the simplest NeXus data file"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >2. Examples of writing and reading NeXus data files</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2.2.2. Python Examples using <tt class="docutils literal"><span class="pre">h5py</span></tt></a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/nexuslogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="writer_1_3.html"
+                        title="previous chapter"><tt class="docutils literal"><span class="pre">h5py</span></tt> example writing the simplest NeXus data file</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../lrmecs/index.html"
+                        title="next chapter">2.2.3. Viewing 2-D Data from LRMECS</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/examples/h5py/writer_2_1.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="h5py-example-writing-a-simple-nexus-data-file-with-links">
+<span id="example-writer-2-1"></span><h1><tt class="docutils literal"><span class="pre">h5py</span></tt> example writing a simple NeXus data file with links<a class="headerlink" href="#h5py-example-writing-a-simple-nexus-data-file-with-links" title="Permalink to this headline">¶</a></h1>
+<p>Building on the previous example, we wish to identify our measured data with
+the detector on the instrument where it was generated.
+In this hypothetical case, since the detector was positioned at some
+angle <em>two_theta</em>, we choose to store both datasets,
+<tt class="docutils literal"><span class="pre">two_theta</span></tt> and <tt class="docutils literal"><span class="pre">counts</span></tt>, in a NeXus group.
+One appropriate NeXus group is <a class="reference internal" href="../../classes/base_classes/NXdetector.html#nxdetector"><em>NXdetector</em></a>.
+This group is placed in a <a class="reference internal" href="../../classes/base_classes/NXinstrument.html#nxinstrument"><em>NXinstrument</em></a> group
+which is placed in a <a class="reference internal" href="../../classes/base_classes/NXentry.html#nxentry"><em>NXentry</em></a> group.
+Still, NeXus requires a <a class="reference internal" href="../../classes/base_classes/NXdata.html#nxdata"><em>NXdata</em></a> group.
+Rather than duplicate the same data already placed in the detector group,
+we choose to link to those datasets from the <tt class="docutils literal"><span class="pre">NXdata</span></tt> group.
+(Compare the next figure with <a class="reference internal" href="../../design.html#fig-data-linking"><em>Linking in a NeXus file</em></a> in the
+<a class="reference internal" href="../../design.html#design"><em>NeXus Design</em></a> chapter of the NeXus User Manual.)
+The <a class="reference internal" href="../../design.html#design"><em>NeXus Design</em></a> chapter provides a figure
+(<a class="reference internal" href="../../design.html#fig-data-linking"><em>Linking in a NeXus file</em></a>) with a small variation from our
+previous example, placing the measured data
+within the <tt class="docutils literal"><span class="pre">/entry/instrument/detector</span></tt> group.
+Links are made from that data to the <tt class="docutils literal"><span class="pre">/entry/data</span></tt> group.</p>
+<div class="compound">
+<div class="compound-last figure" id="fig-writer-2-1">
+<img alt="fig.writer_2_1" src="../../_images/ex_writer_2_1.png" style="width: 80%;" />
+<p class="caption">h5py example showing linking in a NeXus file</p>
+</div>
+</div>
+<p>The Python code to build an HDF5 data file with that structure (using
+numerical data from the previous example) is shown below.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Writes a simple NeXus HDF5 file using h5py with links</span>
+<span class="sd">according to the example from Figure 2.1 in the Design chapter</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">my_lib</span>
+
+<span class="n">INPUT_FILE</span> <span class="o">=</span> <span class="s">&#39;input.dat&#39;</span>
+<span class="n">HDF5_FILE</span> <span class="o">=</span> <span class="s">&#39;writer_2_1.hdf5&#39;</span>
+
+<span class="c">#---------------------------</span>
+
+<span class="n">tthData</span><span class="p">,</span> <span class="n">countsData</span> <span class="o">=</span> <span class="n">my_lib</span><span class="o">.</span><span class="n">get2ColumnData</span><span class="p">(</span><span class="n">INPUT_FILE</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">my_lib</span><span class="o">.</span><span class="n">makeFile</span><span class="p">(</span><span class="n">HDF5_FILE</span><span class="p">)</span>  <span class="c"># create the HDF5 NeXus file</span>
+
+<span class="n">nxentry</span> <span class="o">=</span> <span class="n">my_lib</span><span class="o">.</span><span class="n">makeGroup</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s">&#39;entry&#39;</span><span class="p">,</span> <span class="s">&#39;NXentry&#39;</span><span class="p">)</span>
+<span class="n">nxinstrument</span> <span class="o">=</span> <span class="n">my_lib</span><span class="o">.</span><span class="n">makeGroup</span><span class="p">(</span><span class="n">nxentry</span><span class="p">,</span> <span class="s">&#39;instrument&#39;</span><span class="p">,</span> <span class="s">&#39;NXinstrument&#39;</span><span class="p">)</span>
+<span class="n">nxdetector</span> <span class="o">=</span> <span class="n">my_lib</span><span class="o">.</span><span class="n">makeGroup</span><span class="p">(</span><span class="n">nxinstrument</span><span class="p">,</span> <span class="s">&#39;detector&#39;</span><span class="p">,</span> <span class="s">&#39;NXdetector&#39;</span><span class="p">)</span>
+
+<span class="n">tth</span> <span class="o">=</span> <span class="n">my_lib</span><span class="o">.</span><span class="n">makeDataset</span><span class="p">(</span><span class="n">nxdetector</span><span class="p">,</span> <span class="s">&quot;two_theta&quot;</span><span class="p">,</span> <span class="n">tthData</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s">&#39;degrees&#39;</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">my_lib</span><span class="o">.</span><span class="n">makeDataset</span><span class="p">(</span><span class="n">nxdetector</span><span class="p">,</span> <span class="s">&quot;counts&quot;</span><span class="p">,</span> <span class="n">countsData</span><span class="p">,</span> 
+                   <span class="n">units</span><span class="o">=</span><span class="s">&#39;counts&#39;</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="s">&#39;two_theta&#39;</span><span class="p">)</span>
+
+<span class="n">nxdata</span> <span class="o">=</span> <span class="n">my_lib</span><span class="o">.</span><span class="n">makeGroup</span><span class="p">(</span><span class="n">nxentry</span><span class="p">,</span> <span class="s">&#39;data&#39;</span><span class="p">,</span> <span class="s">&#39;NXdata&#39;</span><span class="p">)</span>
+<span class="n">my_lib</span><span class="o">.</span><span class="n">makeLink</span><span class="p">(</span><span class="n">nxdetector</span><span class="p">,</span> <span class="n">tth</span><span class="p">,</span> <span class="n">nxdata</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s">&#39;/two_theta&#39;</span><span class="p">)</span>
+<span class="n">my_lib</span><span class="o">.</span><span class="n">makeLink</span><span class="p">(</span><span class="n">nxdetector</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">nxdata</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s">&#39;/counts&#39;</span><span class="p">)</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>   <span class="c"># be CERTAIN to close the file</span>
+</pre></div>
+</td></tr></table></div>
+<p>It is interesting to compare the output of the <tt class="docutils literal"><span class="pre">h5dump</span></tt>
+of the data file <tt class="docutils literal"><span class="pre">writer_2_1.hdf5</span></tt> with our Python instructions.</p>
+<div class="highlight-guess"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">HDF5</span> <span class="s">&quot;writer_2_1.hdf5&quot;</span> <span class="p">{</span>
+<span class="n">GROUP</span> <span class="s">&quot;/&quot;</span> <span class="p">{</span>
+   <span class="n">GROUP</span> <span class="s">&quot;entry&quot;</span> <span class="p">{</span>
+      <span class="n">ATTRIBUTE</span> <span class="s">&quot;NX_class&quot;</span> <span class="p">{</span>
+         <span class="n">DATATYPE</span>  <span class="n">H5T_STRING</span> <span class="p">{</span>
+               <span class="n">STRSIZE</span> <span class="mi">7</span><span class="p">;</span>
+               <span class="n">STRPAD</span> <span class="n">H5T_STR_NULLPAD</span><span class="p">;</span>
+               <span class="n">CSET</span> <span class="n">H5T_CSET_ASCII</span><span class="p">;</span>
+               <span class="n">CTYPE</span> <span class="n">H5T_C_S1</span><span class="p">;</span>
+            <span class="p">}</span>
+         <span class="n">DATASPACE</span>  <span class="n">SCALAR</span>
+         <span class="n">DATA</span> <span class="p">{</span>
+         <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="s">&quot;NXentry&quot;</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="n">GROUP</span> <span class="s">&quot;data&quot;</span> <span class="p">{</span>
+         <span class="n">ATTRIBUTE</span> <span class="s">&quot;NX_class&quot;</span> <span class="p">{</span>
+            <span class="n">DATATYPE</span>  <span class="n">H5T_STRING</span> <span class="p">{</span>
+                  <span class="n">STRSIZE</span> <span class="mi">6</span><span class="p">;</span>
+                  <span class="n">STRPAD</span> <span class="n">H5T_STR_NULLPAD</span><span class="p">;</span>
+                  <span class="n">CSET</span> <span class="n">H5T_CSET_ASCII</span><span class="p">;</span>
+                  <span class="n">CTYPE</span> <span class="n">H5T_C_S1</span><span class="p">;</span>
+               <span class="p">}</span>
+            <span class="n">DATASPACE</span>  <span class="n">SCALAR</span>
+            <span class="n">DATA</span> <span class="p">{</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="s">&quot;NXdata&quot;</span>
+            <span class="p">}</span>
+         <span class="p">}</span>
+         <span class="n">DATASET</span> <span class="s">&quot;counts&quot;</span> <span class="p">{</span>
+            <span class="n">DATATYPE</span>  <span class="n">H5T_STD_I32LE</span>
+            <span class="n">DATASPACE</span>  <span class="n">SIMPLE</span> <span class="p">{</span> <span class="p">(</span> <span class="mi">31</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">31</span> <span class="p">)</span> <span class="p">}</span>
+            <span class="n">DATA</span> <span class="p">{</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="mi">1037</span><span class="p">,</span> <span class="mi">1318</span><span class="p">,</span> <span class="mi">1704</span><span class="p">,</span> <span class="mi">2857</span><span class="p">,</span> <span class="mi">4516</span><span class="p">,</span> <span class="mi">9998</span><span class="p">,</span> <span class="mi">23819</span><span class="p">,</span> <span class="mi">31662</span><span class="p">,</span> <span class="mi">40458</span><span class="p">,</span>
+            <span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">:</span> <span class="mi">49087</span><span class="p">,</span> <span class="mi">56514</span><span class="p">,</span> <span class="mi">63499</span><span class="p">,</span> <span class="mi">66802</span><span class="p">,</span> <span class="mi">66863</span><span class="p">,</span> <span class="mi">66599</span><span class="p">,</span> <span class="mi">66206</span><span class="p">,</span> <span class="mi">65747</span><span class="p">,</span>
+            <span class="p">(</span><span class="mi">17</span><span class="p">)</span><span class="o">:</span> <span class="mi">65250</span><span class="p">,</span> <span class="mi">64129</span><span class="p">,</span> <span class="mi">63044</span><span class="p">,</span> <span class="mi">60796</span><span class="p">,</span> <span class="mi">56795</span><span class="p">,</span> <span class="mi">51550</span><span class="p">,</span> <span class="mi">43710</span><span class="p">,</span> <span class="mi">29315</span><span class="p">,</span>
+            <span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">:</span> <span class="mi">19782</span><span class="p">,</span> <span class="mi">12992</span><span class="p">,</span> <span class="mi">6622</span><span class="p">,</span> <span class="mi">4198</span><span class="p">,</span> <span class="mi">2248</span><span class="p">,</span> <span class="mi">1321</span>
+            <span class="p">}</span>
+            <span class="n">ATTRIBUTE</span> <span class="s">&quot;units&quot;</span> <span class="p">{</span>
+               <span class="n">DATATYPE</span>  <span class="n">H5T_STRING</span> <span class="p">{</span>
+                     <span class="n">STRSIZE</span> <span class="mi">6</span><span class="p">;</span>
+                     <span class="n">STRPAD</span> <span class="n">H5T_STR_NULLPAD</span><span class="p">;</span>
+                     <span class="n">CSET</span> <span class="n">H5T_CSET_ASCII</span><span class="p">;</span>
+                     <span class="n">CTYPE</span> <span class="n">H5T_C_S1</span><span class="p">;</span>
+                  <span class="p">}</span>
+               <span class="n">DATASPACE</span>  <span class="n">SCALAR</span>
+               <span class="n">DATA</span> <span class="p">{</span>
+               <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="s">&quot;counts&quot;</span>
+               <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">ATTRIBUTE</span> <span class="s">&quot;signal&quot;</span> <span class="p">{</span>
+               <span class="n">DATATYPE</span>  <span class="n">H5T_STRING</span> <span class="p">{</span>
+                     <span class="n">STRSIZE</span> <span class="mi">1</span><span class="p">;</span>
+                     <span class="n">STRPAD</span> <span class="n">H5T_STR_NULLPAD</span><span class="p">;</span>
+                     <span class="n">CSET</span> <span class="n">H5T_CSET_ASCII</span><span class="p">;</span>
+                     <span class="n">CTYPE</span> <span class="n">H5T_C_S1</span><span class="p">;</span>
+                  <span class="p">}</span>
+               <span class="n">DATASPACE</span>  <span class="n">SCALAR</span>
+               <span class="n">DATA</span> <span class="p">{</span>
+               <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="s">&quot;1&quot;</span>
+               <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">ATTRIBUTE</span> <span class="s">&quot;axes&quot;</span> <span class="p">{</span>
+               <span class="n">DATATYPE</span>  <span class="n">H5T_STRING</span> <span class="p">{</span>
+                     <span class="n">STRSIZE</span> <span class="mi">9</span><span class="p">;</span>
+                     <span class="n">STRPAD</span> <span class="n">H5T_STR_NULLPAD</span><span class="p">;</span>
+                     <span class="n">CSET</span> <span class="n">H5T_CSET_ASCII</span><span class="p">;</span>
+                     <span class="n">CTYPE</span> <span class="n">H5T_C_S1</span><span class="p">;</span>
+                  <span class="p">}</span>
+               <span class="n">DATASPACE</span>  <span class="n">SCALAR</span>
+               <span class="n">DATA</span> <span class="p">{</span>
+               <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="s">&quot;two_theta&quot;</span>
+               <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">ATTRIBUTE</span> <span class="s">&quot;target&quot;</span> <span class="p">{</span>
+               <span class="n">DATATYPE</span>  <span class="n">H5T_STRING</span> <span class="p">{</span>
+                     <span class="n">STRSIZE</span> <span class="mi">33</span><span class="p">;</span>
+                     <span class="n">STRPAD</span> <span class="n">H5T_STR_NULLPAD</span><span class="p">;</span>
+                     <span class="n">CSET</span> <span class="n">H5T_CSET_ASCII</span><span class="p">;</span>
+                     <span class="n">CTYPE</span> <span class="n">H5T_C_S1</span><span class="p">;</span>
+                  <span class="p">}</span>
+               <span class="n">DATASPACE</span>  <span class="n">SCALAR</span>
+               <span class="n">DATA</span> <span class="p">{</span>
+               <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="s">&quot;/entry/instrument/detector/counts&quot;</span>
+               <span class="p">}</span>
+            <span class="p">}</span>
+         <span class="p">}</span>
+         <span class="n">DATASET</span> <span class="s">&quot;two_theta&quot;</span> <span class="p">{</span>
+            <span class="n">DATATYPE</span>  <span class="n">H5T_IEEE_F64LE</span>
+            <span class="n">DATASPACE</span>  <span class="n">SIMPLE</span> <span class="p">{</span> <span class="p">(</span> <span class="mi">31</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">31</span> <span class="p">)</span> <span class="p">}</span>
+            <span class="n">DATA</span> <span class="p">{</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="mf">17.9261</span><span class="p">,</span> <span class="mf">17.9259</span><span class="p">,</span> <span class="mf">17.9258</span><span class="p">,</span> <span class="mf">17.9256</span><span class="p">,</span> <span class="mf">17.9254</span><span class="p">,</span> <span class="mf">17.9252</span><span class="p">,</span>
+            <span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">:</span> <span class="mf">17.9251</span><span class="p">,</span> <span class="mf">17.9249</span><span class="p">,</span> <span class="mf">17.9247</span><span class="p">,</span> <span class="mf">17.9246</span><span class="p">,</span> <span class="mf">17.9244</span><span class="p">,</span> <span class="mf">17.9243</span><span class="p">,</span>
+            <span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">:</span> <span class="mf">17.9241</span><span class="p">,</span> <span class="mf">17.9239</span><span class="p">,</span> <span class="mf">17.9237</span><span class="p">,</span> <span class="mf">17.9236</span><span class="p">,</span> <span class="mf">17.9234</span><span class="p">,</span> <span class="mf">17.9232</span><span class="p">,</span>
+            <span class="p">(</span><span class="mi">18</span><span class="p">)</span><span class="o">:</span> <span class="mf">17.9231</span><span class="p">,</span> <span class="mf">17.9229</span><span class="p">,</span> <span class="mf">17.9228</span><span class="p">,</span> <span class="mf">17.9226</span><span class="p">,</span> <span class="mf">17.9224</span><span class="p">,</span> <span class="mf">17.9222</span><span class="p">,</span>
+            <span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">:</span> <span class="mf">17.9221</span><span class="p">,</span> <span class="mf">17.9219</span><span class="p">,</span> <span class="mf">17.9217</span><span class="p">,</span> <span class="mf">17.9216</span><span class="p">,</span> <span class="mf">17.9214</span><span class="p">,</span> <span class="mf">17.9213</span><span class="p">,</span>
+            <span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">:</span> <span class="mf">17.9211</span>
+            <span class="p">}</span>
+            <span class="n">ATTRIBUTE</span> <span class="s">&quot;units&quot;</span> <span class="p">{</span>
+               <span class="n">DATATYPE</span>  <span class="n">H5T_STRING</span> <span class="p">{</span>
+                     <span class="n">STRSIZE</span> <span class="mi">7</span><span class="p">;</span>
+                     <span class="n">STRPAD</span> <span class="n">H5T_STR_NULLPAD</span><span class="p">;</span>
+                     <span class="n">CSET</span> <span class="n">H5T_CSET_ASCII</span><span class="p">;</span>
+                     <span class="n">CTYPE</span> <span class="n">H5T_C_S1</span><span class="p">;</span>
+                  <span class="p">}</span>
+               <span class="n">DATASPACE</span>  <span class="n">SCALAR</span>
+               <span class="n">DATA</span> <span class="p">{</span>
+               <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="s">&quot;degrees&quot;</span>
+               <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">ATTRIBUTE</span> <span class="s">&quot;target&quot;</span> <span class="p">{</span>
+               <span class="n">DATATYPE</span>  <span class="n">H5T_STRING</span> <span class="p">{</span>
+                     <span class="n">STRSIZE</span> <span class="mi">36</span><span class="p">;</span>
+                     <span class="n">STRPAD</span> <span class="n">H5T_STR_NULLPAD</span><span class="p">;</span>
+                     <span class="n">CSET</span> <span class="n">H5T_CSET_ASCII</span><span class="p">;</span>
+                     <span class="n">CTYPE</span> <span class="n">H5T_C_S1</span><span class="p">;</span>
+                  <span class="p">}</span>
+               <span class="n">DATASPACE</span>  <span class="n">SCALAR</span>
+               <span class="n">DATA</span> <span class="p">{</span>
+               <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="s">&quot;/entry/instrument/detector/two_theta&quot;</span>
+               <span class="p">}</span>
+            <span class="p">}</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="n">GROUP</span> <span class="s">&quot;instrument&quot;</span> <span class="p">{</span>
+         <span class="n">ATTRIBUTE</span> <span class="s">&quot;NX_class&quot;</span> <span class="p">{</span>
+            <span class="n">DATATYPE</span>  <span class="n">H5T_STRING</span> <span class="p">{</span>
+                  <span class="n">STRSIZE</span> <span class="mi">12</span><span class="p">;</span>
+                  <span class="n">STRPAD</span> <span class="n">H5T_STR_NULLPAD</span><span class="p">;</span>
+                  <span class="n">CSET</span> <span class="n">H5T_CSET_ASCII</span><span class="p">;</span>
+                  <span class="n">CTYPE</span> <span class="n">H5T_C_S1</span><span class="p">;</span>
+               <span class="p">}</span>
+            <span class="n">DATASPACE</span>  <span class="n">SCALAR</span>
+            <span class="n">DATA</span> <span class="p">{</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="s">&quot;NXinstrument&quot;</span>
+            <span class="p">}</span>
+         <span class="p">}</span>
+         <span class="n">GROUP</span> <span class="s">&quot;detector&quot;</span> <span class="p">{</span>
+            <span class="n">ATTRIBUTE</span> <span class="s">&quot;NX_class&quot;</span> <span class="p">{</span>
+               <span class="n">DATATYPE</span>  <span class="n">H5T_STRING</span> <span class="p">{</span>
+                     <span class="n">STRSIZE</span> <span class="mi">10</span><span class="p">;</span>
+                     <span class="n">STRPAD</span> <span class="n">H5T_STR_NULLPAD</span><span class="p">;</span>
+                     <span class="n">CSET</span> <span class="n">H5T_CSET_ASCII</span><span class="p">;</span>
+                     <span class="n">CTYPE</span> <span class="n">H5T_C_S1</span><span class="p">;</span>
+                  <span class="p">}</span>
+               <span class="n">DATASPACE</span>  <span class="n">SCALAR</span>
+               <span class="n">DATA</span> <span class="p">{</span>
+               <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="s">&quot;NXdetector&quot;</span>
+               <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">DATASET</span> <span class="s">&quot;counts&quot;</span> <span class="p">{</span>
+               <span class="n">HARDLINK</span> <span class="s">&quot;/entry/data/counts&quot;</span>
+            <span class="p">}</span>
+            <span class="n">DATASET</span> <span class="s">&quot;two_theta&quot;</span> <span class="p">{</span>
+               <span class="n">HARDLINK</span> <span class="s">&quot;/entry/data/two_theta&quot;</span>
+            <span class="p">}</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Look carefully!  It <em>appears</em> from the output of
+<tt class="docutils literal"><span class="pre">h5dump</span></tt> that the actual data for <tt class="docutils literal"><span class="pre">two_theta</span></tt>
+and <tt class="docutils literal"><span class="pre">counts</span></tt> has <em>moved</em> into
+the <tt class="docutils literal"><span class="pre">NXdata</span></tt> group at HDF5 path <tt class="docutils literal"><span class="pre">/entry/data</span></tt>!  But we stored
+that data in the <tt class="docutils literal"><span class="pre">NXdetector</span></tt> group at <tt class="docutils literal"><span class="pre">/entry/instrument/detector</span></tt>.
+This is normal for <tt class="docutils literal"><span class="pre">h5dump</span></tt> output.</p>
+<p>A bit of explanation is necessary at this point.
+The data is not stored in either HDF5 group directly.  Instead, HDF5
+creates a <tt class="docutils literal"><span class="pre">DATA</span></tt> storage element in the file and posts a reference
+to that <tt class="docutils literal"><span class="pre">DATA</span></tt> storage element as needed.
+An HDF5 <em>hard link</em>
+requests another reference to that same <tt class="docutils literal"><span class="pre">DATA</span></tt> storage element.
+The <tt class="docutils literal"><span class="pre">h5dump</span></tt> tool describes in full that <tt class="docutils literal"><span class="pre">DATA</span></tt> storage element
+the first time (alphabetically) it is called.  In our case, that is within the
+<tt class="docutils literal"><span class="pre">NXdata</span></tt> group.  The next time it is called, within the
+<tt class="docutils literal"><span class="pre">NXdetector</span></tt> group, <tt class="docutils literal"><span class="pre">h5dump</span></tt> reports that a hard link
+has been made and shows the HDF5 path to the description.</p>
+<p>NeXus recognizes this behavior of the HDF5 library and adds an additional structure
+when building hard links, the <tt class="docutils literal"><span class="pre">target</span></tt> attribute,
+to preserve the original location of the data.  Not that it actually matters.
+The <tt class="docutils literal"><span class="pre">h5toText.py</span></tt> tool knows about the additional NeXus
+<tt class="docutils literal"><span class="pre">target</span></tt> attribute and shows the data to appear in its original
+location, in the <tt class="docutils literal"><span class="pre">NXdetector</span></tt> group.</p>
+<div class="highlight-guess"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">writer_2_1</span><span class="p">.</span><span class="n">hdf5</span><span class="o">:</span><span class="n">NeXus</span> <span class="n">data</span> <span class="n">file</span>
+  <span class="nl">entry:</span><span class="n">NXentry</span>
+    <span class="err">@</span><span class="n">NX_class</span> <span class="o">=</span> <span class="n">NXentry</span>
+    <span class="nl">data:</span><span class="n">NXdata</span>
+      <span class="err">@</span><span class="n">NX_class</span> <span class="o">=</span> <span class="n">NXdata</span>
+      <span class="n">counts</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">detector</span><span class="o">/</span><span class="n">counts</span>
+      <span class="n">two_theta</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">detector</span><span class="o">/</span><span class="n">two_theta</span>
+    <span class="nl">instrument:</span><span class="n">NXinstrument</span>
+      <span class="err">@</span><span class="n">NX_class</span> <span class="o">=</span> <span class="n">NXinstrument</span>
+      <span class="nl">detector:</span><span class="n">NXdetector</span>
+        <span class="err">@</span><span class="n">NX_class</span> <span class="o">=</span> <span class="n">NXdetector</span>
+        <span class="nl">counts:</span><span class="n">NX_INT32</span><span class="p">[</span><span class="mi">31</span><span class="p">]</span> <span class="o">=</span> <span class="n">__array</span>
+          <span class="err">@</span><span class="n">units</span> <span class="o">=</span> <span class="n">counts</span>
+          <span class="err">@</span><span class="n">signal</span> <span class="o">=</span> <span class="mi">1</span>
+          <span class="err">@</span><span class="n">axes</span> <span class="o">=</span> <span class="n">two_theta</span>
+          <span class="err">@</span><span class="n">target</span> <span class="o">=</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">detector</span><span class="o">/</span><span class="n">counts</span>
+          <span class="n">__array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1037</span><span class="p">,</span> <span class="mi">1318</span><span class="p">,</span> <span class="mi">1704</span><span class="p">,</span> <span class="err">&#39;</span><span class="p">...</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">1321</span><span class="p">]</span>
+        <span class="nl">two_theta:</span><span class="n">NX_FLOAT64</span><span class="p">[</span><span class="mi">31</span><span class="p">]</span> <span class="o">=</span> <span class="n">__array</span>
+          <span class="err">@</span><span class="n">units</span> <span class="o">=</span> <span class="n">degrees</span>
+          <span class="err">@</span><span class="n">target</span> <span class="o">=</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">detector</span><span class="o">/</span><span class="n">two_theta</span>
+          <span class="n">__array</span> <span class="o">=</span> <span class="p">[</span><span class="mf">17.926079999999999</span><span class="p">,</span> <span class="mf">17.925909999999998</span><span class="p">,</span> 
+                     <span class="mf">17.925750000000001</span><span class="p">,</span> <span class="err">&#39;</span><span class="p">...</span><span class="err">&#39;</span><span class="p">,</span> <span class="mf">17.92108</span><span class="p">]</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../lrmecs/index.html" title="2.2.3. Viewing 2-D Data from LRMECS"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="writer_1_3.html" title="h5py example writing the simplest NeXus data file"
+             >previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >2. Examples of writing and reading NeXus data files</a> &raquo;</li>
+          <li><a href="index.html" >2.2.2. Python Examples using <tt class="docutils literal"><span class="pre">h5py</span></tt></a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="../../copyright.html">Copyright</a> 2014, http://nexusformat.org.
+      Last updated on 2014-10-02 14:43:08 CDT.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

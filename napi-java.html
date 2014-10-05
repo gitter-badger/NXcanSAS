@@ -1,0 +1,523 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4.3.4. NAPI Java Interface &mdash; NeXus: Manual 3.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="top" title="NeXus: Manual 3.1 documentation" href="index.html" />
+    <link rel="up" title="4. NAPI: NeXus Application Programmer Interface (frozen)" href="napi.html" />
+    <link rel="next" title="4.3.5. NAPI Python Interface" href="napi-python.html" />
+    <link rel="prev" title="4.3.3. NAPI Fortran 90 Interface" href="napi-f90.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="napi-python.html" title="4.3.5. NAPI Python Interface"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="napi-f90.html" title="4.3.3. NAPI Fortran 90 Interface"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="napi.html" accesskey="U">4. NAPI: NeXus Application Programmer Interface (frozen)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/nexuslogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4.3.4. NAPI Java Interface</a><ul>
+<li><a class="reference internal" href="#acknowledgement">4.3.4.1. Acknowledgement</a></li>
+<li><a class="reference internal" href="#installation">4.3.4.2. Installation</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#installation-under-windows">Installation under Windows</a></li>
+<li><a class="reference internal" href="#installation-under-unix">Installation under Unix</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-programs-with-the-nexus-api-for-java">4.3.4.3. Running Programs with the NeXus API for Java</a><ul>
+<li><a class="reference internal" href="#locating-the-shared-libraries">Locating the shared libraries</a></li>
+<li><a class="reference internal" href="#locating-jnexus-jar">Locating <tt class="docutils literal"><span class="pre">jnexus.jar</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#programming-with-the-nexus-api-for-java">4.3.4.4. Programming with the NeXus API for Java</a></li>
+<li><a class="reference internal" href="#data-writing-and-reading">4.3.4.5. Data Writing and Reading</a></li>
+<li><a class="reference internal" href="#inquiry-routines">4.3.4.6. Inquiry Routines</a></li>
+<li><a class="reference internal" href="#known-problems">4.3.4.7. Known Problems</a></li>
+<li><a class="reference internal" href="#on-line-documentation">4.3.4.8. On-line Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="napi-f90.html"
+                        title="previous chapter">4.3.3. NAPI Fortran 90 Interface</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="napi-python.html"
+                        title="next chapter">4.3.5. NAPI Python Interface</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/napi-java.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="napi-java-interface">
+<span id="napi-java"></span><span id="index-0"></span><h1>4.3.4. NAPI Java Interface<a class="headerlink" href="#napi-java-interface" title="Permalink to this headline">¶</a></h1>
+<p>This section includes installation notes,
+instructions for running NeXus for Java programs and a brief
+introduction to the API.</p>
+<p>The Java API
+for NeXus (<tt class="docutils literal"><span class="pre">jnexus</span></tt>) was implemented through the
+Java Native Interface (JNI) to call on to the native C library.
+This has a number of disadvantages over using pure Java, however
+the most popular file backend HDF5 is only available using
+a JNI wrapper anyway.</p>
+<div class="section" id="acknowledgement">
+<span id="napi-java-general-acknow"></span><h2>4.3.4.1. Acknowledgement<a class="headerlink" href="#acknowledgement" title="Permalink to this headline">¶</a></h2>
+<p>This implementation uses classes and native methods from NCSA&#8217;s
+Java HDF Interface project. Basically all conversions from native
+types to Java types is done through code from the NCSA HDF group.
+Without this code the implementation of this API would have taken
+much longer. See NCSA&#8217;s copyright for more information.</p>
+</div>
+<div class="section" id="installation">
+<span id="napi-java-general-install"></span><h2>4.3.4.2. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="requirements">
+<span id="napi-java-general-install-requirements"></span><h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">Documentation is old and may need revision.</p>
+</div>
+<p>For running an application with <tt class="docutils literal"><span class="pre">jnexus</span></tt> an recent Java runtime environment (JRE) will do.</p>
+<p>In order to compile the Java API for NeXus a Java Development Kit is required on top of the
+build requirements for the C API.</p>
+</div>
+<div class="section" id="installation-under-windows">
+<span id="napi-java-general-install-win32"></span><h3>Installation under Windows<a class="headerlink" href="#installation-under-windows" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Copy the HDF DLL&#8217;s and the file
+<tt class="docutils literal"><span class="pre">jnexus.dll</span></tt> to a directory in your path.
+For instance <tt class="docutils literal"><span class="pre">C:\\Windows\\system32</span></tt>.</li>
+<li>Copy the <tt class="docutils literal"><span class="pre">jnexus.jar</span></tt> to the place where
+you usually keep library jar files.</li>
+</ol>
+<p>Note that the location or the naming of these files in the binary Nexus distributions
+have changed over the years.
+In the Nexus 4.3.0 Windows 64-bit distribution (<a class="reference external" href="http://download.nexusformat.org/kits/4.3.0/win64/">http://download.nexusformat.org/kits/4.3.0/win64/</a>),
+By default, the DLL is at: <tt class="docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files\NeXus</span> <span class="pre">Data</span> <span class="pre">Format\bin\libjnexus-0.dll</span></tt>.
+Please rename this file to <tt class="docutils literal"><span class="pre">jnexus.dll</span></tt> before making it available in your path.
+This is important, otherwise, JVM runtime will not be able to locate this file.</p>
+<p>For the same distribution, the location of <tt class="docutils literal"><span class="pre">jnexus.jar</span></tt> is at: <tt class="docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files\NeXus</span> <span class="pre">Data</span> <span class="pre">Format\share\java</span></tt>.</p>
+</div>
+<div class="section" id="installation-under-unix">
+<span id="napi-java-general-install-unix"></span><h3>Installation under Unix<a class="headerlink" href="#installation-under-unix" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">jnexus.so</span></tt> shared library as well as all required file backend
+<tt class="docutils literal"><span class="pre">.so</span></tt> libraries are required as well as the <tt class="docutils literal"><span class="pre">jnexus.jar</span></tt>
+file holding the required Java classes. Copy them wherever you like
+and see below for instructions how to run programs using <tt class="docutils literal"><span class="pre">jnexus</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="running-programs-with-the-nexus-api-for-java">
+<span id="napi-java-general-running"></span><h2>4.3.4.3. Running Programs with the NeXus API for Java<a class="headerlink" href="#running-programs-with-the-nexus-api-for-java" title="Permalink to this headline">¶</a></h2>
+<p>In order to successfully run a program with
+<tt class="docutils literal"><span class="pre">jnexus</span></tt>, the Java runtime systems needs
+to locate two items:</p>
+<ol class="arabic simple">
+<li>The shared library implementing the native methods.</li>
+<li>The <tt class="docutils literal"><span class="pre">nexus.jar</span></tt> file in order to find the Java classes.</li>
+</ol>
+<div class="section" id="locating-the-shared-libraries">
+<span id="napi-java-general-running-shared"></span><h3>Locating the shared libraries<a class="headerlink" href="#locating-the-shared-libraries" title="Permalink to this headline">¶</a></h3>
+<p>The methods for locating a shared library differ
+between systems. Under Windows32 systems the best method
+is to copy the <tt class="docutils literal"><span class="pre">jnexus.dll</span></tt> and the HDF4, HDF5 and/or XML-library
+DLL files into a directory in your path.</p>
+<p>On a UNIX system, the problem can be solved in three different ways:</p>
+<ol class="arabic simple">
+<li>Make your system administrator copy the <tt class="docutils literal"><span class="pre">jnexus.so</span></tt>
+file into the systems default shared library directory
+(usually <tt class="docutils literal"><span class="pre">/usr/lib</span></tt> or <tt class="docutils literal"><span class="pre">/usr/local/lib</span></tt>).</li>
+<li>Put the <tt class="docutils literal"><span class="pre">jnexus.so</span></tt> file wherever you see fit and
+set the <tt class="docutils literal"><span class="pre">LD_LIBRARY_PATH</span></tt> environment variable to
+point to the directory of your choice.</li>
+<li>Specify the full pathname of the jnexus shared library on
+the java command line with the
+<tt class="docutils literal"><span class="pre">-Dorg.nexusformat.JNEXUSLIB=full-path-2-shared-library</span></tt>
+option.</li>
+</ol>
+</div>
+<div class="section" id="locating-jnexus-jar">
+<span id="napi-java-general-running-jnexus"></span><h3>Locating <tt class="docutils literal"><span class="pre">jnexus.jar</span></tt><a class="headerlink" href="#locating-jnexus-jar" title="Permalink to this headline">¶</a></h3>
+<p>This is easier, just add the the full pathname to
+<tt class="docutils literal"><span class="pre">jnexus.jar</span></tt> to the classpath when starting java.
+Here are examples for a UNIX shell and the Windows shell.</p>
+<div class="compound">
+<p class="compound-first rubric">UNIX example shell script to start <tt class="docutils literal"><span class="pre">jnexus.jar</span></tt></p>
+<div class="compound-last highlight-guess"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/sbin/sh</span>
+java -classpath /usr/lib/classes.zip:../jnexus.jar:. <span class="se">\</span>
+    -Dorg.nexusformat.JNEXUSLIB<span class="o">=</span>../libjnexus.so TestJapi
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="compound">
+<p class="compound-first rubric">Windows 32 example batch file to start <tt class="docutils literal"><span class="pre">jnexus.jar</span></tt></p>
+<div class="compound-last highlight-guess"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">set</span> <span class="n">JL</span><span class="o">=-</span><span class="n">Dorg</span><span class="p">.</span><span class="n">nexusformat</span><span class="p">.</span><span class="n">JNEXUSLIB</span><span class="o">=</span><span class="p">..</span><span class="err">\</span><span class="n">jnexus</span><span class="err">\</span><span class="n">bin</span><span class="err">\</span><span class="n">win32</span><span class="err">\</span><span class="n">jnexus</span><span class="p">.</span><span class="n">dll</span>
+<span class="n">java</span> <span class="o">-</span><span class="n">classpath</span> <span class="n">C</span><span class="o">:</span><span class="err">\</span><span class="n">jdk1</span><span class="mf">.5</span><span class="err">\</span><span class="n">lib</span><span class="err">\</span><span class="n">classes</span><span class="p">.</span><span class="n">zip</span><span class="p">;..</span><span class="err">\</span><span class="n">jnexus</span><span class="p">.</span><span class="n">jar</span><span class="p">;.</span> <span class="o">%</span><span class="n">JL</span><span class="o">%</span> <span class="n">TestJapi</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="programming-with-the-nexus-api-for-java">
+<span id="napi-java-general-programming"></span><h2>4.3.4.4. Programming with the NeXus API for Java<a class="headerlink" href="#programming-with-the-nexus-api-for-java" title="Permalink to this headline">¶</a></h2>
+<p>The NeXus C-API is good enough but for Java a few adaptions of
+the API have been made in order to match the API better to the
+idioms used by Java programmers. In order to understand the
+Java-API, it is useful to study the NeXus C-API because many
+methods work in the same way as their C equivalents.
+A full API documentation is available in Java documentation format.
+For full reference look especially at:</p>
+<ul class="simple">
+<li>The interface <tt class="docutils literal"><span class="pre">NeXusFileInterface</span></tt> first.
+It gives an uncluttered view of the API.</li>
+<li>The implementation <tt class="docutils literal"><span class="pre">NexusFile</span></tt> which gives more details about constructors and
+constants. However this documentation is interspersed with information about
+native methods which should not be called by an application programmer as they
+are not part of the standard and might change in future.</li>
+</ul>
+<p>See the following code example for opening a file,
+opening a vGroup and closing the file again in order
+to get a feeling for the API:</p>
+<div class="compound">
+<p class="compound-first rubric">fragment for opening and closing</p>
+<div class="compound-last highlight-guess"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="n">try</span><span class="p">{</span>
+        <span class="n">NexusFile</span> <span class="n">nf</span> <span class="o">=</span> <span class="n">new</span> <span class="n">NexusFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">NexusFile</span><span class="p">.</span><span class="n">NXACC_READ</span><span class="p">);</span>
+        <span class="n">nf</span><span class="p">.</span><span class="n">opengroup</span><span class="p">(</span><span class="s">&quot;entry1&quot;</span><span class="p">,</span><span class="s">&quot;NXentry&quot;</span><span class="p">);</span>
+        <span class="n">nf</span><span class="p">.</span><span class="n">finalize</span><span class="p">();</span>
+    <span class="p">}</span><span class="n">catch</span><span class="p">(</span><span class="n">NexusException</span> <span class="n">ne</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Something was wrong!</span>
+    <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Some notes on this little example:</p>
+<ul class="simple">
+<li>Each NeXus file is represented by a <tt class="docutils literal"><span class="pre">NexusFile</span></tt> object which
+is created through the constructor.</li>
+<li>The <tt class="docutils literal"><span class="pre">NexusFile</span></tt> object takes care of all file handles for you.
+So there is no need to pass in a handle anymore to each
+method as in the C language API.</li>
+<li>All error handling is done through the Java exception
+handling mechanism. This saves all the code checking
+return values in the C language API. Most API functions
+return void.</li>
+<li>Closing files is tricky. The Java garbage collector is
+supposed to call the finalize method for each object it
+decides to delete. In order to enable this mechanism,
+the <tt class="docutils literal"><span class="pre">NXclose()</span></tt> function was replaced by
+the <tt class="docutils literal"><span class="pre">finalize()</span></tt> method. In practice it seems
+not to be guaranteed that the garbage collector calls the
+<tt class="docutils literal"><span class="pre">finalize()</span></tt> method. It is safer to call
+<tt class="docutils literal"><span class="pre">finalize()</span></tt> yourself in order to properly
+close a file. Multiple calls to the <tt class="docutils literal"><span class="pre">finalize()</span></tt>
+method for the same object are safe and do no harm.</li>
+</ul>
+</div>
+<div class="section" id="data-writing-and-reading">
+<span id="napi-java-general-datarw"></span><h2>4.3.4.5. Data Writing and Reading<a class="headerlink" href="#data-writing-and-reading" title="Permalink to this headline">¶</a></h2>
+<p>Again a code sample which shows how this looks like:</p>
+<div class="compound">
+<p class="compound-first rubric">fragment for writing and reading</p>
+<div class="compound-last highlight-guess"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="kt">int</span> <span class="n">idata</span><span class="p">[][]</span> <span class="o">=</span> <span class="n">new</span> <span class="n">idata</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">20</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">iDim</span><span class="p">[]</span> <span class="o">=</span> <span class="n">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+    <span class="c1">// put some data into idata.......</span>
+
+    <span class="c1">// write idata</span>
+    <span class="n">iDim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="n">iDim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="n">nf</span><span class="p">.</span><span class="n">makedata</span><span class="p">(</span><span class="s">&quot;idata&quot;</span><span class="p">,</span><span class="n">NexusFile</span><span class="p">.</span><span class="n">NX_INT32</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">iDim</span><span class="p">);</span>
+    <span class="n">nf</span><span class="p">.</span><span class="n">opendata</span><span class="p">(</span><span class="s">&quot;idata&quot;</span><span class="p">);</span>
+    <span class="n">nf</span><span class="p">.</span><span class="n">putdata</span><span class="p">(</span><span class="n">idata</span><span class="p">);</span>
+
+    <span class="c1">// read idata</span>
+    <span class="n">nf</span><span class="p">.</span><span class="n">getdata</span><span class="p">(</span><span class="n">idata</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>The dataset is created as usual with <tt class="docutils literal"><span class="pre">makedata()</span></tt> and opened
+with <tt class="docutils literal"><span class="pre">putdata()</span></tt>. The trick is in <tt class="docutils literal"><span class="pre">putdata()</span></tt>.
+Java is meant to be type safe. One would think then that a
+<tt class="docutils literal"><span class="pre">putdata()</span></tt> method would be required for each Java data type.
+In order to avoid this, the data to <tt class="docutils literal"><span class="pre">write()</span></tt> is passed into
+<tt class="docutils literal"><span class="pre">putdata()</span></tt> as type <tt class="docutils literal"><span class="pre">Object</span></tt>.
+Then the API proceeds to analyze this object through the
+Java introspection API and convert the data to a byte stream for writing
+through the native method call. This is an elegant solution with one drawback:
+An array is needed at all times. Even if only a single data value is
+written (or read) an array of length one and an appropriate type
+is the required argument.</p>
+<p>Another issue are strings. Strings are first class objects in Java.
+HDF (and NeXus) sees them as dumb arrays of bytes. Thus strings have to be
+converted to and from bytes when reading string data. See a writing example:</p>
+<div class="compound">
+<p class="compound-first rubric">String writing</p>
+<div class="compound-last highlight-guess"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="n">String</span> <span class="n">ame</span> <span class="o">=</span> <span class="s">&quot;Alle meine Entchen&quot;</span><span class="p">;</span>
+    <span class="n">nf</span><span class="p">.</span><span class="n">makedata</span><span class="p">(</span><span class="s">&quot;string_data&quot;</span><span class="p">,</span><span class="n">NexusFile</span><span class="p">.</span><span class="n">NX_CHAR</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">,</span><span class="n">ame</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">nf</span><span class="p">.</span><span class="n">opendata</span><span class="p">(</span><span class="s">&quot;string_data&quot;</span><span class="p">);</span>
+    <span class="n">nf</span><span class="p">.</span><span class="n">putdata</span><span class="p">(</span><span class="n">ame</span><span class="p">.</span><span class="n">getBytes</span><span class="p">());</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>And reading:</p>
+<div class="compound">
+<p class="compound-first rubric">String reading</p>
+<div class="compound-last highlight-guess"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="n">String</span> <span class="n">ame</span> <span class="o">=</span> <span class="s">&quot;Alle meine Entchen&quot;</span><span class="p">;</span>
+    <span class="n">nf</span><span class="p">.</span><span class="n">makedata</span><span class="p">(</span><span class="s">&quot;string_data&quot;</span><span class="p">,</span><span class="n">NexusFile</span><span class="p">.</span><span class="n">NX_CHAR</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">,</span><span class="n">ame</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">nf</span><span class="p">.</span><span class="n">opendata</span><span class="p">(</span><span class="s">&quot;string_data&quot;</span><span class="p">);</span>
+    <span class="n">nf</span><span class="p">.</span><span class="n">putdata</span><span class="p">(</span><span class="n">ame</span><span class="p">.</span><span class="n">getBytes</span><span class="p">());</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>The aforementioned holds for all strings written as SDS content or as an
+attribute. SDS or vGroup names do not need this treatment.</p>
+</div>
+<div class="section" id="inquiry-routines">
+<span id="napi-java-general-datarw-inquiry"></span><h2>4.3.4.6. Inquiry Routines<a class="headerlink" href="#inquiry-routines" title="Permalink to this headline">¶</a></h2>
+<p>Let us compare the C-API and Java-API signatures of the
+<tt class="docutils literal"><span class="pre">getinfo()</span></tt> routine (C) or method (Java):</p>
+<div class="compound">
+<p class="compound-first rubric">C API signature of <tt class="docutils literal"><span class="pre">getinfo()</span></tt></p>
+<div class="compound-last highlight-guess"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="cm">/* C -API */</span>
+    <span class="n">NXstatus</span> <span class="nf">NXgetinfo</span><span class="p">(</span><span class="n">NXhandle</span> <span class="n">handle</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">rank</span><span class="p">,</span> <span class="kt">int</span> <span class="n">iDim</span><span class="p">[],</span> 
+                     <span class="kt">int</span> <span class="o">*</span><span class="n">datatype</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="compound">
+<p class="compound-first rubric">Java API signature of <tt class="docutils literal"><span class="pre">getinfo()</span></tt></p>
+<div class="compound-last highlight-guess"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="c1">// Java </span>
+    <span class="kt">void</span> <span class="nf">getinfo</span><span class="p">(</span><span class="kt">int</span> <span class="n">iDim</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">args</span><span class="p">[]);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>The problem is that Java passes arguments only by value, which means they cannot
+be modified by the method. Only array arguments can be modified.
+Thus <tt class="docutils literal"><span class="pre">args</span></tt> in the <tt class="docutils literal"><span class="pre">getinfo()</span></tt> method holds the
+rank and datatype information passed in separate items in the C-API version.
+For resolving which one is which, consult a debugger or the API-reference.</p>
+<p>The attribute and vGroup search routines have been simplified
+using Hashtables. The <tt class="docutils literal"><span class="pre">Hashtable</span></tt> returned by <tt class="docutils literal"><span class="pre">groupdir()</span></tt>
+holds the name of the item as a key and the classname or the string SDS as the
+stored object for the key. Thus the code for a vGroup search looks like this:</p>
+<div class="compound">
+<p class="compound-first rubric">vGroup search</p>
+<div class="compound-last highlight-guess"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="n">nf</span><span class="p">.</span><span class="n">opengroup</span><span class="p">(</span><span class="n">group</span><span class="p">,</span><span class="n">nxclass</span><span class="p">);</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">nf</span><span class="p">.</span><span class="n">groupdir</span><span class="p">();</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">h</span><span class="p">.</span><span class="n">keys</span><span class="p">();</span>
+    <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Found in vGroup entry:&quot;</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">hasMoreElements</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">vname</span> <span class="o">=</span> <span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="n">e</span><span class="p">.</span><span class="n">nextElement</span><span class="p">();</span>
+        <span class="n">vclass</span> <span class="o">=</span> <span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="n">h</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">vname</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;     Item: &quot;</span> <span class="o">+</span> <span class="n">vname</span> <span class="o">+</span> <span class="s">&quot; class: &quot;</span> <span class="o">+</span> <span class="n">vclass</span><span class="p">);</span>
+    <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>For an attribute search both at global or SDS level the returned Hashtable
+will hold the name as the key and a little class holding the type and size
+information as value. Thus an attribute search looks like this in the Java-API:</p>
+<div class="compound">
+<p class="compound-first rubric">attribute search</p>
+<div class="compound-last highlight-guess"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="n">Hashtable</span> <span class="n">h</span> <span class="o">=</span> <span class="n">nf</span><span class="p">.</span><span class="n">attrdir</span><span class="p">();</span>
+    <span class="n">Enumeration</span> <span class="n">e</span> <span class="o">=</span> <span class="n">h</span><span class="p">.</span><span class="n">keys</span><span class="p">();</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">hasMoreElements</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">attname</span> <span class="o">=</span> <span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="n">e</span><span class="p">.</span><span class="n">nextElement</span><span class="p">();</span>
+        <span class="n">atten</span> <span class="o">=</span> <span class="p">(</span><span class="n">AttributeEntry</span><span class="p">)</span><span class="n">h</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">attname</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Found global attribute: &quot;</span> <span class="o">+</span> <span class="n">attname</span> <span class="o">+</span>
+            <span class="s">&quot; type: &quot;</span><span class="o">+</span> <span class="n">atten</span><span class="p">.</span><span class="n">type</span> <span class="o">+</span> <span class="s">&quot; ,length: &quot;</span> <span class="o">+</span> <span class="n">atten</span><span class="p">.</span><span class="n">length</span><span class="p">);</span> 
+    <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>For more information about the usage of the API routines see the reference
+or the NeXus C-API reference pages. Another good source of information is
+the source code of the test program which exercises each API routine.</p>
+</div>
+<div class="section" id="known-problems">
+<span id="napi-java-general-knownproblems"></span><h2>4.3.4.7. Known Problems<a class="headerlink" href="#known-problems" title="Permalink to this headline">¶</a></h2>
+<p>These are a couple of known problems which you might run into:</p>
+<dl class="docutils">
+<dt>Memory</dt>
+<dd>As the Java API for NeXus has to convert between native
+and Java number types a copy of the data must be made
+in the process. This means that if you want to read or
+write 200MB of data your memory requirement will be 400MB!
+This can be reduced by using multiple
+<tt class="docutils literal"><span class="pre">getslab()</span></tt>/<tt class="docutils literal"><span class="pre">putslab()</span></tt> to perform data
+transfers in smaller chunks.</dd>
+<dt><tt class="docutils literal"><span class="pre">Java.lang.OutOfMemoryException</span></tt></dt>
+<dd>By default the Java runtime has a low default value for
+the maximum amount of memory it will use.
+This ceiling can be increased through the <tt class="docutils literal"><span class="pre">-mxXXm</span></tt>
+option to the Java runtime. An example:
+<tt class="docutils literal"><span class="pre">java</span> <span class="pre">-mx512m</span> <span class="pre">...</span></tt> starts the Java runtime
+with a memory ceiling of 512MB.</dd>
+<dt>Maximum 8192 files open</dt>
+<dd>The NeXus API for Java has a fixed buffer for file
+handles which allows only 8192 NeXus files to be
+open at the same time. If you ever hit this limit,
+increase the <tt class="docutils literal"><span class="pre">MAXHANDLE</span></tt> define in
+<tt class="docutils literal"><span class="pre">native/handle.h</span></tt> and recompile everything.</dd>
+</dl>
+</div>
+<div class="section" id="on-line-documentation">
+<span id="napi-java-online"></span><h2>4.3.4.8. On-line Documentation<a class="headerlink" href="#on-line-documentation" title="Permalink to this headline">¶</a></h2>
+<p>The following documentation is browsable online:</p>
+<ol class="arabic simple">
+<li>The Doxygen API documentation <a class="footnote-reference" href="#doxygen-api-url" id="id1">[1]</a></li>
+<li>A verbose tutorial for the NeXus for Java API.</li>
+<li>The API Reference.</li>
+<li>Finally, the source code for the test driver for the API
+which also serves as a documented usage example.</li>
+</ol>
+<table class="docutils footnote" frame="void" id="doxygen-api-url" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://download.nexusformat.org/doxygen/html-java/">http://download.nexusformat.org/doxygen/html-java/</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="napi-python.html" title="4.3.5. NAPI Python Interface"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="napi-f90.html" title="4.3.3. NAPI Fortran 90 Interface"
+             >previous</a> |</li>
+        <li><a href="index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="napi.html" >4. NAPI: NeXus Application Programmer Interface (frozen)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="copyright.html">Copyright</a> 2014, http://nexusformat.org.
+      Last updated on 2014-10-02 14:43:08 CDT.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

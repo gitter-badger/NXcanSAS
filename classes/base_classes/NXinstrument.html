@@ -1,0 +1,180 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.3.25. NXinstrument &mdash; NeXus: Manual 3.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="top" title="NeXus: Manual 3.1 documentation" href="../../index.html" />
+    <link rel="up" title="3.3. Base Class Definitions" href="index.html" />
+    <link rel="next" title="3.3.26. NXlog" href="NXlog.html" />
+    <link rel="prev" title="3.3.24. NXinsertion_device" href="NXinsertion_device.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="NXlog.html" title="3.3.26. NXlog"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="NXinsertion_device.html" title="3.3.24. NXinsertion_device"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">3.3. Base Class Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/nexuslogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="NXinsertion_device.html"
+                        title="previous chapter">3.3.24. NXinsertion_device</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="NXlog.html"
+                        title="next chapter">3.3.26. NXlog</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/classes/base_classes/NXinstrument.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nxinstrument">
+<span id="index-0"></span><span id="id1"></span><h1>3.3.25. NXinstrument<a class="headerlink" href="#nxinstrument" title="Permalink to this headline">¶</a></h1>
+<p><strong>Status</strong>:</p>
+<blockquote>
+<div>base class, extends <a class="reference internal" href="NXobject.html#nxobject"><em>NXobject</em></a>, version 1.0</div></blockquote>
+<p><strong>Description</strong>:</p>
+<blockquote>
+<div>Template of instrument descriptions comprising various beamline components.
+Each component will also be a NeXus group defined by its distance from the
+sample. Negative distances represent beamline components that are before the
+sample while positive distances represent components that are after the sample.
+This device allows the unique identification of beamline components in a way
+that is valid for both reactor and pulsed instrumentation.</div></blockquote>
+<p><strong>Symbols</strong>:</p>
+<blockquote>
+<div>No symbol table</div></blockquote>
+<dl class="docutils">
+<dt><strong>Groups cited</strong>:</dt>
+<dd><a class="reference internal" href="NXaperture.html#nxaperture"><em>NXaperture</em></a>, <a class="reference internal" href="NXattenuator.html#nxattenuator"><em>NXattenuator</em></a>, <a class="reference internal" href="NXbeam_stop.html#nxbeam-stop"><em>NXbeam_stop</em></a>, <a class="reference internal" href="NXbeam.html#nxbeam"><em>NXbeam</em></a>, <a class="reference internal" href="NXbending_magnet.html#nxbending-magnet"><em>NXbending_magnet</em></a>, <a class="reference internal" href="NXcapillary.html#nxcapillary"><em>NXcapillary</em></a>, <a class="reference internal" href="NXcollection.html#nxcollection"><em>NXcollection</em></a>, <a class="reference internal" href="NXcollimator.html#nxcollimator"><em>NXcollimator</em></a>, <a class="reference internal" href="NXcrystal.html#nxcrystal"><em>NXcrystal</em></a>, <a class="reference internal" href="NXdetector_group.html#nxdetector-group"><em>NXdetector_group</em></a>, <a class="reference internal" href="NXdetector.html#nxdetector"><em>NXdetector</em></a>, <a class="reference internal" href="NXdisk_chopper.html#nxdisk-chopper"><em>NXdisk_chopper</em></a>, <a class="reference internal" href="NXevent_data.html#nxevent-data"><em>NXevent_data</em></a>, <a class="reference internal" href="NXfermi_chopper.html#nxfermi-chopper"><em>NXfermi_chopper</em></a>, <a class="reference internal" href="NXfilter.html#nxfilter"><em>NXfilter</em></a>, <a class="reference internal" href="NXflipper.html#nxflipper"><em>NXflipper</em></a>, <a class="reference internal" href="NXguide.html#nxguide"><em>NXguide</em></a>, <a class="reference internal" href="NXinsertion_device.html#nxinsertion-device"><em>NXinsertion_device</em></a>, <a class="reference internal" href="NXmirror.html#nxmirror"><em>NXmirror</em></a>, <a class="reference internal" href="NXmoderator.html#nxmoderator"><em>NXmoderator</em></a>, <a class="reference internal" href="NXmonochromator.html#nxmonochromator"><em>NXmonochromator</em></a>, <a class="reference internal" href="NXpolarizer.html#nxpolarizer"><em>NXpolarizer</em></a>, <a class="reference internal" href="NXpositioner.html#nxpositioner"><em>NXpositioner</em></a>, <a class="reference internal" href="NXsource.html#nxsource"><em>NXsource</em></a>, <a class="reference internal" href="NXvelocity_selector.html#nxvelocity-selector"><em>NXvelocity_selector</em></a>, <a class="reference internal" href="NXxraylens.html#nxxraylens"><em>NXxraylens</em></a></dd>
+</dl>
+<p id="index-1"><strong>Structure</strong>:</p>
+<blockquote>
+<div><p id="index-2"><strong>name</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Name of instrument</p>
+<p id="index-3"><strong>&#64;short_name</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>short name for instrument, perhaps the acronym</div></blockquote>
+</div></blockquote>
+<p><strong>(aperture)</strong>: <a class="reference internal" href="NXaperture.html#nxaperture"><em>NXaperture</em></a></p>
+<p><strong>(attenuator)</strong>: <a class="reference internal" href="NXattenuator.html#nxattenuator"><em>NXattenuator</em></a></p>
+<p><strong>(beam)</strong>: <a class="reference internal" href="NXbeam.html#nxbeam"><em>NXbeam</em></a></p>
+<p><strong>(beam_stop)</strong>: <a class="reference internal" href="NXbeam_stop.html#nxbeam-stop"><em>NXbeam_stop</em></a></p>
+<p><strong>(bending_magnet)</strong>: <a class="reference internal" href="NXbending_magnet.html#nxbending-magnet"><em>NXbending_magnet</em></a></p>
+<p><strong>(collimator)</strong>: <a class="reference internal" href="NXcollimator.html#nxcollimator"><em>NXcollimator</em></a></p>
+<p><strong>(collection)</strong>: <a class="reference internal" href="NXcollection.html#nxcollection"><em>NXcollection</em></a></p>
+<p><strong>(capillary)</strong>: <a class="reference internal" href="NXcapillary.html#nxcapillary"><em>NXcapillary</em></a></p>
+<p><strong>(crystal)</strong>: <a class="reference internal" href="NXcrystal.html#nxcrystal"><em>NXcrystal</em></a></p>
+<p><strong>(detector)</strong>: <a class="reference internal" href="NXdetector.html#nxdetector"><em>NXdetector</em></a></p>
+<p><strong>(detector_group)</strong>: <a class="reference internal" href="NXdetector_group.html#nxdetector-group"><em>NXdetector_group</em></a></p>
+<p><strong>(disk_chopper)</strong>: <a class="reference internal" href="NXdisk_chopper.html#nxdisk-chopper"><em>NXdisk_chopper</em></a></p>
+<p><strong>(event_data)</strong>: <a class="reference internal" href="NXevent_data.html#nxevent-data"><em>NXevent_data</em></a></p>
+<p><strong>(fermi_chopper)</strong>: <a class="reference internal" href="NXfermi_chopper.html#nxfermi-chopper"><em>NXfermi_chopper</em></a></p>
+<p><strong>(filter)</strong>: <a class="reference internal" href="NXfilter.html#nxfilter"><em>NXfilter</em></a></p>
+<p><strong>(flipper)</strong>: <a class="reference internal" href="NXflipper.html#nxflipper"><em>NXflipper</em></a></p>
+<p><strong>(guide)</strong>: <a class="reference internal" href="NXguide.html#nxguide"><em>NXguide</em></a></p>
+<p><strong>(insertion_device)</strong>: <a class="reference internal" href="NXinsertion_device.html#nxinsertion-device"><em>NXinsertion_device</em></a></p>
+<p><strong>(mirror)</strong>: <a class="reference internal" href="NXmirror.html#nxmirror"><em>NXmirror</em></a></p>
+<p><strong>(moderator)</strong>: <a class="reference internal" href="NXmoderator.html#nxmoderator"><em>NXmoderator</em></a></p>
+<p><strong>(monochromator)</strong>: <a class="reference internal" href="NXmonochromator.html#nxmonochromator"><em>NXmonochromator</em></a></p>
+<p><strong>(polarizer)</strong>: <a class="reference internal" href="NXpolarizer.html#nxpolarizer"><em>NXpolarizer</em></a></p>
+<p><strong>(positioner)</strong>: <a class="reference internal" href="NXpositioner.html#nxpositioner"><em>NXpositioner</em></a></p>
+<p><strong>(source)</strong>: <a class="reference internal" href="NXsource.html#nxsource"><em>NXsource</em></a></p>
+<p><strong>(velocity_selector)</strong>: <a class="reference internal" href="NXvelocity_selector.html#nxvelocity-selector"><em>NXvelocity_selector</em></a></p>
+<p><strong>(xraylens)</strong>: <a class="reference internal" href="NXxraylens.html#nxxraylens"><em>NXxraylens</em></a></p>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Source</strong>:</dt>
+<dd>Automatically generated from <a class="reference external" href="https://github.com/nexusformat/definitions/blob/master/base_classes/NXinstrument.nxdl.xml">https://github.com/nexusformat/definitions/blob/master/base_classes/NXinstrument.nxdl.xml</a></dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="NXlog.html" title="3.3.26. NXlog"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="NXinsertion_device.html" title="3.3.24. NXinsertion_device"
+             >previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" >3.3. Base Class Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="../../copyright.html">Copyright</a> 2014, http://nexusformat.org.
+      Last updated on 2014-10-02 16:52:41 CDT.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

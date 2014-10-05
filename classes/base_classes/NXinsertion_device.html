@@ -1,0 +1,180 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.3.24. NXinsertion_device &mdash; NeXus: Manual 3.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="top" title="NeXus: Manual 3.1 documentation" href="../../index.html" />
+    <link rel="up" title="3.3. Base Class Definitions" href="index.html" />
+    <link rel="next" title="3.3.25. NXinstrument" href="NXinstrument.html" />
+    <link rel="prev" title="3.3.23. NXguide" href="NXguide.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="NXinstrument.html" title="3.3.25. NXinstrument"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="NXguide.html" title="3.3.23. NXguide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">3.3. Base Class Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/nexuslogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="NXguide.html"
+                        title="previous chapter">3.3.23. NXguide</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="NXinstrument.html"
+                        title="next chapter">3.3.25. NXinstrument</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/classes/base_classes/NXinsertion_device.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nxinsertion-device">
+<span id="index-0"></span><span id="id1"></span><h1>3.3.24. NXinsertion_device<a class="headerlink" href="#nxinsertion-device" title="Permalink to this headline">¶</a></h1>
+<p><strong>Status</strong>:</p>
+<blockquote>
+<div>base class, extends <a class="reference internal" href="NXobject.html#nxobject"><em>NXobject</em></a>, version 1.0</div></blockquote>
+<p><strong>Description</strong>:</p>
+<blockquote>
+<div>Description of an insertion device, as in a synchrotron.</div></blockquote>
+<p><strong>Symbols</strong>:</p>
+<blockquote>
+<div>No symbol table</div></blockquote>
+<dl class="docutils">
+<dt><strong>Groups cited</strong>:</dt>
+<dd><a class="reference internal" href="NXdata.html#nxdata"><em>NXdata</em></a>, <a class="reference internal" href="NXgeometry.html#nxgeometry"><em>NXgeometry</em></a></dd>
+</dl>
+<p id="index-1"><strong>Structure</strong>:</p>
+<blockquote>
+<div><p id="index-2"><strong>type</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Any of these values: <tt class="docutils literal"><span class="pre">undulator</span></tt> | <tt class="docutils literal"><span class="pre">wiggler</span></tt></div></blockquote>
+<p id="index-3"><strong>gap</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>separation between opposing pairs of magnetic poles</div></blockquote>
+<p id="index-4"><strong>taper</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-angle"><em>NX_ANGLE</em></a>}</p>
+<blockquote>
+<div>angular of gap difference between upstream and downstream ends of the insertion device</div></blockquote>
+<p id="index-5"><strong>phase</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-angle"><em>NX_ANGLE</em></a>}</p>
+<p id="index-6"><strong>poles</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-int"><em>NX_INT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-unitless"><em>NX_UNITLESS</em></a>}</p>
+<blockquote>
+<div>number of poles</div></blockquote>
+<p id="index-7"><strong>magnetic_wavelength</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-wavelength"><em>NX_WAVELENGTH</em></a>}</p>
+<p id="index-8"><strong>k</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-dimensionless"><em>NX_DIMENSIONLESS</em></a>}</p>
+<blockquote>
+<div>beam displacement parameter</div></blockquote>
+<p id="index-9"><strong>length</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>length of insertion device</div></blockquote>
+<p id="index-10"><strong>power</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-power"><em>NX_POWER</em></a>}</p>
+<blockquote>
+<div>total power delivered by insertion device</div></blockquote>
+<p id="index-11"><strong>energy</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-energy"><em>NX_ENERGY</em></a>}</p>
+<blockquote>
+<div>energy of peak intensity in output spectrum</div></blockquote>
+<p id="index-12"><strong>bandwidth</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-energy"><em>NX_ENERGY</em></a>}</p>
+<blockquote>
+<div>bandwidth of peak energy</div></blockquote>
+<p id="index-13"><strong>harmonic</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-int"><em>NX_INT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-unitless"><em>NX_UNITLESS</em></a>}</p>
+<blockquote>
+<div>harmonic number of peak</div></blockquote>
+<p><strong>spectrum</strong>: <a class="reference internal" href="NXdata.html#nxdata"><em>NXdata</em></a></p>
+<blockquote>
+<div>spectrum of insertion device</div></blockquote>
+<p><strong>(geometry)</strong>: <a class="reference internal" href="NXgeometry.html#nxgeometry"><em>NXgeometry</em></a></p>
+<blockquote>
+<div>&#8220;Engineering&#8221; position of insertion device</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Source</strong>:</dt>
+<dd>Automatically generated from <a class="reference external" href="https://github.com/nexusformat/definitions/blob/master/base_classes/NXinsertion_device.nxdl.xml">https://github.com/nexusformat/definitions/blob/master/base_classes/NXinsertion_device.nxdl.xml</a></dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="NXinstrument.html" title="3.3.25. NXinstrument"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="NXguide.html" title="3.3.23. NXguide"
+             >previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" >3.3. Base Class Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="../../copyright.html">Copyright</a> 2014, http://nexusformat.org.
+      Last updated on 2014-10-02 16:52:41 CDT.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

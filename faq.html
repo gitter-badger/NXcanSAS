@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.6. Frequently Asked Questions &mdash; NeXus: Manual 3.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="top" title="NeXus: Manual 3.1 documentation" href="index.html" />
+    <link rel="up" title="1. NeXus: User Manual" href="user_manual.html" />
+    <link rel="next" title="2. Examples of writing and reading NeXus data files" href="examples/index.html" />
+    <link rel="prev" title="1.5. Verification and validation of files" href="validation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="examples/index.html" title="2. Examples of writing and reading NeXus data files"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="validation.html" title="1.5. Verification and validation of files"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="user_manual.html" accesskey="U">1. NeXus: User Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/nexuslogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="validation.html"
+                        title="previous chapter">1.5. Verification and validation of files</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="examples/index.html"
+                        title="next chapter">2. Examples of writing and reading NeXus data files</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/faq.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="frequently-asked-questions">
+<span id="faq"></span><span id="index-0"></span><h1>1.6. Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
+<p>This is a list of commonly asked questions concerning the NeXus data format.</p>
+<ol class="arabic">
+<li><p class="first">Is it Nexus, NeXus or NeXuS?</p>
+<blockquote>
+<div><p>NeXus is correct. It is a format for data from <strong>Neutron</strong> and <strong>X-ray</strong>
+facilities, hence those first letters are capitalised. The format is also
+used for muon experiments, but there is no <em>mu</em> (or m) in NeXus and no s
+in muon. So the s stays in lower case.</p>
+</div></blockquote>
+</li>
+<li><p class="first">How many facilities use NeXus?</p>
+<blockquote>
+<div><p>This is not easy to say, not all facilities using NeXus actively
+participate in the committee. Some facilities have reported their
+adoption status on the <a class="reference external" href="http://wiki.nexusformat.org/Facilities">Facilities Wiki page</a>.
+Please have a look at this list. Keep in mind that it is not
+complete.</p>
+</div></blockquote>
+</li>
+<li><p class="first">NeXus files are binary? This is crazy! How am I supposed to see my data?</p>
+<blockquote>
+<div><p>NeXus files are not per se binary. If you use the XML backend the
+data are stored in a relatively human readable form (see
+<a class="reference external" href="http://trac.nexusformat.org/definitions/browser/exampledata/code/xml/NXtest.xml.txt">this example</a>).
+This backend however is only recommended for very small data sets. With
+the multidimensional data that is routinely recorded on many modern
+instruments it is very difficult anyway to retrieve useful
+information on a VT100 terminal. If you want to try, for example
+<tt class="docutils literal"><span class="pre">nxbrowse</span></tt>
+is a utility provided by the NeXus community that can be very
+helpful to those who want to inspect their files and avoid
+graphical applications. For larger data volumes the binary backends
+used with the appropriate tools are by far superior in terms of
+efficiency and speed and most users happily accept that after having
+worked with supersized &#8220;human readable&#8221; files for a while.</p>
+</div></blockquote>
+</li>
+<li><p class="first">What on-disk file format should I choose for my data?</p>
+<blockquote>
+<div><p>HDF5 is the default file container to use for NeXus data. It
+is the recommended format for all applications. HDF4 is still
+supported as a on disk format for NeXus but for new installations
+preference should be given to HDF5. The XML backend is available
+for special use cases. Choose this option with care considering the
+space and speed implications.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Why are the NeXus classes so complicated? I&#8217;ll never store all that information</p>
+<blockquote>
+<div><p>The NeXus classes are essentially glossaries of terms. If you
+need to store a piece of information, consult the class definitions
+to see if it has been defined. If so, use it. It is not compulsory
+to include every item that has been defined in the base class if it
+is not relevant to your experiment. On the other hand, a NeXus
+application definition lists a smaller set of compulsory items that
+should allow other researchers or software to analyze your data.
+You should really follow the application definition that
+corresponds to your experiment to take full advantage of NeXus.</p>
+</div></blockquote>
+</li>
+<li><p class="first">I don&#8217;t like NeXus. It seems much faster and simpler to develop my own file format. Why should I even consider NeXus?</p>
+<blockquote>
+<div><p>If you consider using an efficient on disk storage format,
+HDF5 is a better choice than most others. It is fast and efficient
+and well supported in all mainstream programming languages and a
+fair share of popular analysis packages. The format is so widely
+used and backed by a big organisation that it will continue to be
+supported for the foreseeable future.
+So if you are going to use HDF5 anyway, why not use the NeXus
+definition to lay out the data in a standardised way? The NeXus
+community spent years trying to get the standard right and
+while you will not agree with every single choice they made in the
+past, you should be able to store the data you have in a quite
+reasonable way. If you do not comply with NeXus, chances are most
+people will perceive your format as different but not necessarily
+better than NeXus by any large measure. So it may not be worth the
+effort. Seriously.</p>
+<p>If you encounter any problems because the classes are not
+sufficient to describe your configuration, please contact the
+<span class="target" id="index-1"></span>NIAC
+Executive Secretary explaining the problem, and post a suggestion
+at the relevant class wiki page. Or raise the problem in one of the
+<a class="reference external" href="http://download.nexusformat.org/doc/html/MailingLists.html">mailing lists</a>.
+The NIAC is always willing to consider new proposals.</p>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>I want to <span class="target" id="index-2"></span>contribute an application definition.</dt>
+<dd><p class="first">How do I go about it?</p>
+<p>Read the <span class="target" id="index-3"></span>NXDL Tutorial in <a class="reference internal" href="applying-nexus.html#nxdl-tutorial-creatingnxdlspec"><em>Creating a NXDL Specification</em></a>
+and have a try. You can ask for help on the <a class="reference external" href="http://download.nexusformat.org/doc/html/MailingLists.html">mailing lists</a>.
+Once you have a definition that is working well for at least your case,
+you can submit it to the NIAC for acceptance as a standard.
+The procedures for acceptance are defined in the NIAC <span class="target" id="index-4"></span>constitution. <a class="footnote-reference" href="#id3" id="id2">[1]</a></p>
+<blockquote class="last">
+<div><table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><p class="first last">Refer to the most recent version of the NIAC constitution on the
+NIAC wiki:
+<a class="reference external" href="http://wiki.nexusformat.org/NIAC#Constitution">http://wiki.nexusformat.org/NIAC#Constitution</a></p>
+</td></tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+<li><p class="first">What is the purpose of <tt class="docutils literal"><span class="pre">NXdata</span></tt>?</p>
+<blockquote>
+<div><p><tt class="docutils literal"><span class="pre">NXdata</span></tt> contains links to the data stored elsewhere in the <tt class="docutils literal"><span class="pre">NXentry</span></tt>.
+It identifies the <span class="target" id="index-5"></span>default plottable data.
+This is one of the basic motivations (see <a class="reference internal" href="motivations.html#simpleplotting"><em>Simple plotting</em></a>) for the NeXus standard.
+The choice of the name <tt class="docutils literal"><span class="pre">NXdata</span></tt> is historic and does not really reflect its function.</p>
+</div></blockquote>
+</li>
+<li><p class="first">How do I identify the plottable data?</p>
+<blockquote>
+<div><p>See the section: <a class="reference internal" href="datarules.html#find-plottable-data"><em>Find the plottable data</em></a>.</p>
+</div></blockquote>
+</li>
+<li><p class="first">How can I specify reasonable axes for my data?</p>
+<blockquote>
+<div><p>See the section: <a class="reference internal" href="datarules.html#multi-dimensional-data"><em>Linking Multi Dimensional Data with Axis Data</em></a>.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Why aren&#8217;t <tt class="docutils literal"><span class="pre">NXsample</span></tt> and <tt class="docutils literal"><span class="pre">NXmonitor</span></tt> groups stored in the <tt class="docutils literal"><span class="pre">NXinstrument</span></tt> group?</p>
+<blockquote>
+<div><p>A NeXus file can contain a number of <tt class="docutils literal"><span class="pre">NXentry</span></tt>
+groups, which may represent different scans in an experiment, or
+sample and calibration runs, etc. In many cases, though by no means
+all, the instrument has the same configuration so that it would be
+possible to save space by storing the  <tt class="docutils literal"><span class="pre">NXinstrument</span></tt>
+group once and using multiple links in the remaining <tt class="docutils literal"><span class="pre">NXentry</span></tt>
+groups. It is assumed that the sample and monitor information would
+be more likely to change from run to run, and so should be stored
+at the top level.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Specifications are complicated and often provide too much information for what I need.  Where can I find some good example data files?</p>
+<blockquote>
+<div><p>There are a few checked into the
+<a class="reference external" href="http://trac.nexusformat.org/definitions/browser/exampledata">definitions repository</a>.
+At the moment the selection is quite limited and not very representative.
+This repository will be edited as more example files become available.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Can I use a NXDL specification to parse a NeXus data file?</p>
+<blockquote>
+<div><p>This should be possible as there is nothing in the NeXus
+specifications to prevent this but it is not implemented in <span class="target" id="index-6"></span>NAPI.
+You would need to implement it for yourself.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Why do I need to specify the <tt class="docutils literal"><span class="pre">NAPItype</span></tt>? My programming language does not need that information and I don&#8217;t care about C and colleagues.  Can I leave it out?</p>
+<blockquote>
+<div><p><tt class="docutils literal"><span class="pre">NAPItype</span></tt> is necessary. When implementing the NeXus-XML API we strived to
+make this as general as HDF and reasonably efficient for medium
+sized datasets. This is why we store arrays as a large bunch of
+numbers in C-storage order. And we need the  <tt class="docutils literal"><span class="pre">NAPItype</span></tt>
+to figure out the <span class="target" id="index-7"></span>dimensions of the dataset.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Do I have to use the <tt class="docutils literal"><span class="pre">NAPI</span></tt> subroutines?  Can&#8217;t I read (or write) the NeXus data files with my own routines?</p>
+<blockquote>
+<div><p>You are not required to use the NAPI to write valid NeXus
+data files. It is possible to avoid the NAPI to write and read
+valid NeXus data files. But, the programmer who chooses this path
+must have more understanding of how the NeXus HDF or XML data file
+is written. Validation of data files written without the NAPI is
+strongly encouraged.</p>
+</div></blockquote>
+</li>
+<li><p class="first">I&#8217;m using links to place data in two places. Which one should be the data and which one is the link?</p>
+<blockquote>
+<div><div class="admonition note" id="index-8">
+<p class="first admonition-title">Note</p>
+<p>NeXus uses HDF5 hard links</p>
+<p class="last">In HDF, a hard link points to a data object.
+A soft link points to a directory entry.
+Since NeXus uses hard links, there is no need to distinguish
+between two (or more) directory entries that point to the same data.</p>
+</div>
+<p>Both places have pointers to the actual data.
+That is the way hard links work in HDF5.
+There is no need for a preference to either location.
+NeXus defines a <tt class="docutils literal"><span class="pre">target</span></tt> attribute to label
+one directory entry as the source of the data (in this, the
+link <em>target</em>).  This has value in
+only a few situations such as when
+converting the data from one format to another.  By identifying
+the original in place, duplicate copies of the data are not
+converted.</p>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>If I write my data according to the current specification for <a class="reference internal" href="classes/applications/NXsas.html#nxsas"><em>NXsas</em></a></dt>
+<dd><p class="first">(substitute any other application definition),
+will other software be able to read my data?</p>
+<p class="last">Yes.  <a class="reference internal" href="classes/applications/NXsas.html#nxsas"><em>NXsas</em></a>, like other
+<a class="reference internal" href="classes/applications/index.html#application-definitions"><em>Application Definitions</em></a>,
+defines and names the <em>minimum information</em>
+required for analysis or data processing.  As long as all the
+information required by the specification is present, analysis software
+should be able to process the data.
+If other information is also present, there is no guarantee that
+small-angle scattering analysis software will notice.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Where do I store the wavelength of my experiment?</p>
+<blockquote>
+<div><p>See the <a class="reference internal" href="strategies.html#strategies-wavelength"><em>Strategies: The wavelength</em></a> section.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Where do I store metadata about my experiment?</p>
+<p>See the <a class="reference internal" href="design.html#where-to-store-metadata"><em>Where to Store Metadata</em></a> section.</p>
+</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="examples/index.html" title="2. Examples of writing and reading NeXus data files"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="validation.html" title="1.5. Verification and validation of files"
+             >previous</a> |</li>
+        <li><a href="index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="user_manual.html" >1. NeXus: User Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="copyright.html">Copyright</a> 2014, http://nexusformat.org.
+      Last updated on 2014-10-02 14:43:08 CDT.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,743 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.5.3. NXcanSAS &mdash; NeXus: Manual 3.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="top" title="NeXus: Manual 3.1 documentation" href="../../index.html" />
+    <link rel="up" title="3.5. Contributed Definitions" href="index.html" />
+    <link rel="next" title="3.5.4. NXcite" href="NXcite.html" />
+    <link rel="prev" title="3.5.2. NXbeamline" href="NXbeamline.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="NXcite.html" title="3.5.4. NXcite"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="NXbeamline.html" title="3.5.2. NXbeamline"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">3.5. Contributed Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/nexuslogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="NXbeamline.html"
+                        title="previous chapter">3.5.2. NXbeamline</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="NXcite.html"
+                        title="next chapter">3.5.4. NXcite</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/classes/contributed_definitions/NXcanSAS.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nxcansas">
+<span id="index-0"></span><span id="id1"></span><h1>3.5.3. NXcanSAS<a class="headerlink" href="#nxcansas" title="Permalink to this headline">¶</a></h1>
+<p><strong>Status</strong>:</p>
+<blockquote>
+<div>contributed definition, extends <a class="reference internal" href="../base_classes/NXobject.html#nxobject"><em>NXobject</em></a>, version 1.0</div></blockquote>
+<p><strong>Description</strong>:</p>
+<blockquote>
+<div><p>Implementation of the <span class="target" id="index-1"></span>canSAS standard to store
+reduced multi-dimensional small-angle scattering data.</p>
+<p>for more details, see:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.cansas.org/">http://www.cansas.org/</a></li>
+<li><a class="reference external" href="http://www.cansas.org/formats/canSAS2012/1.0/doc">http://www.cansas.org/formats/canSAS2012/1.0/doc</a></li>
+</ul>
+</div></blockquote>
+<p><strong>Symbols</strong>:</p>
+<blockquote>
+<div>No symbol table</div></blockquote>
+<dl class="docutils">
+<dt><strong>Groups cited</strong>:</dt>
+<dd><a class="reference internal" href="../base_classes/NXcollection.html#nxcollection"><em>NXcollection</em></a>, <a class="reference internal" href="../base_classes/NXcollimator.html#nxcollimator"><em>NXcollimator</em></a>, <a class="reference internal" href="../base_classes/NXdata.html#nxdata"><em>NXdata</em></a>, <a class="reference internal" href="../base_classes/NXdetector.html#nxdetector"><em>NXdetector</em></a>, <a class="reference internal" href="../base_classes/NXinstrument.html#nxinstrument"><em>NXinstrument</em></a>, <a class="reference internal" href="../base_classes/NXorientation.html#nxorientation"><em>NXorientation</em></a>, <a class="reference internal" href="../base_classes/NXparameters.html#nxparameters"><em>NXparameters</em></a>, <a class="reference internal" href="../base_classes/NXprocess.html#nxprocess"><em>NXprocess</em></a>, <a class="reference internal" href="../base_classes/NXsample.html#nxsample"><em>NXsample</em></a>, <a class="reference internal" href="../base_classes/NXsource.html#nxsource"><em>NXsource</em></a>, <a class="reference internal" href="../base_classes/NXsubentry.html#nxsubentry"><em>NXsubentry</em></a>, <a class="reference internal" href="../base_classes/NXtranslation.html#nxtranslation"><em>NXtranslation</em></a></dd>
+</dl>
+<p id="index-2"><strong>Structure</strong>:</p>
+<blockquote>
+<div><p><strong>(subentry)</strong>: <a class="reference internal" href="../base_classes/NXsubentry.html#nxsubentry"><em>NXsubentry</em></a></p>
+<blockquote>
+<div><p id="index-3">Place the canSAS <tt class="docutils literal"><span class="pre">SASentry</span></tt> group as a child of a NeXus <tt class="docutils literal"><span class="pre">NXentry</span></tt> group.</p>
+<p>Note: It is required for all numerical objects to provide
+a <em>units</em> attribute that describes the engineering units.
+Use the Unidata UDunits <a class="footnote-reference" href="#id3" id="id2">[1]</a> specification
+as this is compatible with various community standards.</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>The UDunits specification also includes instructions for derived units.</td></tr>
+</tbody>
+</table>
+<p id="index-4"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Official canSAS group: <strong>SASentry</strong></p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">SASentry</span></tt></p>
+</div></blockquote>
+<p id="index-5"><strong>&#64;version</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Describes the version of the canSAS standard used to write this data.
+This must be a text (not numerical) representation. Such as:</p>
+<div class="highlight-python"><pre>@version="1.0"</pre>
+</div>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">1.0</span></tt></p>
+</div></blockquote>
+<p id="index-6"><strong>definition</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Official NeXus NXDL schema to which this subentry conforms.</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">NXcanSAS</span></tt></p>
+</div></blockquote>
+<p id="index-7"><strong>title</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Title of this <em>SASentry</em>.</div></blockquote>
+<p id="index-8"><strong>run</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Run identification for this <em>SASentry</em>.
+For many facilities, this is an integer.
+Use multiple instances of <tt class="docutils literal"><span class="pre">run</span></tt> as needed.</p>
+<p id="index-9"><strong>&#64;name</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Optional string attribute to identify this particular <em>run</em>.
+Could use this to associate (correlate) multiple <em>SASdata</em> elements with <em>run</em> elements.</div></blockquote>
+</div></blockquote>
+<p><strong>(data)</strong>: <a class="reference internal" href="../base_classes/NXdata.html#nxdata"><em>NXdata</em></a></p>
+<blockquote>
+<div><p>A <em>SASData</em> group contains reduced a single small-angle scattering data set
+that can be represented as <img src="../../_images/mathmpl/math-3c6b879bc8.png" style="position: relative; bottom: -8px"/> or <img src="../../_images/mathmpl/math-5a45bd40ff.png" style="position: relative; bottom: -8px"/>.</p>
+<div class="figure">
+<img alt="../../_images/SASdata.png" src="../../_images/SASdata.png" style="width: 60%;" />
+<p class="caption">The <em>SASdata</em> element</p>
+</div>
+<p><em>Q</em> can be either a vector (<img src="../../_images/mathmpl/math-05cba6c83d.png" style="position: relative; bottom: -7px"/>) or a vector magnitude (<img src="../../_images/mathmpl/math-c92efb04ec.png" style="position: relative; bottom: -7px"/>)</p>
+<p>The name of each <em>SASdata</em> must be unique within a SASentry group.  Such as <tt class="docutils literal"><span class="pre">sasdata01</span></tt>.</p>
+<p>A <em>SASdata</em> group has several attributes:</p>
+<ul class="simple">
+<li>I_axes</li>
+<li>Q_indices</li>
+<li>Mask_indices</li>
+</ul>
+<p>To indicate the dependency relationships of other varied parameters,
+use attributes similar to <tt class="docutils literal"><span class="pre">&#64;Mask_indices</span></tt> (such as <tt class="docutils literal"><span class="pre">&#64;Temperature_indices</span></tt>
+or <tt class="docutils literal"><span class="pre">&#64;Pressure_indices</span></tt>).</p>
+<p id="index-10"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Official canSAS group: <span class="target" id="index-11"></span>NXcanSAS (contributed definition); SASdata</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">SASdata</span></tt></p>
+</div></blockquote>
+<p id="index-12"><strong>&#64;I_axes</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Comma-separated list that describes the names
+of the data objects that correspond to the
+indices of the <tt class="docutils literal"><span class="pre">I</span></tt> data object.  Such as:</p>
+<div class="highlight-python"><pre>@I_axes="Temperature,Time,Pressure,Q,Q"</pre>
+</div>
+<p>Since there are five items in the list, the intensity field
+<tt class="docutils literal"><span class="pre">I</span></tt> must be a five-dimensional array (rank=5).</p>
+</div></blockquote>
+<p id="index-13"><strong>&#64;Q_indices</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Array that describes which indices
+(of the <img src="../../_images/mathmpl/math-7f9b147d7f.png" style="position: relative; bottom: -3px"/> data object) are used to
+reference the <tt class="docutils literal"><span class="pre">Q</span></tt> data object. The items in this array
+use zero-based indexing.  Such as:</p>
+<div class="highlight-python"><pre>@Q_indices=1,3,4</pre>
+</div>
+<p>which indicates that <tt class="docutils literal"><span class="pre">Q</span></tt> requires three indices
+from the <img src="../../_images/mathmpl/math-7f9b147d7f.png" style="position: relative; bottom: -3px"/> data object: one for time and
+two for Q position.   Thus, in this example, the
+<tt class="docutils literal"><span class="pre">Q</span></tt> data is time-dependent: <img src="../../_images/mathmpl/math-de7a3747df.png" style="position: relative; bottom: -8px"/>.</p>
+</div></blockquote>
+<p id="index-14"><strong>&#64;Mask_indices</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Array that describes which indices
+(of the <img src="../../_images/mathmpl/math-7f9b147d7f.png" style="position: relative; bottom: -3px"/> data object) are used to
+reference the <tt class="docutils literal"><span class="pre">Mask</span></tt> data object.  The items in this
+array use zero-based indexing.  Such as:</p>
+<div class="highlight-python"><pre>@Mask_indices=3,4</pre>
+</div>
+<p>which indicates that Q requires two indices
+from the <img src="../../_images/mathmpl/math-7f9b147d7f.png" style="position: relative; bottom: -3px"/> data object for Q position.</p>
+</div></blockquote>
+<p id="index-15"><strong>Q</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-per-length"><em>NX_PER_LENGTH</em></a>}</p>
+<blockquote>
+<div><p id="index-16">Array of <img src="../../_images/mathmpl/math-319e541aee.png" style="position: relative; bottom: -7px"/> data to accompany <img src="../../_images/mathmpl/math-7f9b147d7f.png" style="position: relative; bottom: -3px"/>.</p>
+<div class="figure">
+<img alt="../../_images/canSAS-Q-geometry.jpg" src="../../_images/canSAS-Q-geometry.jpg" style="width: 60%;" />
+<p class="caption">The <img src="../../_images/mathmpl/math-05cba6c83d.png" style="position: relative; bottom: -7px"/> geometry.</p>
+</div>
+<p><img src="../../_images/mathmpl/math-319e541aee.png" style="position: relative; bottom: -7px"/> may be represented either
+as the three-dimensional scattering vector <img src="../../_images/mathmpl/math-05cba6c83d.png" style="position: relative; bottom: -7px"/>
+or by the magnitude of the scattering vector, <img src="../../_images/mathmpl/math-c92efb04ec.png" style="position: relative; bottom: -7px"/>.</p>
+<img src="../../_images/mathmpl/math-df51ff3714.png" class="center" /><p>When we write <img src="../../_images/mathmpl/math-319e541aee.png" style="position: relative; bottom: -7px"/>, we may refer to either or both of
+<img src="../../_images/mathmpl/math-c92efb04ec.png" style="position: relative; bottom: -7px"/>
+or <img src="../../_images/mathmpl/math-05cba6c83d.png" style="position: relative; bottom: -7px"/>,  depending on the context.</p>
+<p id="index-17"><strong>&#64;uncertainty</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Typically the estimated standard deviation.
+More general, this is the estimate of the uncertainty of each &#8220;math:<cite>Q</cite>.</p>
+<p>Can use this to describe the slit-length at each datum.
+Use a subgroup to describe any supplementary uncertainty data
+such as two-dimensional.</p>
+<p>(optional for numerical arrays)
+Name of the data object (in this SASdata group) that provides the
+uncertainty to be used for data analysis.</p>
+</div></blockquote>
+</div></blockquote>
+<p id="index-18"><strong>I</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a></p>
+<blockquote>
+<div><p id="index-19">Array of intensity (<img src="../../_images/mathmpl/math-7f9b147d7f.png" style="position: relative; bottom: -3px"/>) data.</p>
+<p>The intensity may be represented in one of these forms:</p>
+<p><strong>absolute units</strong>: <img src="../../_images/mathmpl/math-0a7896065e.png" style="position: relative; bottom: -8px"/>
+differential cross-section
+per unit volume per unit solid angle (typical units: 1/cm/sr)</p>
+<p><strong>absolute units</strong>: <img src="../../_images/mathmpl/math-554d20da19.png" style="position: relative; bottom: -8px"/>
+differential cross-section
+per unit atom per unit solid angle (typical units: cm^2)</p>
+<p><strong>arbitrary units</strong>: <img src="../../_images/mathmpl/math-910ce2ee46.png" style="position: relative; bottom: -8px"/>
+usually a ratio of two detectors
+but units are meaningless (typical units: a.u.)</p>
+<p>This presents a few problems
+for analysis software to sort out when reading the data.
+Fortunately, it is possible to analyze the <em>units</em> to determine which type of
+intensity is being reported and make choices at the time the file is read. But this is
+an area for consideration and possible improvement.</p>
+<p>One problem arises with software that automatically converts data into some canonical
+units used by that software. The software should not convert units between these different
+types of intensity indiscriminately.</p>
+<p>A second problem is that when arbitrary units are used, then the set of possible
+analytical results is restricted.  With such units, no meaningful volume fraction
+or number density can be determined directly from <img src="../../_images/mathmpl/math-910ce2ee46.png" style="position: relative; bottom: -8px"/>.</p>
+<p>In some cases, it is possible to apply a factor to convert the arbitrary
+units to an absolute scale.  This should be considered as a possibility
+of the analysis process.</p>
+<p id="index-20"><strong>&#64;uncertainty</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Typically the estimated standard deviation.
+<img src="../../_images/mathmpl/math-9f6fb36e08.png" style="position: relative; bottom: -8px"/> for Poisson statistics.
+More generally, though, this is the estimate of the uncertainty of each &#8220;math:<cite>I</cite>.</p>
+<p>(optional for numerical arrays)
+Name of the data object (in this SASdata group) that provides the
+uncertainty to be used for data analysis.</p>
+<p><em>Idev</em> is the canonical name from the 1D standard.
+The multi-D standard allows for this name to be described in this attribute.</p>
+</div></blockquote>
+</div></blockquote>
+<p id="index-21"><strong>Qmean</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-per-length"><em>NX_PER_LENGTH</em></a>}</p>
+<blockquote>
+<div>Mean value of <img src="../../_images/mathmpl/math-319e541aee.png" style="position: relative; bottom: -7px"/> for this data point.
+Useful when describing data that has been
+binned from higher-resolution data.
+It is unexpected for <tt class="docutils literal"><span class="pre">Q</span></tt> and <tt class="docutils literal"><span class="pre">Qmean</span></tt> to have different units.</div></blockquote>
+<p id="index-22"><strong>ShadowFactor</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-dimensionless"><em>NX_DIMENSIONLESS</em></a>}</p>
+<blockquote>
+<div><p>A numerical factor applied to pixels affected by the beam stop penumbra.
+Used in data files from NIST/NCNR instruments.</p>
+<p>See:  J.G. Barker and J.S. Pedersen (1995) <em>J. Appl. Cryst.</em> <strong>28</strong>, 105-114.</p>
+</div></blockquote>
+<p><strong>(parameters)</strong>: <a class="reference internal" href="../base_classes/NXparameters.html#nxparameters"><em>NXparameters</em></a></p>
+<blockquote>
+<div><p>Supplementary Uncertainty Data</p>
+<p id="index-23"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>ad hoc canSAS group: <span class="target" id="index-24"></span>NXcanSAS (contributed definition); SASuncertainties</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">SASuncertainties</span></tt></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p><strong>(instrument)</strong>: <a class="reference internal" href="../base_classes/NXinstrument.html#nxinstrument"><em>NXinstrument</em></a></p>
+<blockquote>
+<div><p>This the SAS instrument.</p>
+<div class="figure">
+<img alt="../../_images/SASinstrument.png" src="../../_images/SASinstrument.png" style="width: 60%;" />
+<p class="caption">The <em>SASinstrument</em> element</p>
+</div>
+<p id="index-25"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Official canSAS group: <span class="target" id="index-26"></span>NXcanSAS (contributed definition); SASinstrument</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">SASinstrument</span></tt></p>
+</div></blockquote>
+<p><strong>(collimator)</strong>: <a class="reference internal" href="../base_classes/NXcollimator.html#nxcollimator"><em>NXcollimator</em></a></p>
+<blockquote>
+<div><p>Description of a collimating element in the instrument.</p>
+<div class="figure">
+<img alt="../../_images/SAScollimation.png" src="../../_images/SAScollimation.png" style="width: 60%;" />
+<p class="caption">The <em>SAScollimation</em> element</p>
+</div>
+<p id="index-27"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Official canSAS group: <span class="target" id="index-28"></span>NXcanSAS (contributed definition); SAScollimation</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">SAScollimation</span></tt></p>
+</div></blockquote>
+<p id="index-29"><strong>length</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>Amount/length of collimation inserted (as on a SANS instrument)</div></blockquote>
+<p><strong>aperture</strong>: <a class="reference internal" href="../base_classes/NXparameters.html#nxparameters"><em>NXparameters</em></a></p>
+<blockquote>
+<div><p>Description of a slit or aperture.</p>
+<p id="index-30"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p><em>ad hoc</em> canSAS_class.</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">container</span></tt></p>
+</div></blockquote>
+<p id="index-31"><strong>&#64;name</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Optional name attribute for this aperture</div></blockquote>
+<p id="index-32"><strong>&#64;type</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Optional text attribute to describe the type of aperture (pinhole, 4-blade slit, Soller slit, ...).</div></blockquote>
+<p id="index-33"><strong>distance</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>Distance from this collimation element to the sample.</div></blockquote>
+<p><strong>size</strong>: <a class="reference internal" href="../base_classes/NXparameters.html#nxparameters"><em>NXparameters</em></a></p>
+<blockquote>
+<div><p>Opening dimensions of this aperture.</p>
+<p id="index-34"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p><em>ad hoc</em> canSAS_class.</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">container</span></tt></p>
+</div></blockquote>
+<p id="index-35"><strong>x</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>Dimension of the collimation in <img src="../../_images/mathmpl/math-4e155c67a6.png" style="position: relative; bottom: -3px"/>.</div></blockquote>
+<p id="index-36"><strong>y</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>Dimension of the collimation in <img src="../../_images/mathmpl/math-22904f345d.png" style="position: relative; bottom: -7px"/>.</div></blockquote>
+<p id="index-37"><strong>z</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div><p>Dimension of the collimation in <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/>.</p>
+<p>While <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/> is allowed by the canSAS standard,
+it may not make sense to use it in some situations.
+Use of <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/> may be ignored by processing software.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p><strong>(detector)</strong>: <a class="reference internal" href="../base_classes/NXdetector.html#nxdetector"><em>NXdetector</em></a></p>
+<blockquote>
+<div><p>Description of a detector in the instrument.</p>
+<div class="figure">
+<img alt="../../_images/SASdetector.png" src="../../_images/SASdetector.png" style="width: 60%;" />
+<p class="caption">The <em>SASdetector</em> element</p>
+</div>
+<p id="index-38"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Official canSAS group: <span class="target" id="index-39"></span>NXcanSAS (contributed definition); SASdetector</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">SASdetector</span></tt></p>
+</div></blockquote>
+<p id="index-40"><strong>name</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Identifies the name of this detector</div></blockquote>
+<p id="index-41"><strong>SDD</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>Distance between sample and detector.</div></blockquote>
+<p id="index-42"><strong>slit_length</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-per-length"><em>NX_PER_LENGTH</em></a>}</p>
+<blockquote>
+<div>Slit length of the instrument for this detector,
+expressed in the same units as <img src="../../_images/mathmpl/math-319e541aee.png" style="position: relative; bottom: -7px"/>.</div></blockquote>
+<p><strong>offset</strong>: <a class="reference internal" href="../base_classes/NXparameters.html#nxparameters"><em>NXparameters</em></a></p>
+<blockquote>
+<div><p>Offset of the detector position.</p>
+<p id="index-43"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p><em>ad hoc</em> canSAS_class.</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">container</span></tt></p>
+</div></blockquote>
+<p id="index-44"><strong>x</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-45"><strong>y</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-46"><strong>z</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>While <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/> is allowed by the canSAS standard,
+it may not make sense to use it in some situations.
+Use of <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/> may be ignored by processing software.</div></blockquote>
+</div></blockquote>
+<p><strong>orientation</strong>: <a class="reference internal" href="../base_classes/NXparameters.html#nxparameters"><em>NXparameters</em></a></p>
+<blockquote>
+<div><p>The orientation element describes simple rotations about a single axis
+(rather than a full set of rotations as in a crystallographic context).</p>
+<p id="index-47"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p><em>ad hoc</em> canSAS_class.</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">container</span></tt></p>
+</div></blockquote>
+<p id="index-48"><strong>roll</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>Roll is rotation about the <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/> axis.</div></blockquote>
+<p id="index-49"><strong>pitch</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>Pitch is rotation about the <img src="../../_images/mathmpl/math-4e155c67a6.png" style="position: relative; bottom: -3px"/> axis.</div></blockquote>
+<p id="index-50"><strong>yaw</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>Yaw is rotation about the <img src="../../_images/mathmpl/math-22904f345d.png" style="position: relative; bottom: -7px"/> axis.</div></blockquote>
+</div></blockquote>
+<p><strong>beam_center</strong>: <a class="reference internal" href="../base_classes/NXparameters.html#nxparameters"><em>NXparameters</em></a></p>
+<blockquote>
+<div><p>Position of the beam center on the detector</p>
+<p id="index-51"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p><em>ad hoc</em> canSAS_class.</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">container</span></tt></p>
+</div></blockquote>
+<p id="index-52"><strong>x</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-53"><strong>y</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-54"><strong>z</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>While <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/> is allowed by the canSAS standard,
+it may not make sense to use it in some situations.
+Use of <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/> may be ignored by processing software.</div></blockquote>
+</div></blockquote>
+<p><strong>pixel_size</strong>: <a class="reference internal" href="../base_classes/NXparameters.html#nxparameters"><em>NXparameters</em></a></p>
+<blockquote>
+<div><p>size of the pixels on this detector.</p>
+<p id="index-55"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p><em>ad hoc</em> canSAS_class.</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">container</span></tt></p>
+</div></blockquote>
+<p id="index-56"><strong>x</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-57"><strong>y</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-58"><strong>z</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>While <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/> is allowed by the canSAS standard,
+it may not make sense to use it in some situations.
+Use of <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/> may be ignored by processing software.</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p><strong>(source)</strong>: <a class="reference internal" href="../base_classes/NXsource.html#nxsource"><em>NXsource</em></a></p>
+<blockquote>
+<div><p>Description of the radiation source.</p>
+<div class="figure">
+<img alt="../../_images/SASsource.png" src="../../_images/SASsource.png" style="width: 60%;" />
+<p class="caption">The <em>SASsource</em> element</p>
+</div>
+<p id="index-59"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Official canSAS group: <span class="target" id="index-60"></span>NXcanSAS (contributed definition); SASsource</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">SASsource</span></tt></p>
+</div></blockquote>
+<p id="index-61"><strong>radiation</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Name of the radiation used.
+Note that this is <strong>not</strong> the name of the facility!</p>
+<p>Any of these values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">Spallation</span> <span class="pre">Neutron</span> <span class="pre">Source</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Pulsed</span> <span class="pre">Reactor</span> <span class="pre">Neutron</span> <span class="pre">Source</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Reactor</span> <span class="pre">Neutron</span> <span class="pre">Source</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Synchrotron</span> <span class="pre">X-ray</span> <span class="pre">Source</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Pulsed</span> <span class="pre">Muon</span> <span class="pre">Source</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Rotating</span> <span class="pre">Anode</span> <span class="pre">X-ray</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Fixed</span> <span class="pre">Tube</span> <span class="pre">X-ray</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">UV</span> <span class="pre">Laser</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Free-Electron</span> <span class="pre">Laser</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Optical</span> <span class="pre">Laser</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Ion</span> <span class="pre">Source</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">UV</span> <span class="pre">Plasma</span> <span class="pre">Source</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">neutron</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">x-ray</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">muon</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">electron</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">ultraviolet</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">visible</span> <span class="pre">light</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">positron</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">proton</span></tt></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="index-62"><strong>beam_shape</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Text description of the shape of the beam (incident on the sample).</div></blockquote>
+<p id="index-63"><strong>wavelength</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-wavelength"><em>NX_WAVELENGTH</em></a>}</p>
+<blockquote>
+<div>wavelength (<img src="../../_images/mathmpl/math-3642ca147d.png" style="position: relative; bottom: -3px"/>) of radiation incident on the sample</div></blockquote>
+<p id="index-64"><strong>wavelength_min</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-wavelength"><em>NX_WAVELENGTH</em></a>}</p>
+<blockquote>
+<div>Some facilities specify wavelength using a range.
+This is the lowest wavelength in such a range.</div></blockquote>
+<p id="index-65"><strong>wavelength_max</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-wavelength"><em>NX_WAVELENGTH</em></a>}</p>
+<blockquote>
+<div>Some facilities specify wavelength using a range.
+This is the highest wavelength in such a range.</div></blockquote>
+<p id="index-66"><strong>wavelength_spread</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-wavelength"><em>NX_WAVELENGTH</em></a>}</p>
+<blockquote>
+<div>Some facilities specify wavelength using a range.
+This is the width of such a range.</div></blockquote>
+<p><strong>beam_size</strong>: <a class="reference internal" href="../base_classes/NXparameters.html#nxparameters"><em>NXparameters</em></a></p>
+<blockquote>
+<div><p>Physical dimension of the beam (incident on the sample).
+If beam is round, just use <img src="../../_images/mathmpl/math-4e155c67a6.png" style="position: relative; bottom: -3px"/>.</p>
+<p id="index-67"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p><em>ad hoc</em> canSAS_class.</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">container</span></tt></p>
+</div></blockquote>
+<p id="index-68"><strong>x</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-69"><strong>y</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-70"><strong>z</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>While <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/> is allowed by the canSAS standard,
+it may not make sense to use it in some situations.
+Use of <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/> may be ignored by processing software.</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p><strong>(sample)</strong>: <a class="reference internal" href="../base_classes/NXsample.html#nxsample"><em>NXsample</em></a></p>
+<blockquote>
+<div><p>Description of the sample.</p>
+<div class="figure">
+<img alt="../../_images/SASsample.png" src="../../_images/SASsample.png" style="width: 60%;" />
+<p class="caption">The <em>SASsample</em> element</p>
+</div>
+<p id="index-71"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Official canSAS group: <span class="target" id="index-72"></span>NXcanSAS (contributed definition); SASsample</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">SASsample</span></tt></p>
+</div></blockquote>
+<p id="index-73"><strong>ID</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Text string that identifies this sample.</div></blockquote>
+<p id="index-74"><strong>thickness</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>Thickness of this sample</div></blockquote>
+<p id="index-75"><strong>transmission</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-dimensionless"><em>NX_DIMENSIONLESS</em></a>}</p>
+<blockquote>
+<div>Transmission (<img src="../../_images/mathmpl/math-961493880f.png" style="position: relative; bottom: -8px"/>) of this sample.
+Note that there is no <em>units</em> attribute as this number is dimensionless.</div></blockquote>
+<p id="index-76"><strong>temperature</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-temperature"><em>NX_TEMPERATURE</em></a>}</p>
+<blockquote>
+<div>Temperature of this sample.</div></blockquote>
+<p id="index-77"><strong>details</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Any additional sample details.</div></blockquote>
+<p><strong>position</strong>: <a class="reference internal" href="../base_classes/NXtranslation.html#nxtranslation"><em>NXtranslation</em></a></p>
+<blockquote>
+<div>Location of the sample in <img src="../../_images/mathmpl/math-4e155c67a6.png" style="position: relative; bottom: -3px"/>, <img src="../../_images/mathmpl/math-22904f345d.png" style="position: relative; bottom: -7px"/>, and <img src="../../_images/mathmpl/math-b808451dd7.png" style="position: relative; bottom: -3px"/>.</div></blockquote>
+<p><strong>orientation</strong>: <a class="reference internal" href="../base_classes/NXorientation.html#nxorientation"><em>NXorientation</em></a></p>
+<blockquote>
+<div>Orientation (rotation) of the sample.</div></blockquote>
+</div></blockquote>
+<p><strong>(process)</strong>: <a class="reference internal" href="../base_classes/NXprocess.html#nxprocess"><em>NXprocess</em></a></p>
+<blockquote>
+<div><p>Description of a processing or analysis step.</p>
+<div class="figure">
+<img alt="../../_images/SASprocess.png" src="../../_images/SASprocess.png" style="width: 60%;" />
+<p class="caption">The <em>SASprocess</em> element</p>
+</div>
+<p>Add additional fields as needed to describe value(s) of any
+variable, parameter, or term related to the <em>SASprocess</em> step.
+Be sure to include <em>units</em> attributes for all numerical fields.</p>
+<p id="index-78"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Official canSAS group: <span class="target" id="index-79"></span>NXcanSAS (contributed definition); SASprocess</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">SASprocess</span></tt></p>
+</div></blockquote>
+<p id="index-80"><strong>name</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Optional name for this data processing or analysis step</div></blockquote>
+<p id="index-81"><strong>date</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-date-time"><em>NX_DATE_TIME</em></a></p>
+<blockquote>
+<div><p>Optional date for this data processing or analysis step. <a class="footnote-reference" href="#iso8601" id="id4">[2]</a></p>
+<table class="docutils footnote" frame="void" id="iso8601" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> <p>ISO-8601 standard time representation.</p>
+<p>Use a format for the date which is machine-readable
+such as ISO-8601 (e.g., <tt class="docutils literal"><span class="pre">yyyy-mm-ddThh:mm:ss</span></tt>)
+or modified ISO-8601 (e.g., <tt class="docutils literal"><span class="pre">yyyy-mm-dd</span> <span class="pre">hh:mm:ss</span></tt>).</p>
+<p class="last">See: <a class="reference external" href="http://www.w3.org/TR/NOTE-datetime">http://www.w3.org/TR/NOTE-datetime</a>
+or <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">http://en.wikipedia.org/wiki/ISO_8601</a> for more details.</p>
+</td></tr>
+</tbody>
+</table>
+</div></blockquote>
+<p id="index-82"><strong>description</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Optional description for this data processing or analysis step</div></blockquote>
+<p id="index-83"><strong>term</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Specifies the value of a single variable, parameter,
+or term (while defined here as a string, it could be a number)
+related to the <em>SASprocess</em> step.</p>
+<p>The name <em>term</em> is not required, it could take any name.</p>
+</div></blockquote>
+<p><strong>(collection)</strong>: <a class="reference internal" href="../base_classes/NXcollection.html#nxcollection"><em>NXcollection</em></a></p>
+<blockquote>
+<div><p>Describes anything about <em>SASprocess</em> that is not already described.</p>
+<p>Any content not defined in the canSAS standard can be placed at this point.</p>
+<p id="index-84"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Official canSAS group: <span class="target" id="index-85"></span>NXcanSAS (contributed definition); SASprocessnote</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">SASprocessnote</span></tt></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p><strong>(collection)</strong>: <a class="reference internal" href="../base_classes/NXcollection.html#nxcollection"><em>NXcollection</em></a></p>
+<blockquote>
+<div><p>Free form description of anything not covered by other elements.</p>
+<p id="index-86"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Official canSAS group: <span class="target" id="index-87"></span>NXcanSAS (contributed definition); SASnote</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">SASnote</span></tt></p>
+</div></blockquote>
+</div></blockquote>
+<p><strong>(data)</strong>: <a class="reference internal" href="../base_classes/NXdata.html#nxdata"><em>NXdata</em></a></p>
+<blockquote>
+<div><p>This describes certain data obtained from a variable-wavelength source
+such as pulsed-neutron source.</p>
+<div class="figure">
+<img alt="../../_images/SAStransmission_spectrum.png" src="../../_images/SAStransmission_spectrum.png" style="width: 60%;" />
+<p class="caption">The <em>SAStransmission_spectrum</em> element</p>
+</div>
+<p id="index-88"><strong>&#64;canSAS_class</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Official canSAS group: <span class="target" id="index-89"></span>NXcanSAS (contributed definition); SAStransmission_spectrum</p>
+<p>Obligatory value:  <tt class="docutils literal"><span class="pre">SAStransmission_spectrum</span></tt></p>
+</div></blockquote>
+<p id="index-90"><strong>&#64;name</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Identify what type of spectrum is being described.
+It is expected that this value will take either of these two values:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">value</th>
+<th class="head">meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sample</td>
+<td>measurement with the sample and container</td>
+</tr>
+<tr class="row-odd"><td>can</td>
+<td>measurement with just the container</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p id="index-91"><strong>&#64;timestamp</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-date-time"><em>NX_DATE_TIME</em></a></p>
+<blockquote>
+<div>ISO-8601 time <a class="footnote-reference" href="#iso8601" id="id5">[2]</a></div></blockquote>
+<p id="index-92"><strong>lambda</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-wavelength"><em>NX_WAVELENGTH</em></a>}</p>
+<blockquote>
+<div>Wavelength of the radiation.</div></blockquote>
+<p id="index-93"><strong>T</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-number"><em>NX_NUMBER</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-dimensionless"><em>NX_DIMENSIONLESS</em></a>}</p>
+<blockquote>
+<div><p>Transmission value (<img src="../../_images/mathmpl/math-961493880f.png" style="position: relative; bottom: -8px"/>)</p>
+<p id="index-94"><strong>&#64;signal</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Obligatory value:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">1</span></tt>: the default data to plot in this group</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="index-95"><strong>&#64;axes</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Obligatory value:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">T</span></tt>: the wavelengths field corresponding to this transmission</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="index-96"><strong>&#64;uncertainty</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Estimate of the uncertainty of each &#8220;math:<cite>T</cite>.</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Source</strong>:</dt>
+<dd>Automatically generated from <a class="reference external" href="https://github.com/nexusformat/definitions/blob/master/contributed_definitions/NXcanSAS.nxdl.xml">https://github.com/nexusformat/definitions/blob/master/contributed_definitions/NXcanSAS.nxdl.xml</a></dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="NXcite.html" title="3.5.4. NXcite"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="NXbeamline.html" title="3.5.2. NXbeamline"
+             >previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" >3.5. Contributed Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="../../copyright.html">Copyright</a> 2014, http://nexusformat.org.
+      Last updated on 2014-10-05 17:02:30 CDT.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

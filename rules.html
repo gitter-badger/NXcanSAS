@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.2.3.1. Rules for Structuring Information in NeXus Files &mdash; NeXus: Manual 3.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="top" title="NeXus: Manual 3.1 documentation" href="index.html" />
+    <link rel="up" title="1.2. NeXus Design" href="design.html" />
+    <link rel="next" title="1.2.3.2. Rules for Storing Data Items in NeXus Files" href="datarules.html" />
+    <link rel="prev" title="1.2. NeXus Design" href="design.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="datarules.html" title="1.2.3.2. Rules for Storing Data Items in NeXus Files"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="design.html" title="1.2. NeXus Design"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="user_manual.html" >1. NeXus: User Manual</a> &raquo;</li>
+          <li><a href="design.html" accesskey="U">1.2. NeXus Design</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/nexuslogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1.2.3.1. Rules for Structuring Information in NeXus Files</a><ul>
+<li><a class="reference internal" href="#content-of-a-raw-data-nxentry-group">Content of a Raw Data <tt class="docutils literal"><span class="pre">NXentry</span></tt> Group</a></li>
+<li><a class="reference internal" href="#content-of-a-processed-data-nxentry-group">Content of a processed data <tt class="docutils literal"><span class="pre">NXentry</span></tt> group</a></li>
+<li><a class="reference internal" href="#nxsubentry-or-multi-method-data"><tt class="docutils literal"><span class="pre">NXsubentry</span></tt> or Multi-Method Data</a></li>
+<li><a class="reference internal" href="#rules-for-special-cases">Rules for Special Cases</a><ul>
+<li><a class="reference internal" href="#scans">Scans</a><ul>
+<li><a class="reference internal" href="#simple-scan">Simple scan</a></li>
+<li><a class="reference internal" href="#simple-scan-with-area-detector">Simple scan with area detector</a></li>
+<li><a class="reference internal" href="#complex-hkl-scan">Complex <em>hkl</em> scan</a></li>
+<li><a class="reference internal" href="#multi-parameter-scan-xas">Multi-parameter scan: XAS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rastering">Rastering</a></li>
+<li><a class="reference internal" href="#nxcollection">NXcollection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="design.html"
+                        title="previous chapter">1.2. NeXus Design</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="datarules.html"
+                        title="next chapter">1.2.3.2. Rules for Storing Data Items in NeXus Files</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/rules.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="rules-for-structuring-information-in-nexus-files">
+<span id="rules"></span><span id="index-0"></span><h1>1.2.3.1. Rules for Structuring Information in NeXus Files<a class="headerlink" href="#rules-for-structuring-information-in-nexus-files" title="Permalink to this headline">¶</a></h1>
+<p>All NeXus files contain one or many groups of type <tt class="docutils literal"><span class="pre">NXentry</span></tt> at root level.
+Many files contain only one
+<tt class="docutils literal"><span class="pre">NXentry</span></tt>
+group, then the name is <tt class="docutils literal"><span class="pre">entry</span></tt>.
+The NXentry level of hierarchy is there to support the storage of multiple related experiments in one file.
+Or to allow the NeXus file to serve as a container for storing a whole scientific workflow from data acquisition to
+publication ready data.
+Also, <tt class="docutils literal"><span class="pre">NXentry</span></tt> class
+groups can contain raw data or processed data.
+For files with more than one <tt class="docutils literal"><span class="pre">NXentry</span></tt> group, since HDF requires
+that no two items at the same level in an HDF file may have the same name,
+the NeXus fashion is to
+assign <span class="target" id="index-1"></span>names with an incrementing index appended, such as
+<tt class="docutils literal"><span class="pre">entry1</span></tt>, <tt class="docutils literal"><span class="pre">entry2</span></tt>, <tt class="docutils literal"><span class="pre">entry3</span></tt>, etc.</p>
+<p>In order to illustrate what is written in the text, example hierarchies like the one in
+figure <a class="reference internal" href="#table-rawdata"><em>Raw Data</em></a> are provided.</p>
+<div class="section" id="content-of-a-raw-data-nxentry-group">
+<span id="rules-nxentry-raw-data"></span><h2>Content of a Raw Data <tt class="docutils literal"><span class="pre">NXentry</span></tt> Group<a class="headerlink" href="#content-of-a-raw-data-nxentry-group" title="Permalink to this headline">¶</a></h2>
+<p>An example raw data hierarchy is
+shown in figure <a class="reference internal" href="#table-rawdata"><em>Raw Data</em></a>
+(only showing the relevant parts of the data hierarchy).
+In the example shown, the <tt class="docutils literal"><span class="pre">data</span></tt> field in the <tt class="docutils literal"><span class="pre">NXdata</span></tt> group
+is linked to the 2-D detector data (a 512x512 array of 32-bit integers)
+which has the attribute <tt class="docutils literal"><span class="pre">signal=1</span></tt>.
+Note that <tt class="docutils literal"><span class="pre">[,]</span></tt> represents a 2D array.</p>
+<blockquote>
+<div><div class="compound">
+<p class="compound-first rubric">NeXus Raw Data Hierarchy</p>
+<div class="compound-last highlight-guess" id="table-rawdata"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="nl">entry:</span><span class="n">NXentry</span>
+        <span class="nl">instrument:</span><span class="n">NXinstrument</span>
+            <span class="nl">source:</span><span class="n">NXsource</span>
+            <span class="p">....</span>
+            <span class="nl">detector:</span><span class="n">NXdetector</span>
+                <span class="nl">data:</span><span class="n">NX_INT32</span><span class="p">[</span><span class="mi">512</span><span class="p">,</span><span class="mi">512</span><span class="p">]</span>
+                    <span class="err">@</span><span class="n">signal</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="nl">sample:</span><span class="n">NXsample</span>
+        <span class="nl">control:</span><span class="n">NXmonitor</span>
+        <span class="nl">data:</span><span class="n">NXdata</span>
+            <span class="n">data</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">detector</span><span class="o">/</span><span class="n">data</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div></blockquote>
+<p>An <tt class="docutils literal"><span class="pre">NXentry</span></tt> describing raw data contains at least a <tt class="docutils literal"><span class="pre">NXsample</span></tt>,
+one <tt class="docutils literal"><span class="pre">NXmonitor</span></tt>,
+one <tt class="docutils literal"><span class="pre">NXdata</span></tt> and a <tt class="docutils literal"><span class="pre">NXinstrument</span></tt> group.
+It is good practice to use the names
+<tt class="docutils literal"><span class="pre">sample</span></tt> for the <tt class="docutils literal"><span class="pre">NXsample</span></tt> group,
+<tt class="docutils literal"><span class="pre">control</span></tt> for the <tt class="docutils literal"><span class="pre">NXmonitor</span></tt> group holding the
+experiment controlling monitor and
+<tt class="docutils literal"><span class="pre">instrument</span></tt> for the <tt class="docutils literal"><span class="pre">NXinstrument</span></tt> group.
+The <tt class="docutils literal"><span class="pre">NXinstrument</span></tt> group contains further groups describing the individual
+components of the instrument as appropriate.</p>
+<p>The <tt class="docutils literal"><span class="pre">NXdata</span></tt> group contains links to all those data items in the <tt class="docutils literal"><span class="pre">NXentry</span></tt> <span class="target" id="index-2"></span>hierarchy
+which are required to put up a default plot of the data.
+As an example consider a SAXS instrument with a 2D detector.
+The <tt class="docutils literal"><span class="pre">NXdata</span></tt> will then hold a link to the detector image.
+If there is only one <tt class="docutils literal"><span class="pre">NXdata</span></tt> group,
+it is good practice to name it <tt class="docutils literal"><span class="pre">data</span></tt>.
+Otherwise, the name of the detector bank represented is a good selection.</p>
+</div>
+<div class="section" id="content-of-a-processed-data-nxentry-group">
+<span id="rules-nxentry-processed-data"></span><h2>Content of a processed data <tt class="docutils literal"><span class="pre">NXentry</span></tt> group<a class="headerlink" href="#content-of-a-processed-data-nxentry-group" title="Permalink to this headline">¶</a></h2>
+<p>Processed data, see figure  <a class="reference internal" href="#table-processeddata"><em>Processed Data</em></a>,
+in this context means the results of a data reduction or
+data analysis program. Note that <tt class="docutils literal"><span class="pre">[]</span></tt> represents a 1D array.</p>
+<blockquote>
+<div><div class="compound">
+<p class="compound-first rubric">NeXus Processed Data Hierarchy</p>
+<div class="compound-last highlight-guess" id="table-processeddata"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="nl">entry:</span><span class="n">NXentry</span>
+        <span class="nl">reduction:</span><span class="n">NXprocess</span>
+            <span class="n">program_name</span> <span class="o">=</span> <span class="s">&quot;pyDataProc2010&quot;</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="s">&quot;1.0a&quot;</span>
+            <span class="nl">input:</span><span class="n">NXparameter</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;sn2013287.nxs&quot;</span>
+        <span class="nl">sample:</span><span class="n">NXsample</span>
+        <span class="nl">data:</span><span class="n">NXdata</span>
+            <span class="n">data</span>
+                <span class="err">@</span><span class="n">signal</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div></blockquote>
+<p>NeXus stores such data in a simplified
+<tt class="docutils literal"><span class="pre">NXentry</span></tt> structure. A processed data <tt class="docutils literal"><span class="pre">NXentry</span></tt>
+has at minimum a <tt class="docutils literal"><span class="pre">NXsample</span></tt>,
+a <tt class="docutils literal"><span class="pre">NXdata</span></tt> and a <tt class="docutils literal"><span class="pre">NXprocess</span></tt> group.
+Again the preferred name for the <tt class="docutils literal"><span class="pre">NXsample</span></tt>
+group is <tt class="docutils literal"><span class="pre">sample</span></tt>.
+In the case of processed data, the <tt class="docutils literal"><span class="pre">NXdata</span></tt> group holds the
+result of the processing together with the associated axis data.
+The <tt class="docutils literal"><span class="pre">NXprocess</span></tt>
+group holds the name and version of the program used for this processing
+step and further <tt class="docutils literal"><span class="pre">NXparameter</span></tt> groups. These groups ought to contain the
+parameters used for this data processing step in suitable detail so that
+the processing step can be reproduced.</p>
+<p>Optionally a processed data <tt class="docutils literal"><span class="pre">NXentry</span></tt>
+can hold a <tt class="docutils literal"><span class="pre">NXinstrument</span></tt> group with
+further groups holding relevant information about the instrument. The
+preferred name is again <tt class="docutils literal"><span class="pre">instrument</span></tt>. Whereas for a raw data file, NeXus
+strives to capture as much data as possible, a <tt class="docutils literal"><span class="pre">NXinstrument</span></tt> group for
+processed data may contain a much-reduced subset.</p>
+</div>
+<div class="section" id="nxsubentry-or-multi-method-data">
+<span id="rules-subentry"></span><h2><tt class="docutils literal"><span class="pre">NXsubentry</span></tt> or Multi-Method Data<a class="headerlink" href="#nxsubentry-or-multi-method-data" title="Permalink to this headline">¶</a></h2>
+<p>Especially at synchrotron facilities, there are experiments which perform several different methods
+on the sample at the same time. For example, combine a powder diffraction experiment with XAS.
+This may happen in the same scan, so the data needs to be grouped together. A suitable <tt class="docutils literal"><span class="pre">NXentry</span></tt>
+would need to adhere to two different application definitions. This leads to name clashes which cannot be
+easily resolved. In order to solve this issue, the following scheme was implemented in NeXus:</p>
+<ul class="simple">
+<li>The complete beamline (all data) is stored in an
+appropriate hierarchy in an <tt class="docutils literal"><span class="pre">NXentry</span></tt>.</li>
+<li>The <tt class="docutils literal"><span class="pre">NXentry</span></tt> group contains further <tt class="docutils literal"><span class="pre">NXsubentry</span></tt> groups,
+one for each method. Each <tt class="docutils literal"><span class="pre">NXsubentry</span></tt> group is constructed
+like a <tt class="docutils literal"><span class="pre">NXentry</span></tt> group.
+It contains links to all those data items required to fulfill
+the application definition for the particular method it represents.</li>
+</ul>
+<p>See figure <a class="reference internal" href="#table-nxsubentry"><em>NeXus Multi Method Hierarchy</em></a> for an example hierarchy.
+Note that <tt class="docutils literal"><span class="pre">[,]</span></tt> represents a 2D array.</p>
+<blockquote>
+<div><div class="compound">
+<p class="compound-first rubric">NeXus Multi Method Hierarchy</p>
+<div class="compound-last highlight-guess" id="table-nxsubentry"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="nl">entry:</span><span class="n">NXentry</span>
+        <span class="nl">user:</span><span class="n">NXuser</span>
+        <span class="nl">sample:</span><span class="n">NXsample</span>
+        <span class="nl">instrument:</span><span class="n">NXinstument</span>
+            <span class="nl">SASdet:</span><span class="n">NXdetector</span>
+                <span class="nl">data:</span><span class="p">[,]</span>
+                    <span class="err">@</span><span class="n">signal</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="nl">fluordet:</span><span class="n">NXdetector</span>
+                <span class="nl">data:</span><span class="p">[,]</span>
+                    <span class="err">@</span><span class="n">signal</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="nl">large_area:</span><span class="n">NXdetector</span>
+                <span class="nl">data:</span><span class="p">[,]</span>
+        <span class="nl">SAS:</span><span class="n">NXsubentry</span>
+            <span class="n">definition</span> <span class="o">=</span> <span class="s">&quot;NXsas&quot;</span>
+            <span class="nl">instrument:</span><span class="n">NXinstrument</span>
+                <span class="nl">detector:</span><span class="n">NXdetector</span>
+                    <span class="n">data</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">SASdet</span><span class="o">/</span><span class="n">data</span>
+            <span class="nl">data:</span><span class="n">NXdata</span>
+                <span class="n">data</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">SASdet</span><span class="o">/</span><span class="n">data</span>
+        <span class="nl">Fluo:</span><span class="n">NXsubentry</span>
+            <span class="n">definition</span> <span class="o">=</span> <span class="s">&quot;NXFluo&quot;</span>
+            <span class="nl">instrument:</span><span class="n">NXinstrument</span>
+                <span class="n">detector</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">fluordet</span><span class="o">/</span><span class="n">data</span>
+                <span class="n">detector2</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">large_area</span><span class="o">/</span><span class="n">data</span>
+            <span class="nl">data:</span><span class="n">NXdata</span>
+                <span class="n">detector</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">fluordet</span><span class="o">/</span><span class="n">data</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="rules-for-special-cases">
+<span id="rules-specialcases"></span><h2>Rules for Special Cases<a class="headerlink" href="#rules-for-special-cases" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="scans">
+<span id="rules-specialcases-scans"></span><h3>Scans<a class="headerlink" href="#scans" title="Permalink to this headline">¶</a></h3>
+<p>Scans are difficult to capture because they have great variety. Basically,
+any variable can be scanned. Such behaviour cannot be captured in application definitions.
+Therefore NeXus solves this difficulty with a set of
+rules. In this section, <tt class="docutils literal"><span class="pre">NP</span></tt> is used as a symbol for the number of scan
+points.</p>
+<ul class="simple">
+<li>The scan dimension <tt class="docutils literal"><span class="pre">NP</span></tt> is always the first dimension of any
+multi-dimensional dataset. The reason for this is that HDF allows the first
+dimension of a dataset to be unlimited.
+Which means, that data can be
+appended to the dataset during the scan.</li>
+<li>All data is stored as arrays of dimensions <tt class="docutils literal"><span class="pre">NP</span></tt>, original dimensions
+of the data at the appropriate position in the <tt class="docutils literal"><span class="pre">NXentry</span></tt> <span class="target" id="index-3"></span>hierarchy.</li>
+<li>The <tt class="docutils literal"><span class="pre">NXdata</span></tt> group has to contain links to all variables varied during
+the scan and the detector data. Thus the <tt class="docutils literal"><span class="pre">NXdata</span></tt> group  mimics the usual
+tabular representation of a scan.</li>
+<li>Datasets in an <tt class="docutils literal"><span class="pre">NXdata</span></tt> group must contain the proper attributes
+to enable the <span class="target" id="index-4"></span>default plotting,
+as described in the section titled
+<a class="reference internal" href="design.html#nxdata-facilitates-thedefaultplot"><em>NXdata Facilitates Automatic Plotting</em></a>.</li>
+</ul>
+<div class="section" id="simple-scan">
+<h4>Simple scan<a class="headerlink" href="#simple-scan" title="Permalink to this headline">¶</a></h4>
+<p>Examples may be in order here. Let us start with a simple case, the sample is
+rotated around its rotation axis and data is collected in a single point
+detector. See figure <a class="reference internal" href="#table-simplescan"><em>Simple Scan</em></a> for an overview.
+Then we have:</p>
+<blockquote>
+<div><ul class="simple">
+<li>A dataset at <tt class="docutils literal"><span class="pre">NXentry/NXinstrument/NXdetector/data</span></tt>
+of length <tt class="docutils literal"><span class="pre">NP</span></tt> containing
+the count data.</li>
+<li>A dataset at <tt class="docutils literal"><span class="pre">NXentry/NXsample/rotation_angle</span></tt>
+of length <tt class="docutils literal"><span class="pre">NP</span></tt> containing
+the positions of <tt class="docutils literal"><span class="pre">rotation_angle</span></tt> at the various steps of the scan.</li>
+<li><tt class="docutils literal"><span class="pre">NXdata</span></tt> contains links to:<ul>
+<li><tt class="docutils literal"><span class="pre">NXentry/NXinstrument/NXdetector/data</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">NXentry/NXsample/rotation_angle</span></tt></li>
+</ul>
+</li>
+<li>All other data fields have their normal dimensions.</li>
+</ul>
+<div class="compound">
+<p class="compound-first rubric">NeXus Simple Scan Example</p>
+<div class="compound-last highlight-guess" id="table-simplescan"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="nl">entry:</span><span class="n">NXentry</span>
+        <span class="nl">instrument:</span><span class="n">NXinstrument</span>
+            <span class="nl">detector:</span><span class="n">NXdetector</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+                    <span class="err">@</span><span class="n">signal</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="nl">sample:</span><span class="n">NXsample</span>
+            <span class="n">rotation_angle</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+                <span class="err">@</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+        <span class="nl">control:</span><span class="n">NXmonitor</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+        <span class="nl">data:</span><span class="n">NXdata</span>
+            <span class="n">data</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">detector</span><span class="o">/</span><span class="n">data</span>
+            <span class="n">rotation_angle</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">sample</span><span class="o">/</span><span class="n">rotation_angle</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="simple-scan-with-area-detector">
+<h4>Simple scan with area detector<a class="headerlink" href="#simple-scan-with-area-detector" title="Permalink to this headline">¶</a></h4>
+<p>The next example is the same scan but with an area detector with <tt class="docutils literal"><span class="pre">xsize</span></tt>
+times <tt class="docutils literal"><span class="pre">ysize</span></tt> pixels. The only thing which changes is that
+<tt class="docutils literal"><span class="pre">/NXentry/NXinstrument/NXdetector/data</span></tt> will have the dimensions
+<tt class="docutils literal"><span class="pre">NP,</span> <span class="pre">xsize,</span> <span class="pre">ysize</span></tt>. See figure <a class="reference internal" href="#fig-simplescanarea"><em>Simple Scan with Area Detector</em></a> for an overview.</p>
+<blockquote>
+<div><div class="compound">
+<p class="compound-first rubric">NeXus Simple Scan Example with Area Detector</p>
+<div class="compound-last highlight-guess" id="fig-simplescanarea"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="nl">entry:</span><span class="n">NXentry</span>
+        <span class="nl">instrument:</span><span class="n">NXinstrument</span>
+            <span class="nl">detector:</span><span class="n">NXdetector</span>
+                <span class="nl">data:</span><span class="p">[</span><span class="n">NP</span><span class="p">,</span><span class="n">xsize</span><span class="p">,</span><span class="n">ysize</span><span class="p">]</span>
+                    <span class="err">@</span><span class="n">signal</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="nl">sample:</span><span class="n">NXsample</span>
+            <span class="n">rotation_angle</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+                <span class="err">@</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+        <span class="nl">control:</span><span class="n">NXmonitor</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+        <span class="nl">data:</span><span class="n">NXdata</span>
+            <span class="n">data</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">detector</span><span class="o">/</span><span class="n">data</span>
+            <span class="n">rotation_angle</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">sample</span><span class="o">/</span><span class="n">rotation_angle</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="complex-hkl-scan">
+<h4>Complex <em>hkl</em> scan<a class="headerlink" href="#complex-hkl-scan" title="Permalink to this headline">¶</a></h4>
+<p>The next example involves a complex movement along an axis in reciprocal
+space which requires mutiple motors of a <span class="target" id="index-5"></span>four-circle diffractometer to be
+varied during the scan. We then have:</p>
+<ul>
+<li><p class="first">A dataset at <tt class="docutils literal"><span class="pre">NXentry/NXinstrument/NXdetector/data</span></tt> of length
+<tt class="docutils literal"><span class="pre">NP</span></tt> containing
+the count data.</p>
+</li>
+<li><p class="first">A dataset at <tt class="docutils literal"><span class="pre">NXentry/NXinstrument/NXdetector/polar_angle</span></tt> of length
+<tt class="docutils literal"><span class="pre">NP</span></tt> containing
+the positions of the detector&#8217;s polar_angle at the various steps
+of the scan.</p>
+</li>
+<li><p class="first">A dataset at <tt class="docutils literal"><span class="pre">NXentry/NXsample/rotation_angle</span></tt> of length
+<tt class="docutils literal"><span class="pre">NP</span></tt> containing
+the positions of <tt class="docutils literal"><span class="pre">rotation_angle</span></tt> at the various steps of the scan.</p>
+</li>
+<li><p class="first">A dataset at <tt class="docutils literal"><span class="pre">NXentry/NXsample/chi</span></tt> of length <tt class="docutils literal"><span class="pre">NP</span></tt> containing
+the positions of chi at the various steps of the scan.</p>
+</li>
+<li><p class="first">A dataset at <tt class="docutils literal"><span class="pre">NXentry/NXsample/phi</span></tt> of length <tt class="docutils literal"><span class="pre">NP</span></tt> containing
+the positions of phi at the various steps of the scan.</p>
+</li>
+<li><p class="first">A dataset at <tt class="docutils literal"><span class="pre">NXentry/NXsample/h</span></tt> of length <tt class="docutils literal"><span class="pre">NP</span></tt> containing
+the positions of the reciprocal coordinate <tt class="docutils literal"><span class="pre">h</span></tt> at the
+various steps of the scan.</p>
+</li>
+<li><p class="first">A dataset at <tt class="docutils literal"><span class="pre">NXentry/NXsample/k</span></tt> of length <tt class="docutils literal"><span class="pre">NP</span></tt> containing
+the positions of the reciprocal coordinate <tt class="docutils literal"><span class="pre">k</span></tt> at the
+various steps of the scan.</p>
+</li>
+<li><p class="first">A dataset at <tt class="docutils literal"><span class="pre">NXentry/NXsample/l</span></tt> of length <tt class="docutils literal"><span class="pre">NP</span></tt> containing
+the positions of the reciprocal coordinate <tt class="docutils literal"><span class="pre">l</span></tt> at the
+various steps of the scan.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">NXdata</span></tt> contains links to:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">NXentry/NXinstrument/NXdetector/data</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">NXentry/NXinstrument/NXdetector/polar_angle</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">NXentry/NXsample/rotation_angle</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">NXentry/NXsample/chi</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">NXentry/NXsample/phi</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">NXentry/NXsample/h</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">NXentry/NXsample/k</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">NXentry/NXsample/l</span></tt></li>
+</ul>
+<p>The datasets in <tt class="docutils literal"><span class="pre">NXdata</span></tt> must have the
+appropriate attributes as described in the axis location section.</p>
+</li>
+<li><p class="first">All other data fields have their normal dimensions.</p>
+</li>
+</ul>
+<div class="compound">
+<p class="compound-first rubric">NeXus Complex <em>hkl</em> Scan</p>
+<div class="compound-last highlight-guess" id="table-complexscan"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="nl">entry:</span><span class="n">NXentry</span>
+        <span class="nl">instrument:</span><span class="n">NXinstrument</span>
+            <span class="nl">detector:</span><span class="n">NXdetector</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+                    <span class="err">@</span><span class="n">signal</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">polar_angle</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+                    <span class="err">@</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">name</span>
+        <span class="nl">sample:</span><span class="n">NXsample</span>
+            <span class="n">name</span>
+            <span class="n">rotation_angle</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+                <span class="err">@</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+            <span class="n">chi</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+                <span class="err">@</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+            <span class="n">phi</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+                <span class="err">@</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+            <span class="n">h</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+                <span class="err">@</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+                <span class="err">@</span><span class="n">primary</span><span class="o">=</span><span class="mi">1</span>
+            <span class="n">k</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+                <span class="err">@</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+            <span class="n">l</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+                <span class="err">@</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+        <span class="nl">control:</span><span class="n">NXmonitor</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">NP</span><span class="p">]</span>
+        <span class="nl">data:</span><span class="n">NXdata</span>
+            <span class="n">data</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">detector</span><span class="o">/</span><span class="n">data</span>
+            <span class="n">rotation_angle</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">sample</span><span class="o">/</span><span class="n">rotation_angle</span>
+            <span class="n">chi</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">sample</span><span class="o">/</span><span class="n">chi</span>
+            <span class="n">phi</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">sample</span><span class="o">/</span><span class="n">phi</span>
+            <span class="n">polar_angle</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">detector</span><span class="o">/</span><span class="n">polar_angle</span>
+            <span class="n">h</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">sample</span><span class="o">/</span><span class="n">h</span>
+            <span class="n">k</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">sample</span><span class="o">/</span><span class="n">k</span>
+            <span class="n">l</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">sample</span><span class="o">/</span><span class="n">l</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="multi-parameter-scan-xas">
+<h4>Multi-parameter scan: XAS<a class="headerlink" href="#multi-parameter-scan-xas" title="Permalink to this headline">¶</a></h4>
+<p>Data can be stored almost anywhere in the NeXus tree.  While the previous examples
+showed data arrays in either <tt class="docutils literal"><span class="pre">NXdetector</span></tt> or <tt class="docutils literal"><span class="pre">NXsample</span></tt>,
+this example demonstrates that data can be stored in other places.  Links are used
+to reference the data.</p>
+<p>The example is for X-ray Absorption Spectroscopy (XAS) data where the monochromator
+energy is step-scanned and counts are read back from detectors before (<tt class="docutils literal"><span class="pre">I0</span></tt>)
+and after (<tt class="docutils literal"><span class="pre">I</span></tt>) the sample.  These energy scans are repeated at a sequence
+of sample temperatures to map out, for example, a phase transition.  While it is customary
+in XAS to plot <em>log(I0/I)</em>, we show them separately here
+in two different <tt class="docutils literal"><span class="pre">NXdata</span></tt>
+groups to demonstrate that such things are possible.
+Note that the length of the 1-D energy array is <tt class="docutils literal"><span class="pre">NE</span></tt> while
+the length of the 1-D temperature array is <tt class="docutils literal"><span class="pre">NT</span></tt></p>
+<blockquote>
+<div><div class="compound">
+<p class="compound-first rubric">NeXus Multi-parameter scan: XAS</p>
+<div class="compound-last highlight-guess" id="table-xasscan"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="nl">entry:</span><span class="n">NXentry</span>
+        <span class="nl">instrument:</span><span class="n">NXinstrument</span>
+            <span class="nl">I:</span><span class="n">NXdetector</span>
+                <span class="nl">data:</span><span class="n">NX_NUMBER</span><span class="p">[</span><span class="n">NE</span><span class="p">,</span><span class="n">NT</span><span class="p">]</span>
+                    <span class="err">@</span><span class="n">signal</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="err">@</span><span class="n">axes</span> <span class="o">=</span> <span class="s">&quot;energy:temperature&quot;</span>
+                <span class="n">energy</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">monochromator</span><span class="o">/</span><span class="n">energy</span>
+                <span class="n">temperature</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">sample</span><span class="o">/</span><span class="n">temperature</span>
+            <span class="nl">I0:</span><span class="n">NXdetector</span>
+                <span class="nl">data:</span><span class="n">NX_NUMBER</span><span class="p">[</span><span class="n">NE</span><span class="p">,</span><span class="n">NT</span><span class="p">]</span>
+                    <span class="err">@</span><span class="n">signal</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="err">@</span><span class="n">axes</span> <span class="o">=</span> <span class="s">&quot;energy:temperature&quot;</span>
+                <span class="n">energy</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">monochromator</span><span class="o">/</span><span class="n">energy</span>
+                <span class="n">temperature</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">sample</span><span class="o">/</span><span class="n">temperature</span>
+        <span class="nl">sample:</span><span class="n">NXsample</span>
+            <span class="nl">temperature:</span><span class="n">NX_NUMBER</span><span class="p">[</span><span class="n">NT</span><span class="p">]</span>
+        <span class="nl">monochromator:</span><span class="n">NXmonochromator</span>
+            <span class="nl">energy:</span><span class="n">NX_NUMBER</span><span class="p">[</span><span class="n">NE</span><span class="p">]</span>
+        <span class="nl">I_data:</span><span class="n">NXdata</span>
+            <span class="n">data</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">I</span><span class="o">/</span><span class="n">data</span>
+            <span class="n">energy</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">monochromator</span><span class="o">/</span><span class="n">energy</span>
+            <span class="n">temperature</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">sample</span><span class="o">/</span><span class="n">temperature</span>
+        <span class="nl">I0_data:</span><span class="n">NXdata</span>
+            <span class="n">data</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">instrument</span><span class="o">/</span><span class="n">I00</span><span class="o">/</span><span class="n">data</span>
+            <span class="n">energy</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">monochromator</span><span class="o">/</span><span class="n">energy</span>
+            <span class="n">temperature</span> <span class="o">--&gt;</span> <span class="o">/</span><span class="n">entry</span><span class="o">/</span><span class="n">sample</span><span class="o">/</span><span class="n">temperature</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="rastering">
+<span id="rules-specialcases-rastering"></span><h3>Rastering<a class="headerlink" href="#rastering" title="Permalink to this headline">¶</a></h3>
+<p>Rastering is the process of making experiments at various locations in the
+sample volume. Again, rasterisation experiments can be variable. Some people
+even raster on spirals! Rasterisation experiments are treated the same way as
+described above for scans. Just replace <tt class="docutils literal"><span class="pre">NP</span></tt> with
+<tt class="docutils literal"><span class="pre">P</span></tt>, the number of raster points.</p>
+<p>Special rules apply if a rasterisation happens on a regular grid of size
+<tt class="docutils literal"><span class="pre">xraster,</span> <span class="pre">yraster</span></tt>. Then the variables varied in the rasterisation will be
+of dimensions <tt class="docutils literal"><span class="pre">xraster,</span> <span class="pre">yraster</span></tt> and the detector data of dimensions
+<tt class="docutils literal"><span class="pre">xraster,</span> <span class="pre">yraster,</span> <span class="pre">(orginal</span> <span class="pre">dimensions)</span></tt>
+of the detector. For example, an area detector of
+size <tt class="docutils literal"><span class="pre">xsize,</span> <span class="pre">ysize</span></tt> then it is stored with
+dimensions <tt class="docutils literal"><span class="pre">xraster,</span> <span class="pre">yraster,</span> <span class="pre">xsize,</span> <span class="pre">ysize</span></tt>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be warned: if you use the 2D rasterisation method with <tt class="docutils literal"><span class="pre">xraster,</span> <span class="pre">yraster</span></tt> you may end up with
+invalid data if the scan is aborted prematurely. This cannot happen if the first method is used.</p>
+</div>
+</div>
+<div class="section" id="nxcollection">
+<h3>NXcollection<a class="headerlink" href="#nxcollection" title="Permalink to this headline">¶</a></h3>
+<p>On demand from the community, NeXus introduced a more informal method of
+storing information in a NeXus file.  This is the <tt class="docutils literal"><span class="pre">NXcollection</span></tt>
+class which can appear anywhere underneath <tt class="docutils literal"><span class="pre">NXentry</span></tt>.
+<tt class="docutils literal"><span class="pre">NXcollection</span></tt> is a container for holding other data.
+The foreseen use is to document collections of similar data which do not
+otherwise fit easily into the <tt class="docutils literal"><span class="pre">NXinstrument</span></tt>
+or <tt class="docutils literal"><span class="pre">NXsample</span></tt> hierarchy, such as the intent to record
+<em>all</em> motor positions on a synchrotron beamline.
+Thus, <tt class="docutils literal"><span class="pre">NXcollection</span></tt> serves as a quick point of access
+to data for an instrument scientist or another expert. NXcollection is
+also a feature for those who are too lazy to build up the complete NeXus
+hierarchy.  An example usage case is documented in figure
+<a class="reference internal" href="#table-nxcollection"><em>NXcollection example</em></a>.</p>
+<blockquote>
+<div><div class="compound">
+<p class="compound-first rubric"><tt class="docutils literal"><span class="pre">NXcollection</span></tt> Example</p>
+<div class="compound-last highlight-guess" id="table-nxcollection"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="nl">entry:</span><span class="n">NXentry</span>
+        <span class="nl">positioners:</span><span class="n">NXcollection</span>
+            <span class="nl">mxx:</span><span class="n">NXpositioner</span>
+            <span class="nl">mzz:</span><span class="n">NXpositioner</span>
+            <span class="nl">sgu:</span><span class="n">NXpositioner</span>
+            <span class="nl">ttv:</span><span class="n">NXpositioner</span>
+            <span class="nl">hugo:</span><span class="n">NXpositioner</span>
+            <span class="p">....</span>
+        <span class="nl">scalars:</span><span class="n">NXcollection</span>
+            <span class="n">title</span> <span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+            <span class="n">lieselotte</span> <span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+            <span class="p">...</span>
+        <span class="nl">detectors:</span><span class="n">NXcollection</span>
+            <span class="nl">Pilatus:</span><span class="n">NXdata</span>
+            <span class="n">MXX</span><span class="o">-</span><span class="mi">45</span><span class="o">:</span><span class="n">NXdata</span>
+            <span class="p">....</span>           
+</pre></div>
+</td></tr></table></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="datarules.html" title="1.2.3.2. Rules for Storing Data Items in NeXus Files"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="design.html" title="1.2. NeXus Design"
+             >previous</a> |</li>
+        <li><a href="index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="user_manual.html" >1. NeXus: User Manual</a> &raquo;</li>
+          <li><a href="design.html" >1.2. NeXus Design</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="copyright.html">Copyright</a> 2014, http://nexusformat.org.
+      Last updated on 2014-10-02 14:43:08 CDT.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

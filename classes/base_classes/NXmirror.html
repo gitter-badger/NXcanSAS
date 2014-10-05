@@ -1,0 +1,191 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.3.27. NXmirror &mdash; NeXus: Manual 3.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="top" title="NeXus: Manual 3.1 documentation" href="../../index.html" />
+    <link rel="up" title="3.3. Base Class Definitions" href="index.html" />
+    <link rel="next" title="3.3.28. NXmoderator" href="NXmoderator.html" />
+    <link rel="prev" title="3.3.26. NXlog" href="NXlog.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="NXmoderator.html" title="3.3.28. NXmoderator"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="NXlog.html" title="3.3.26. NXlog"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">3.3. Base Class Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/nexuslogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="NXlog.html"
+                        title="previous chapter">3.3.26. NXlog</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="NXmoderator.html"
+                        title="next chapter">3.3.28. NXmoderator</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/classes/base_classes/NXmirror.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nxmirror">
+<span id="index-0"></span><span id="id1"></span><h1>3.3.27. NXmirror<a class="headerlink" href="#nxmirror" title="Permalink to this headline">¶</a></h1>
+<p><strong>Status</strong>:</p>
+<blockquote>
+<div>base class, extends <a class="reference internal" href="NXobject.html#nxobject"><em>NXobject</em></a>, version 1.0</div></blockquote>
+<p><strong>Description</strong>:</p>
+<blockquote>
+<div>Template of a beamline mirror or supermirror.</div></blockquote>
+<p><strong>Symbols</strong>:</p>
+<blockquote>
+<div>No symbol table</div></blockquote>
+<dl class="docutils">
+<dt><strong>Groups cited</strong>:</dt>
+<dd><a class="reference internal" href="NXdata.html#nxdata"><em>NXdata</em></a>, <a class="reference internal" href="NXgeometry.html#nxgeometry"><em>NXgeometry</em></a>, <a class="reference internal" href="NXshape.html#nxshape"><em>NXshape</em></a></dd>
+</dl>
+<p id="index-1"><strong>Structure</strong>:</p>
+<blockquote>
+<div><p id="index-2"><strong>type</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>Any of these values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">single</span></tt>: mirror with a single material as a reflecting surface</li>
+<li><tt class="docutils literal"><span class="pre">multi</span></tt>: mirror with stacked, multiple layers as a reflecting surface</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="index-3"><strong>description</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>description of this mirror</div></blockquote>
+<p id="index-4"><strong>incident_angle</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-angle"><em>NX_ANGLE</em></a>}</p>
+<p id="index-5"><strong>bend_angle_x</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-angle"><em>NX_ANGLE</em></a>}</p>
+<p id="index-6"><strong>bend_angle_y</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-angle"><em>NX_ANGLE</em></a>}</p>
+<p id="index-7"><strong>interior_atmosphere</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Any of these values: <tt class="docutils literal"><span class="pre">vacuum</span></tt> | <tt class="docutils literal"><span class="pre">helium</span></tt> | <tt class="docutils literal"><span class="pre">argon</span></tt></div></blockquote>
+<p id="index-8"><strong>external_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>external material outside substrate</div></blockquote>
+<p id="index-9"><strong>m_value</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-unitless"><em>NX_UNITLESS</em></a>}</p>
+<blockquote>
+<div>The m value for a supermirror, which defines the supermirror
+regime in multiples of the critical angle of Nickel.</div></blockquote>
+<p id="index-10"><strong>substrate_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<p id="index-11"><strong>substrate_density</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-mass-density"><em>NX_MASS_DENSITY</em></a>}</p>
+<p id="index-12"><strong>substrate_thickness</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-13"><strong>coating_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<p id="index-14"><strong>substrate_roughness</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-15"><strong>coating_roughness</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-16"><strong>even_layer_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<p id="index-17"><strong>even_layer_density</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-mass-density"><em>NX_MASS_DENSITY</em></a>}</p>
+<p id="index-18"><strong>odd_layer_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<p id="index-19"><strong>odd_layer_density</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-mass-density"><em>NX_MASS_DENSITY</em></a>}</p>
+<p id="index-20"><strong>layer_thickness</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>An array describing the thickness of each layer</div></blockquote>
+<p><strong>(geometry)</strong>: <a class="reference internal" href="NXgeometry.html#nxgeometry"><em>NXgeometry</em></a></p>
+<p><strong>reflectivity</strong>: <a class="reference internal" href="NXdata.html#nxdata"><em>NXdata</em></a></p>
+<blockquote>
+<div>Reflectivity as function of wavelength</div></blockquote>
+<p><strong>shape</strong>: <a class="reference internal" href="NXshape.html#nxshape"><em>NXshape</em></a></p>
+<blockquote>
+<div>A NXshape group describing the shape of the mirror</div></blockquote>
+<p><strong>figure_data</strong>: <a class="reference internal" href="NXdata.html#nxdata"><em>NXdata</em></a></p>
+<blockquote>
+<div>Numerical description of the surface figure of the mirror.</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Source</strong>:</dt>
+<dd>Automatically generated from <a class="reference external" href="https://github.com/nexusformat/definitions/blob/master/base_classes/NXmirror.nxdl.xml">https://github.com/nexusformat/definitions/blob/master/base_classes/NXmirror.nxdl.xml</a></dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="NXmoderator.html" title="3.3.28. NXmoderator"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="NXlog.html" title="3.3.26. NXlog"
+             >previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" >3.3. Base Class Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="../../copyright.html">Copyright</a> 2014, http://nexusformat.org.
+      Last updated on 2014-10-02 16:52:41 CDT.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

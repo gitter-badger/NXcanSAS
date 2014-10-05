@@ -1,0 +1,162 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.4. Application Definitions &mdash; NeXus: Manual 3.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="top" title="NeXus: Manual 3.1 documentation" href="../../index.html" />
+    <link rel="up" title="3. NeXus: Reference Documentation" href="../../ref_doc.html" />
+    <link rel="next" title="3.4.1. NXarchive" href="NXarchive.html" />
+    <link rel="prev" title="3.3.49. NXxraylens" href="../base_classes/NXxraylens.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="NXarchive.html" title="3.4.1. NXarchive"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../base_classes/NXxraylens.html" title="3.3.49. NXxraylens"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" accesskey="U">3. NeXus: Reference Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/nexuslogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../base_classes/NXxraylens.html"
+                        title="previous chapter">3.3.49. NXxraylens</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="NXarchive.html"
+                        title="next chapter">3.4.1. NXarchive</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/classes/applications/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="application-definitions">
+<span id="index-0"></span><span id="id1"></span><h1>3.4. Application Definitions<a class="headerlink" href="#application-definitions" title="Permalink to this headline">¶</a></h1>
+<p>A description of each NeXus application definition is given.
+NeXus application definitions define the <em>minimum</em>
+set of terms that
+<em>must</em> be used in an instance of that class.
+Consider the application definitions as a <em>contract</em>
+between a data provider (such as the beam line control system) and a
+data consumer (such as a data analysis program for a scientific technique)
+that describes the information is certain to be available in a data file.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="NXarchive.html">3.4.1. NXarchive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXdirecttof.html">3.4.2. NXdirecttof</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXfluo.html">3.4.3. NXfluo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXindirecttof.html">3.4.4. NXindirecttof</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXiqproc.html">3.4.5. NXiqproc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXlauetof.html">3.4.6. NXlauetof</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXmonopd.html">3.4.7. NXmonopd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXrefscan.html">3.4.8. NXrefscan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXreftof.html">3.4.9. NXreftof</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXsas.html">3.4.10. NXsas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXsastof.html">3.4.11. NXsastof</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXscan.html">3.4.12. NXscan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXspe.html">3.4.13. NXspe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXsqom.html">3.4.14. NXsqom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXtas.html">3.4.15. NXtas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXtofnpd.html">3.4.16. NXtofnpd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXtofraw.html">3.4.17. NXtofraw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXtofsingle.html">3.4.18. NXtofsingle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXtomo.html">3.4.19. NXtomo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXtomophase.html">3.4.20. NXtomophase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXtomoproc.html">3.4.21. NXtomoproc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXxas.html">3.4.22. NXxas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXxasproc.html">3.4.23. NXxasproc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXxbase.html">3.4.24. NXxbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXxeuler.html">3.4.25. NXxeuler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXxkappa.html">3.4.26. NXxkappa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXxlaue.html">3.4.27. NXxlaue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXxlaueplate.html">3.4.28. NXxlaueplate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXxnb.html">3.4.29. NXxnb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NXxrot.html">3.4.30. NXxrot</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="NXarchive.html" title="3.4.1. NXarchive"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../base_classes/NXxraylens.html" title="3.3.49. NXxraylens"
+             >previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="../../copyright.html">Copyright</a> 2014, http://nexusformat.org.
+      Last updated on 2014-10-02 16:52:41 CDT.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

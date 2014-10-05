@@ -1,0 +1,171 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.5.6. NXfresnel_zone_plate &mdash; NeXus: Manual 3.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="top" title="NeXus: Manual 3.1 documentation" href="../../index.html" />
+    <link rel="up" title="3.5. Contributed Definitions" href="index.html" />
+    <link rel="next" title="3.5.7. NXmagnetic_kicker" href="NXmagnetic_kicker.html" />
+    <link rel="prev" title="3.5.5. NXelectrostatic_kicker" href="NXelectrostatic_kicker.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="NXmagnetic_kicker.html" title="3.5.7. NXmagnetic_kicker"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="NXelectrostatic_kicker.html" title="3.5.5. NXelectrostatic_kicker"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">3.5. Contributed Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/nexuslogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="NXelectrostatic_kicker.html"
+                        title="previous chapter">3.5.5. NXelectrostatic_kicker</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="NXmagnetic_kicker.html"
+                        title="next chapter">3.5.7. NXmagnetic_kicker</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/classes/contributed_definitions/NXfresnel_zone_plate.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nxfresnel-zone-plate">
+<span id="index-0"></span><span id="id1"></span><h1>3.5.6. NXfresnel_zone_plate<a class="headerlink" href="#nxfresnel-zone-plate" title="Permalink to this headline">¶</a></h1>
+<p><strong>Status</strong>:</p>
+<blockquote>
+<div>contributed definition, extends <a class="reference internal" href="../base_classes/NXobject.html#nxobject"><em>NXobject</em></a>, version 1.0</div></blockquote>
+<p><strong>Description</strong>:</p>
+<blockquote>
+<div>description for a fresnel zone plate</div></blockquote>
+<p><strong>Symbols</strong>:</p>
+<blockquote>
+<div>No symbol table</div></blockquote>
+<dl class="docutils">
+<dt><strong>Groups cited</strong>:</dt>
+<dd><a class="reference internal" href="../base_classes/NXgeometry.html#nxgeometry"><em>NXgeometry</em></a></dd>
+</dl>
+<p id="index-1"><strong>Structure</strong>:</p>
+<blockquote>
+<div><p id="index-2"><strong>focus_parameters</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a></p>
+<blockquote>
+<div>list of polynomial coefficients describing the focal length of the zone plate, in increasing order.</div></blockquote>
+<p id="index-3"><strong>outer_diameter</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-4"><strong>outermost_zone_width</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-5"><strong>central_stop_diameter</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-6"><strong>fabrication</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>how zone plate was manufactured</p>
+<p>Any of these values: <tt class="docutils literal"><span class="pre">etched</span></tt> | <tt class="docutils literal"><span class="pre">plated</span></tt> | <tt class="docutils literal"><span class="pre">zone</span> <span class="pre">doubled</span></tt></p>
+</div></blockquote>
+<p id="index-7"><strong>zone_height</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-8"><strong>zone_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Material of the zones themselves</div></blockquote>
+<p id="index-9"><strong>zone_support_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Material present between the zones. This is usually only present for the &#8220;zone doubled&#8221; fabrication process</div></blockquote>
+<p id="index-10"><strong>central_stop_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<p id="index-11"><strong>central_stop_thickness</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-12"><strong>mask_thickness</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p id="index-13"><strong>mask_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>If no mask is present, set mask_thickness to 0 and omit the mask_material field</div></blockquote>
+<p id="index-14"><strong>support_membrane_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<p id="index-15"><strong>support_membrane_thickness</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<p><strong>(geometry)</strong>: <a class="reference internal" href="../base_classes/NXgeometry.html#nxgeometry"><em>NXgeometry</em></a></p>
+<blockquote>
+<div>&#8220;Engineering&#8221; position of the fresnel zone plate</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Source</strong>:</dt>
+<dd>Automatically generated from <a class="reference external" href="https://github.com/nexusformat/definitions/blob/master/contributed_definitions/NXfresnel_zone_plate.nxdl.xml">https://github.com/nexusformat/definitions/blob/master/contributed_definitions/NXfresnel_zone_plate.nxdl.xml</a></dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="NXmagnetic_kicker.html" title="3.5.7. NXmagnetic_kicker"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="NXelectrostatic_kicker.html" title="3.5.5. NXelectrostatic_kicker"
+             >previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" >3.5. Contributed Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="../../copyright.html">Copyright</a> 2014, http://nexusformat.org.
+      Last updated on 2014-10-02 16:52:41 CDT.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

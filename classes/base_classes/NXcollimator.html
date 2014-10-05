@@ -1,0 +1,175 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.3.9. NXcollimator &mdash; NeXus: Manual 3.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="top" title="NeXus: Manual 3.1 documentation" href="../../index.html" />
+    <link rel="up" title="3.3. Base Class Definitions" href="index.html" />
+    <link rel="next" title="3.3.10. NXcrystal" href="NXcrystal.html" />
+    <link rel="prev" title="3.3.8. NXcollection" href="NXcollection.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="NXcrystal.html" title="3.3.10. NXcrystal"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="NXcollection.html" title="3.3.8. NXcollection"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">3.3. Base Class Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/nexuslogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="NXcollection.html"
+                        title="previous chapter">3.3.8. NXcollection</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="NXcrystal.html"
+                        title="next chapter">3.3.10. NXcrystal</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/classes/base_classes/NXcollimator.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nxcollimator">
+<span id="index-0"></span><span id="id1"></span><h1>3.3.9. NXcollimator<a class="headerlink" href="#nxcollimator" title="Permalink to this headline">¶</a></h1>
+<p><strong>Status</strong>:</p>
+<blockquote>
+<div>base class, extends <a class="reference internal" href="NXobject.html#nxobject"><em>NXobject</em></a>, version 1.0</div></blockquote>
+<p><strong>Description</strong>:</p>
+<blockquote>
+<div>Template of a beamline collimator.</div></blockquote>
+<p><strong>Symbols</strong>:</p>
+<blockquote>
+<div>No symbol table</div></blockquote>
+<dl class="docutils">
+<dt><strong>Groups cited</strong>:</dt>
+<dd><a class="reference internal" href="NXgeometry.html#nxgeometry"><em>NXgeometry</em></a>, <a class="reference internal" href="NXlog.html#nxlog"><em>NXlog</em></a></dd>
+</dl>
+<p id="index-1"><strong>Structure</strong>:</p>
+<blockquote>
+<div><p id="index-2"><strong>type</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Any of these values: <tt class="docutils literal"><span class="pre">Soller</span></tt> | <tt class="docutils literal"><span class="pre">radial</span></tt> | <tt class="docutils literal"><span class="pre">oscillating</span></tt> | <tt class="docutils literal"><span class="pre">honeycomb</span></tt></div></blockquote>
+<p id="index-3"><strong>soller_angle</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-angle"><em>NX_ANGLE</em></a>}</p>
+<blockquote>
+<div>Angular divergence of Soller collimator</div></blockquote>
+<p id="index-4"><strong>divergence_x</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-angle"><em>NX_ANGLE</em></a>}</p>
+<blockquote>
+<div>divergence of collimator in local x direction</div></blockquote>
+<p id="index-5"><strong>divergence_y</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-angle"><em>NX_ANGLE</em></a>}</p>
+<blockquote>
+<div>divergence of collimator in local y direction</div></blockquote>
+<p id="index-6"><strong>frequency</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-frequency"><em>NX_FREQUENCY</em></a>}</p>
+<blockquote>
+<div>Frequency of oscillating collimator</div></blockquote>
+<p id="index-7"><strong>blade_thickness</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>blade thickness</div></blockquote>
+<p id="index-8"><strong>blade_spacing</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div>blade spacing</div></blockquote>
+<p id="index-9"><strong>absorbing_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>name of absorbing material</div></blockquote>
+<p id="index-10"><strong>transmitting_material</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>name of transmitting material</div></blockquote>
+<p><strong>(geometry)</strong>: <a class="reference internal" href="NXgeometry.html#nxgeometry"><em>NXgeometry</em></a></p>
+<blockquote>
+<div>position, shape and size</div></blockquote>
+<p><strong>frequency_log</strong>: <a class="reference internal" href="NXlog.html#nxlog"><em>NXlog</em></a></p>
+<blockquote>
+<div>Log of frequency</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Source</strong>:</dt>
+<dd>Automatically generated from <a class="reference external" href="https://github.com/nexusformat/definitions/blob/master/base_classes/NXcollimator.nxdl.xml">https://github.com/nexusformat/definitions/blob/master/base_classes/NXcollimator.nxdl.xml</a></dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="NXcrystal.html" title="3.3.10. NXcrystal"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="NXcollection.html" title="3.3.8. NXcollection"
+             >previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" >3.3. Base Class Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="../../copyright.html">Copyright</a> 2014, http://nexusformat.org.
+      Last updated on 2014-10-02 16:52:41 CDT.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

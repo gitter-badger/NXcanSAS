@@ -1,0 +1,184 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.3.42. NXshape &mdash; NeXus: Manual 3.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="top" title="NeXus: Manual 3.1 documentation" href="../../index.html" />
+    <link rel="up" title="3.3. Base Class Definitions" href="index.html" />
+    <link rel="next" title="3.3.43. NXslit" href="NXslit.html" />
+    <link rel="prev" title="3.3.41. NXsensor" href="NXsensor.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="NXslit.html" title="3.3.43. NXslit"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="NXsensor.html" title="3.3.41. NXsensor"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">3.3. Base Class Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/nexuslogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="NXsensor.html"
+                        title="previous chapter">3.3.41. NXsensor</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="NXslit.html"
+                        title="next chapter">3.3.43. NXslit</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/classes/base_classes/NXshape.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nxshape">
+<span id="index-0"></span><span id="id1"></span><h1>3.3.42. NXshape<a class="headerlink" href="#nxshape" title="Permalink to this headline">¶</a></h1>
+<p><strong>Status</strong>:</p>
+<blockquote>
+<div>base class, extends <a class="reference internal" href="NXobject.html#nxobject"><em>NXobject</em></a>, version 1.0</div></blockquote>
+<p><strong>Description</strong>:</p>
+<blockquote>
+<div>This is the description of the general shape and size of a
+component, which may be made up of <tt class="docutils literal"><span class="pre">numobj</span></tt> separate
+elements - it is used by the <a class="reference internal" href="NXgeometry.html#nxgeometry"><em>NXgeometry</em></a> class</div></blockquote>
+<p><strong>Symbols</strong>:</p>
+<blockquote>
+<div>No symbol table</div></blockquote>
+<dl class="docutils">
+<dt><strong>Groups cited</strong>:</dt>
+<dd>none</dd>
+</dl>
+<p><strong>Structure</strong>:</p>
+<blockquote>
+<div><p id="index-1"><strong>shape</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div><p>general shape of a component</p>
+<p>Any of these values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">nxflat</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">nxcylinder</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">nxbox</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">nxsphere</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">nxcone</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">nxelliptical</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">nxtoroidal</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">nxparabolic</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">nxpolynomial</span></tt></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="index-2"><strong>size[numobj, nshapepar]</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-float"><em>NX_FLOAT</em></a> {units=<a class="reference internal" href="../../nxdl-types.html#nx-length"><em>NX_LENGTH</em></a>}</p>
+<blockquote>
+<div><p>physical extent of the object along its local axes (after NXorientation)
+with the center of mass at the local origin (after NXtranslation).
+The meaning and location of these axes will vary according to the value
+of the &#8220;shape&#8221; variable.
+<tt class="docutils literal"><span class="pre">nshapepar</span></tt> defines how many parameters:</p>
+<ul class="simple">
+<li>For &#8220;nxcylinder&#8221; type the parameters are (diameter,height) and a three value orientation vector of the cylinder.</li>
+<li>For the &#8220;nxbox&#8221; type the parameters are (length,width,height).</li>
+<li>For the &#8220;nxsphere&#8221; type the parameters are (diameter).</li>
+<li>For nxcone cone half aperture</li>
+<li>For nxelliptical, semi-major axis, semi-minor-axis, angle of major axis and pole</li>
+<li>For nxtoroidal, major radius, minor radius</li>
+<li>For nxparabolic, parabolic parameter a</li>
+<li>For nxpolynomial, an array of polynom coefficients, the dimension of the array
+encodes the degree of the polynom</li>
+</ul>
+</div></blockquote>
+<p id="index-3"><strong>direction</strong>: <a class="reference internal" href="../../nxdl-types.html#nx-char"><em>NX_CHAR</em></a></p>
+<blockquote>
+<div>Any of these values: <tt class="docutils literal"><span class="pre">concave</span></tt> | <tt class="docutils literal"><span class="pre">convex</span></tt></div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Source</strong>:</dt>
+<dd>Automatically generated from <a class="reference external" href="https://github.com/nexusformat/definitions/blob/master/base_classes/NXshape.nxdl.xml">https://github.com/nexusformat/definitions/blob/master/base_classes/NXshape.nxdl.xml</a></dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="NXslit.html" title="3.3.43. NXslit"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="NXsensor.html" title="3.3.41. NXsensor"
+             >previous</a> |</li>
+        <li><a href="../../index.html">NeXus: Manual 3.1 documentation</a> &raquo;</li>
+          <li><a href="../../ref_doc.html" >3. NeXus: Reference Documentation</a> &raquo;</li>
+          <li><a href="index.html" >3.3. Base Class Definitions</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="../../copyright.html">Copyright</a> 2014, http://nexusformat.org.
+      Last updated on 2014-10-02 16:52:41 CDT.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
