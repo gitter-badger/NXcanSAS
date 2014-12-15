@@ -112,6 +112,27 @@ links to further information, as available.
     Note: this command-line tool is
     different than the newer Java GUI program: ``NXvalidate``.
 
+.. _NXvalidate-java:
+
+.. index:: 
+        NXvalidate (Java GUI)
+
+**NXvalidate**
+    NXvalidate will validate a NeXus file against an application definition. 
+    It relies on ``nxconvert`` being installed. 
+
+    From the source code documentation: 
+    
+    	"NXvalidate is a tool that allows the validation of NeXus files for 
+    	their correctness with respect to content for a given data model.
+    	
+    	"NXvalidate can validate single data files or multiple data files, 
+    	the results are displayed in a friendly way and errors found in the 
+    	file are highlighted to the user."
+    	
+    Note: this Java GUI program is different than the
+    command-line tool ``nxvalidate``.
+
 .. index:: 
         plotting
 	NXplot (utility)
@@ -293,8 +314,7 @@ low level programmatic access to the data structures.
 Language APIs
 -------------
 
-:h5py:
-	(http://code.google.com/p/h5py/)
+**h5py** (http://docs.h5py.org/)
 	HDF5 for Python (h5py) is a general-purpose Python interface to HDF5.
 
 .. TODO: list more APIs

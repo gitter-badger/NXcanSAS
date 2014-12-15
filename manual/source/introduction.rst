@@ -6,7 +6,6 @@ NeXus Introduction
 
 .. index::
    introduction
-   preface
    motivation
 
 NeXus is an effort by an international group of scientists to define 
@@ -14,13 +13,18 @@ a common data exchange format for neutron, X-ray, and muon experiments.
 NeXus is built on top of the scientific data format HDF5 and adds 
 domain-specific rules for organizing data within HDF5 files in addition 
 to a dictionary of well-defined domain-specific field names. The NeXus 
-data format has two purposes.  First, NeXus defines a format that can 
-serve as a container for all relevant data associated with a scientific 
-instrument or beamline. 
-This is a very important use case.  Second, NeXus defines standards in 
-the form of *application definitions* for the exchange of data 
-between applications.  NeXus provides structures for raw experimental 
-data as well as for processed data.  
+data format has two purposes:
+
+#. *raw data*:
+   NeXus defines a format that can 
+   serve as a container for all relevant data associated with a scientific 
+   instrument or beamline. 
+   This is a very important use case.
+#. *processed data*:
+   NeXus defines standards in 
+   the form of *application definitions* for the exchange of data 
+   between applications.  NeXus provides structures for raw experimental 
+   data as well as for processed data.  
 
 In recent years, a community of scientists and computer programmers working in neutron
 and synchrotron facilities around the world came to the conclusion that a 
@@ -100,40 +104,37 @@ A Set of Design Principles
 .. index:: design principles
 
 NeXus data files contain four types of entity:
-data groups,
-data fields,
+groups,
+fields,
 attributes, and
 links.
 
+.. index::
+   single: group
+
 :ref:`Design-Groups`
-    Data :index:`groups <data objects; groups>`
-    are like folders that can contain a number of fields
+    Groups are like folders that can contain a number of fields
     and/or other groups.
 
-:ref:`Design-Fields`
-    Data :index:`fields <data objects; fields>`
-    can be scalar values or multidimensional arrays of a
-    variety of sizes (1-byte, 2-byte, 4-byte, 8-byte) and types
-    (characters, integers, floats).  In HDF, fields are
-    represented as HDF *Scientific Data Sets*
-    (also known as SDS).
-    
     .. index::
-      single: HDF; Scientific Data Sets
-      see:    SDS; Scientific Data Sets
-      single: data objects, fields; Scientific Data Sets
-      see:    data objects, fields; HDF
+      single: field
 
+:ref:`Design-Fields`
+    Fields can be scalar values or multidimensional arrays of a
+    variety of sizes (1-byte, 2-byte, 4-byte, 8-byte) and types
+    (characters, integers, floats).  Fields are
+    represented as HDF5 *datasets*.
+    
 .. index::
-   pair: units; attribute
-   attribute
-   see: data attribute; attribute
+   single: field attribute
+   single: group attribute
 
 :ref:`Design-Attributes`
     Extra information required to
     describe a particular group or field,
     such as the data units,
-    can be stored as a data attribute.
+    can be stored as a data attribute.  Attributes can also 
+    be given at the file level of an HDF5 file.
 
 .. index::
    link
@@ -347,7 +348,7 @@ to the community.
 
 These instrument definitions are formalized as XML files, using NXDL,
 (as described in the :ref:`NXDL <NXDL>` chapter)
-to specify the names of data fields, and other NeXus data objects.
+to specify the names of fields, and other NeXus data objects.
 The following is an example of such a file for
 the simple NeXus file shown above.
 
@@ -439,5 +440,6 @@ The NIAC supervises a technical committee to oversee the
    :maxdepth: 2
    :glob:
    
+   preface
    motivations
    introduction-napi

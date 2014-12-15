@@ -46,20 +46,25 @@ data.
 Mapping NeXus into HDF
 ######################
 
+.. index::
+   single: field; HDF
+   single: group; HDF
+   single: attribute; HDF
+
+
 NeXus data structures map directly to HDF structures.
-NeXus *groups* are HDF4 *vgroups* or HDF5 *groups*, 
-NeXus data sets (or *fields*) are HDF4 *SDS (scientific data sets)* 
-or HDF5 *datasets*.  Attributes map directly to HDF group or dataset 
-:index:`attributes <attribute>`.
-
-The only special case is the NeXus class name. HDF4 supports a group class
+NeXus *groups* are HDF5 *groups* and
+NeXus *fields* (or data sets) are HDF5 *datasets*.
+Attributes map directly to HDF group or dataset attributes.
+The NeXus class is stored as an attribute to the HDF5 group 
+with the name ``NX_class`` with value of the NeXus class name.
+(For legacy NeXus data files using HDF4, groups are HDF4 *vgroups*
+and fields are HDF4 *SDS (scientific data sets)*.  HDF4 does 
+not support group attributes.  HDF4 supports a group class
 which is set with the ``Vsetclass()`` call
-and read with ``VGetclass()``.
-HDF-5 has no group class. Thus the NeXus class
-is stored as an attribute to the HDF-5 group with the name ``NX_class``
-and value of the NeXus class name.
+and read with ``VGetclass()``.)
 
-A NeXus ``link`` directly maps to the HDF linking mechanisms.
+A NeXus ``link`` directly maps to the HDF hard link mechanisms.
 
 .. note:: **Examples** are provided in the :ref:`Examples` chapter.
           These examples include software to write and read NeXus data files using the NAPI, as
@@ -167,8 +172,7 @@ Mapping NeXus into XML
 
 .. index::
    pair: file format; XML
-   file; attributes
-   attribute; file-level (NXroot)
+   file attribute
    NXroot (base class); attributes
 
 This takes a bit more work than HDF.
@@ -248,15 +252,16 @@ Special Attributes
 ##################
 
 .. index::
-   attribute; internal
+   see: attribute; internal attribute
+   ! single: internal attribute
 
 NeXus makes use of some special attributes for its internal purposes.
 These attributes are stored as normal group or data set attributes
 in the respective file format. These are:
 
 .. index::
-   single: link; target 
-   pair: attribute; target
+   see: target; link target (internal attribute)
+   ! single: link target (internal attribute)
 
 **target**
     This attribute is automatically created when items get linked.
@@ -264,7 +269,8 @@ in the respective file format. These are:
     the path to the source of the item linked.
 
 .. index::
-   pair: attribute; napimount
+   ! single: napimount (internal attribute)
+   see: linking (external); napimount (internal attribute)
 
 **napimount**
     The ``napimount`` attribute is used to implement
@@ -281,11 +287,12 @@ in the respective file format. These are:
     and the group *path-infile* in that NeXus file.
 
 .. index::
-   pair: attribute; NAPIlink
+   ! single: NAPIlink (internal attribute)
+   see: linking (internal); NAPIlink (internal attribute)
 
 **NAPIlink**
     NeXus supports linking items in another group under another name.
-    This is only supported natively in HDF-5.
+    This is only supported natively in HDF5.
     For HDF-4 and XML a crutch is needed.
     This crutch is a special class name or attribute
     ``NAPIlink`` combined with the
