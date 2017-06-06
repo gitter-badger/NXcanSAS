@@ -22,3 +22,6 @@ These are the components that define the structure of NeXus data files in the de
         xslt/                       various XML stylesheet transformations
 
 See README.cmake.txt for building instructions
+
+
+[![Join the chat at https://gitter.im/canSAS-org/NXcanSAS](https://badges.gitter.im/canSAS-org/NXcanSAS.svg)](https://gitter.im/canSAS-org/NXcanSAS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
